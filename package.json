@@ -1,0 +1,27 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "client side of app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HerRA17/movies-couch_client.git"
+  },
+  "author": "Hermann Rasch (hermann.rasch93@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HerRA17/movies-couch_client/issues"
+  },
+  "homepage": "https://github.com/HerRA17/movies-couch_client#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.1",
+    "process": "^0.11.10"
+  }
+}
