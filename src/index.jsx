@@ -2,7 +2,7 @@ import { createRoot} from 'react-dom/client';
 // Import statement to indicating bundle is needed 
 import "./index.scss";
 // Main component (will eventually use all others)
-const moviescouchApplication = () => {
+const MoviescouchApplication = () => {
     return (
         <div className="movies-couch">
             <div> Good Morning</div>
@@ -13,4 +13,4 @@ const moviescouchApplication = () => {
 const Container  = document.querySelector("#root");
 const root = createRoot(container);
 // Tells React to render your app in the root DOM element
-root.render(<moviescouchApplication/>);
+root.render(<MoviescouchApplication/>);
