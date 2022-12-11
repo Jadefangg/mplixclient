@@ -10,7 +10,7 @@ const MoviescouchApplication = () => {
     );
 };
 // Find the root of your app
-const Container  = document.querySelector("#root");
+const container  = document.querySelector("#root");
 const root = createRoot(container);
 // Tells React to render your app in the root DOM element
 root.render(<MoviescouchApplication/>);
