@@ -29,7 +29,7 @@ image:"https://www.imdb.com/title/tt0080684/mediaviewer/rm3228333312/?ref_=tt…
     return (
         <div>
             {movies.map((movie) => {
-                <MovieCard key={movie.id}  movie={movie} onMovieClick={(newSelectedMovie) => {
+            return  <MovieCard key={movie.id}  movie={movie} onMovieClick={(newSelectedMovie) => {
                     setSelectedMovie(newSelectedMovie);
                 }} />;
             })}
