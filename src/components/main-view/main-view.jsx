@@ -15,7 +15,7 @@ export const MainView = () => {
 // { id: 5, title: "Star Wars: Episode V- The Empire Strikes Back",
 // image:"https://www.imdb.com/title/tt0080684/mediaviewer/rm3228333312/?ref_=tt_ov_i"}
 useEffect(() => {
-    fetch("")
+    fetch("https://movies-couch-api-git-main-herra17.vercel.app/")
     .then((response) => response.json())
     .then((data) => {
         const moviesFromApi = data.docs.maps((doc) => {
@@ -23,7 +23,7 @@ useEffect(() => {
                 id: doc.key,
                 title: doc.title,
                 image: ``,
-                director: 
+                director: doc.director_name
             };
         });
         setMovies(moviesFromApi); 
