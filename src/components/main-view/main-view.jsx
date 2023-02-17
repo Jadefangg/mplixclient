@@ -5,7 +5,7 @@ import { MovieView } from "../movie-view/movie-view";
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
 useEffect(() => {
-    fetch("https://movies-couch-api-git-main-herra17.vercel.app/")
+    fetch("https://movies-couch-api.vercel.app/movies")
     .then((response) => response.json())
     .then((data) => {
         const moviesFromApi = data.docs.maps((doc) => {
@@ -18,10 +18,12 @@ useEffect(() => {
         });
         setMovies(moviesFromApi); 
     });
-}, []);
-    // set default state to null(default-state)
-    const [selectedMovie, setSelectedMovie] = useState(null);
-    if (selectedMovie) {
+
+}), [ ];
+ 
+if (selectedMovie) {
+    // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
+    // function checkMovies(title, director) {} 
         return (
         <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
         );
