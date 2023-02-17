@@ -13,16 +13,16 @@ useEffect(() => {
         console.log(data); 
         const moviesFromApi = data.docs.map((doc) => {
             return {
-                id: doc.key,
-                title: doc.title,
-                image: `${doc.cover}`,
-                director: doc.director_name,
-                genre: doc.genre_name
+                id: moviesFromApi.key,   // id: doc.key,
+                title: moviesFromApi.title, // title: doc.title,
+                image: `${moviesFromApi.cover}`, // image: `${doc.cover}`,
+                director: moviesFromApi.director_name, // director: doc.director_name,
+                genre: moviesFromApi.genre_name // genre: doc.genre_name
             };
         });
         setMovies(moviesFromApi); 
     });
-}), [];
+}, [ ]);
  
 if (selectedMovie) {
     // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
