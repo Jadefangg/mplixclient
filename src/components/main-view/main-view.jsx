@@ -11,7 +11,7 @@ useEffect(() => {
     .then((response) => response.json())
     .then((data) => {
         console.log(data); 
-        const moviesFromApi = data.moviess.map((movie) => {
+        const moviesFromApi = data.movies.map((movie) => {
             return {
                 id: movie.key,   // id: doc.key,
                 title: movie.title, // title: doc.title,
