@@ -11,13 +11,13 @@ useEffect(() => {
     .then((response) => response.json())
     .then((data) => {
         console.log(data); 
-        const moviesFromApi = data.docs.map((doc) => {
+        const moviesFromApi = data.moviess.map((movie) => {
             return {
-                id: moviesFromApi.key,   // id: doc.key,
-                title: moviesFromApi.title, // title: doc.title,
-                image: `${moviesFromApi.cover}`, // image: `${doc.cover}`,
-                director: moviesFromApi.director_name, // director: doc.director_name,
-                genre: moviesFromApi.genre_name // genre: doc.genre_name
+                id: movie.key,   // id: doc.key,
+                title: movie.title, // title: doc.title,
+                image: `${movie.cover}`, // image: `${doc.cover}`,
+                director: movie.director_name, // director: doc.director_name,
+                genre: movie.genre_name // genre: doc.genre_name
             };
         });
         setMovies(moviesFromApi); 
