@@ -27271,7 +27271,7 @@ const MainView = ()=>{
     (0, _react.useEffect)(()=>{
         fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((data)=>{
             console.log(data);
-            const moviesFromApi = data.docs.map((movie)=>{
+            const moviesFromApi = data.docs.map((doc)=>{
                 return {
                     id: doc.key,
                     title: doc.title,
