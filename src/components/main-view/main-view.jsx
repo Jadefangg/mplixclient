@@ -22,7 +22,7 @@ useEffect(() => {
         });
         setMovies(moviesFromApi); 
     });
-}), [ ];
+}), [];
  
 if (selectedMovie) {
     // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
