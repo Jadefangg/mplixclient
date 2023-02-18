@@ -27269,9 +27269,9 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((movies)=>{
-            console.log(movies);
-            const moviesFromApi = movies.docs.map((doc)=>{
+        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((data)=>{
+            console.log(data);
+            const moviesFromApi = data.docs.map((doc)=>{
                 return {
                     id: doc.key,
                     title: doc.title,
@@ -27283,6 +27283,7 @@ const MainView = ()=>{
             setMovies(moviesFromApi);
         });
     }, []);
+    console.log(movies);
     if (selectedMovie) // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
     // function checkMovies(title, director) {} 
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
