@@ -9,15 +9,15 @@ export const MainView = () => {
 useEffect(() => {
     fetch("https://movies-couch-api.vercel.app/movies") 
     .then((response) => response.json())
-    .then((data) => {
-        console.log(data); 
-        const moviesFromApi = data.docs.map((doc) => {
+    .then((movies) => {
+        console.log(movies); 
+        const moviesFromApi = data.movies.map((movies) => {
             return {
-                id: doc.key,
-                title: doc.title,
-                image: `${doc.cover}`,
-                director: doc.director_name,
-                genre: doc.genre_name
+                id: movies.key,
+                title: movies.title,
+                // image: `${movies.cover}`,
+                director: movies.director_name,
+                genre: movies.genre_name
             };
         });
         setMovies(moviesFromApi); 
