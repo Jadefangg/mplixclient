@@ -2901,14 +2901,15 @@ $parcel$ReactRefreshHelpers$98a3.prelude(module);
 try {
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
+// import Main-component
 var _mainView = require("./components/main-view/main-view");
 // Import statement to indicating bundle is needed 
 var _indexScss = require("./index.scss");
-// Main component (will eventually use all others)
+// Main component rendered
 const MoviescouchApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 7,
+        lineNumber: 8,
         columnNumber: 12
     }, undefined);
 };
@@ -2919,7 +2920,7 @@ const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MoviescouchApplication, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 13,
+    lineNumber: 14,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -27256,12 +27257,15 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$f7a6.prelude(module);
 
 try {
+//importing other compoents
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+// importing Moviecard-component
 var _movieCard = require("../movie-card/movie-card");
+//importing Movieview componentS
 var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
@@ -27283,7 +27287,6 @@ const MainView = ()=>{
             setMovies(moviesFromApi);
         });
     }, []);
-    console.log(movies);
     if (selectedMovie) // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
     // function checkMovies(title, director) {} 
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27291,14 +27294,14 @@ const MainView = ()=>{
         onMovieClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 34,
         columnNumber: 9
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 35,
+        lineNumber: 38,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27310,13 +27313,13 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 41,
+                lineNumber: 44,
                 columnNumber: 21
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 39,
+        lineNumber: 42,
         columnNumber: 9
     }, undefined);
 };
@@ -28239,7 +28242,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: onMovieClick,
+                onClick: onBackClick,
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
