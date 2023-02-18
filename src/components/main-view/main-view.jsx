@@ -9,9 +9,9 @@ export const MainView = () => {
 useEffect(() => {
     fetch("https://movies-couch-api.vercel.app/movies") 
     .then((response) => response.json())
-    .then((movies) => {
-        console.log(movies); 
-        const moviesFromApi = movies.docs.map((doc) => {
+    .then((data) => {
+        console.log(data); 
+        const moviesFromApi = data.docs.map((doc) => {
             return {
                 id: doc.key,
                 title: doc.title,
@@ -23,7 +23,7 @@ useEffect(() => {
         setMovies(moviesFromApi); 
     });
 }, [ ]);
- 
+console.log(movies); 
 if (selectedMovie) {
     // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
     // function checkMovies(title, director) {} 
