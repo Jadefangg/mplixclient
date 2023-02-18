@@ -27269,9 +27269,9 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((data)=>{
-            console.log(data);
-            const moviesFromApi = data.docs.map((doc)=>{
+        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((movies)=>{
+            console.log(movies);
+            const moviesFromApi = movies.docs.map((doc)=>{
                 return {
                     id: doc.key,
                     title: doc.title,
