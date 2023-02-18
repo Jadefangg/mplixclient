@@ -31,7 +31,7 @@ if (selectedMovie) {
     // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
     // function checkMovies(title, director) {} 
         return (
-        <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
+        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
         );
     }
     if (movies.length === 0) {
