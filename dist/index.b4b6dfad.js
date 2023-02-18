@@ -27275,7 +27275,7 @@ const MainView = ()=>{
                 return {
                     id: doc.key,
                     title: doc.title,
-                    image: `${doc.cover}`,
+                    // image: `${doc.cover}`,
                     director: doc.director_name,
                     genre: doc.genre_name
                 };
