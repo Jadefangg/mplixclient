@@ -1,5 +1,8 @@
+//importing other compoents
 import { useState, useEffect } from "react";
+// importing Moviecard-component
 import { MovieCard } from "../movie-card/movie-card";
+//importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
 
 export const MainView = () => {
@@ -23,7 +26,7 @@ useEffect(() => {
         setMovies(moviesFromApi); 
     });
 }, [ ]);
-console.log(movies); 
+
 if (selectedMovie) {
     // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
     // function checkMovies(title, director) {} 
