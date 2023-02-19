@@ -12,15 +12,15 @@ export const MainView = () => {
 useEffect(() => {
     fetch("https://movies-couch-api.vercel.app/movies") 
     .then((response) => response.json())
-    .then((data) => {
-        console.log(data); 
-        const moviesFromApi = data.docs.map((doc) => {
+    .then((movies) => {
+        console.log(movies); 
+        const moviesFromApi = movies.map((doc) => {
             return {
-                id: doc.key,
-                title: doc.title,
+                id: movies.key,
+                title: movies.title,
                 // image: `${doc.cover}`,
-                director: doc.director_name,
-                genre: doc.genre_name
+                director: movies.director_name,
+                genre: movies.genre_name
             };
         });
         setMovies(moviesFromApi); 
@@ -28,8 +28,27 @@ useEffect(() => {
 }, [ ]);
 
 if (selectedMovie) {
-    // let similarMovies = movies.filter(checkMovies); allowing to look up similar movies based on title, director, genre 
-    // function checkMovies(title, director) {} 
+    // allowing to look up similar movies based on title, director, genre
+    // let filteredMovies = [];
+        // const filterByGenre = (genre, id) => {
+        // let similarMovies = movies.filter((m) =>
+        //  m.genreName === genre && m._id !== id); 
+        // return filteredMovies
+        // }; 
+    // const filterByGenre = (director, id) => {
+        // let similarMovies = movies.filter((m) =>
+        //  m.directorName === director && m._id !== id); 
+        // return filteredMovies
+        // };  
+    // const filterByGenre = (title, id) => {
+        // let similarMovies = movies.filter((m) =>
+        //  m.titleName === title && m._id !== id); 
+        // return filteredMovies
+        // }; or
+    //let filteredMovies =  movies.filter((m) =>
+        //  m.genreName === genre && m._id !== id); 
+        // return filteredMovies
+        // };
         return (
         <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
         );
