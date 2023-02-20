@@ -21,7 +21,7 @@ useEffect(() => {
                 // image: `${doc.cover_i}-L.jpg`,
                 director: movie.Director_name,
                 genre: movie.Genre_name?.[0]
-            };
+            };    
         });
         setMovies(moviesFromApi); 
     });
