@@ -18,7 +18,7 @@ useEffect(() => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                // image: `${doc.cover_i}-L.jpg`,
+                Image: movie.ImageURL,
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
@@ -50,7 +50,7 @@ if (selectedMovie) {
         // return filteredMovies
         // };
         return (
-        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
         );
     }
     if (movies.length === 0) {
