@@ -27169,10 +27169,10 @@ const MainView = ()=>{
             const moviesFromApi = data.map((data)=>{
                 return {
                     id: data.key,
-                    title: data.title,
+                    title: data.Title,
                     // image: `${doc.cover_i}-L.jpg`,
-                    director: data.director_name,
-                    genre: data.genre_name?.[0]
+                    director: data.Director_name,
+                    genre: data.Genre_name?.[0]
                 };
             });
             setMovies(moviesFromApi);
@@ -27272,18 +27272,18 @@ const MovieCard = ({ movie , onMovieClick  })=>{
 _c = MovieCard;
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
-    movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string.isRequired,
-        image: (0, _propTypesDefault.default).string.isRequired,
-        director: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string,
+    Movie: (0, _propTypesDefault.default).shape({
+        Title: (0, _propTypesDefault.default).string.isRequired,
+        Image: (0, _propTypesDefault.default).string.isRequired,
+        Director: (0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string,
             Bio: (0, _propTypesDefault.default).string,
             Birthyear: (0, _propTypesDefault.default).date,
             Deathyear: (0, _propTypesDefault.default).date
         }),
-        genre: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string,
-            description: (0, _propTypesDefault.default).string
+        Genre: (0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string,
+            Description: (0, _propTypesDefault.default).string
         })
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
