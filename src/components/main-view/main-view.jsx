@@ -30,11 +30,11 @@ useEffect(() => {
 if (selectedMovie) {
     // allowing to look up similar movies based on title, director, genre
     // let filteredMovies = [];
-        // const filterByGenre = (genre, id) => {
-        // let similarMovies = movies.filter((m) =>
-        //  m.genreName === genre && m._id !== id); 
-        // return filteredMovies
-        // }; 
+    //     const filterByGenre = (genre, id) => {
+    //     let similarMovies = movies.filter((m) =>
+    //      m.genreName === genre && m._id !== id); 
+    //     return filteredMovies
+    //     }; 
     // const filterByGenre = (director, id) => {
         // let similarMovies = movies.filter((m) =>
         //  m.directorName === director && m._id !== id); 
@@ -45,10 +45,12 @@ if (selectedMovie) {
         //  m.titleName === title && m._id !== id); 
         // return filteredMovies
         // }; or
-    //let filteredMovies =  movies.filter((m) =>
-        //  m.genreName === genre && m._id !== id); 
-        // return filteredMovies
-        // };
+        
+    // let filteredMovies =  movies.filter((m) =>
+    //      m.GenreName === Genre && m._id !== id); 
+    //     return filteredMovies 
+    
+        
         return (
         <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
         );
