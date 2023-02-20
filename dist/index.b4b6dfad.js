@@ -27164,15 +27164,15 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((data)=>{
-            console.log(data);
-            const moviesFromApi = data.map((data)=>{
+        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((movies)=>{
+            console.log(movies);
+            const moviesFromApi = movies.map((movie)=>{
                 return {
-                    id: data.key,
-                    title: data.Title,
+                    id: movie.key,
+                    title: movie.Title,
                     // image: `${doc.cover_i}-L.jpg`,
-                    director: data.Director_name,
-                    genre: data.Genre_name?.[0]
+                    director: movie.Director_name,
+                    genre: movie.Genre_name?.[0]
                 };
             });
             setMovies(moviesFromApi);
@@ -27272,7 +27272,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
 _c = MovieCard;
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
-    Movie: (0, _propTypesDefault.default).shape({
+    movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired,
         Image: (0, _propTypesDefault.default).string.isRequired,
         Director: (0, _propTypesDefault.default).shape({
