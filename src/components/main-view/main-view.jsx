@@ -17,10 +17,10 @@ useEffect(() => {
         const moviesFromApi = movies.map((movie) => {
             return {
                 id: movie.key,
-                title: movie.Title,
+                Title: movie.Title,
                 // image: `${doc.cover_i}-L.jpg`,
-                director: movie.Director_name,
-                genre: movie.Genre_name?.[0]
+                Director: movie.Director_name,
+                Genre: movie.Genre_name?.[0]
             };    
         });
         setMovies(moviesFromApi); 
