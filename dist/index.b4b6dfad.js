@@ -27180,11 +27180,11 @@ const MainView = ()=>{
     }, []);
     if (selectedMovie) // allowing to look up similar movies based on title, director, genre
     // let filteredMovies = [];
-    // const filterByGenre = (genre, id) => {
-    // let similarMovies = movies.filter((m) =>
-    //  m.genreName === genre && m._id !== id); 
-    // return filteredMovies
-    // }; 
+    //     const filterByGenre = (genre, id) => {
+    //     let similarMovies = movies.filter((m) =>
+    //      m.genreName === genre && m._id !== id); 
+    //     return filteredMovies
+    //     }; 
     // const filterByGenre = (director, id) => {
     // let similarMovies = movies.filter((m) =>
     //  m.directorName === director && m._id !== id); 
@@ -27195,23 +27195,22 @@ const MainView = ()=>{
     //  m.titleName === title && m._id !== id); 
     // return filteredMovies
     // }; or
-    //let filteredMovies =  movies.filter((m) =>
-    //  m.genreName === genre && m._id !== id); 
-    // return filteredMovies
-    // };
+    // let filteredMovies =  movies.filter((m) =>
+    //      m.GenreName === Genre && m._id !== id); 
+    //     return filteredMovies 
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onMovieClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 55,
         columnNumber: 9
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 59,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27223,13 +27222,13 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 63,
+                lineNumber: 65,
                 columnNumber: 21
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 61,
+        lineNumber: 63,
         columnNumber: 9
     }, undefined);
 };
@@ -28222,7 +28221,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image
+                    src: movie.Image
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
@@ -28245,7 +28244,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: [
                             " ",
-                            movie.title,
+                            movie.Title,
                             " "
                         ]
                     }, void 0, true, {
@@ -28262,7 +28261,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Author:"
+                        children: "Director:"
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 12,
@@ -28271,7 +28270,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: [
                             " ",
-                            movie.director
+                            movie.Director
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-view/movie-view.jsx",
