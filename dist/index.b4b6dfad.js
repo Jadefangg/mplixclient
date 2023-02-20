@@ -2931,25 +2931,25 @@ var _mainView = require("./components/main-view/main-view");
 // Import statement to indicating bundle is needed 
 var _indexScss = require("./index.scss");
 // Main component rendered
-const MoviescouchApplication = ()=>{
+const MoviesCouchApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
         lineNumber: 8,
         columnNumber: 12
     }, undefined);
 };
-_c = MoviescouchApplication;
+_c = MoviesCouchApplication;
 // Find the root of your app
 const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MoviescouchApplication, {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MoviesCouchApplication, {}, void 0, false, {
     fileName: "src/index.jsx",
     lineNumber: 14,
     columnNumber: 13
 }, undefined));
 var _c;
-$RefreshReg$(_c, "MoviescouchApplication");
+$RefreshReg$(_c, "MoviesCouchApplication");
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
@@ -27164,15 +27164,15 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((movies)=>{
-            console.log(movies);
-            const moviesFromApi = movies.map((doc)=>{
+        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((data)=>{
+            console.log(data);
+            const moviesFromApi = data.map((data)=>{
                 return {
-                    id: movies.key,
-                    title: movies.title,
-                    // image: `${doc.cover}`,
-                    director: movies.director_name,
-                    genre: movies.genre_name
+                    id: data.key,
+                    title: data.title,
+                    // image: `${doc.cover_i}-L.jpg`,
+                    director: data.director_name,
+                    genre: data.genre_name?.[0]
                 };
             });
             setMovies(moviesFromApi);
@@ -27262,7 +27262,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
         onClick: ()=>{
             onMovieClick(movie);
         },
-        children: movie.title
+        children: movie.Title
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
         lineNumber: 6,
