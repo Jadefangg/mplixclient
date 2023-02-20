@@ -12,7 +12,7 @@ return(
             <span>Author:</span>
             <span> {movie.director}</span>
         </div>
-        <button onClick={onBackClick}>Back</button>
+        <button onClick={onMovieClick}>Back</button>
 </div>
     );
 };
