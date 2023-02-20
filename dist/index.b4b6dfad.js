@@ -27170,7 +27170,7 @@ const MainView = ()=>{
                 return {
                     id: movie.key,
                     Title: movie.Title,
-                    // image: `${doc.cover_i}-L.jpg`,
+                    Image: movie.ImageURL,
                     Director: movie.Director_name,
                     Genre: movie.Genre_name?.[0]
                 };
@@ -27201,7 +27201,7 @@ const MainView = ()=>{
     // };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
+        onMovieClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 53,
@@ -27274,7 +27274,7 @@ _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired,
-        // Image: PropTypes.string.isRequired,
+        Image: (0, _propTypesDefault.default).string.isRequired,
         Director: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string,
             Bio: (0, _propTypesDefault.default).string,
@@ -28285,7 +28285,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: onBackClick,
+                onClick: onMovieClick,
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
