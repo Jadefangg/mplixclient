@@ -4,22 +4,16 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 //importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
-//import Login View
-import {LoginView} from "../login-view/login-view.jsx";
-//import Sign up view
-import {SignupView} from "../signup-view/signup-view.jsx";
+
 
 
 export const MainView = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
-    const [user, setUser] = useState(storedUser? storedUser : null);
-    const [token, setToken] = useState(storedToken? storedToken : null);
+    
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [movies, setMovies] = useState([]);
    
 useEffect(() => {
-    if(!token) return;
+    
     fetch("https://movies-couch-api.vercel.app/movies") 
     .then((response) => response.json())
     .then((movies) => {
@@ -35,7 +29,7 @@ useEffect(() => {
         });
         setMovies(moviesFromApi); 
     });
-}, [token]);
+}, []);
 
 if (selectedMovie) {
     // allowing to look up similar movies based on title, director, genre
@@ -53,11 +47,11 @@ if (selectedMovie) {
             })} */
     
         return (
-        <>
+//         <>
             <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
-            <hr />
+//             <hr />
             
-        </>
+//         </>
         );
     }
     if (movies.length === 0) {
@@ -73,6 +67,5 @@ if (selectedMovie) {
             })}
             </div>
         );
-        <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
-    };
+   };
         
