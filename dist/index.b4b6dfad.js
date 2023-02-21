@@ -28261,7 +28261,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Director:"
+                        children: "Genre:"
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 12,
@@ -28270,7 +28270,7 @@ const MovieView = ({ movie , onMovieClick  })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: [
                             " ",
-                            movie.Director
+                            movie.Genre
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-view/movie-view.jsx",
