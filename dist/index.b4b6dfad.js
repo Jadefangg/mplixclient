@@ -27179,38 +27179,39 @@ const MainView = ()=>{
         });
     }, []);
     if (selectedMovie) // allowing to look up similar movies based on title, director, genre
-    // let filteredMovies = [];
-    //     const filterByGenre = (genre, id) => {
-    //     let similarMovies = movies.filter((m) =>
-    //      m.genreName === genre && m._id !== id); 
-    //     return filteredMovies
-    //     }; 
-    // const filterByGenre = (director, id) => {
-    // let similarMovies = movies.filter((m) =>
-    //  m.directorName === director && m._id !== id); 
-    // return filteredMovies
-    // };  
-    // const filterByGenre = (title, id) => {
-    // let similarMovies = movies.filter((m) =>
-    //  m.titleName === title && m._id !== id); 
-    // return filteredMovies
-    // }; or
-    // let filteredMovies =  movies.filter((m) =>
-    //      m.GenreName === Genre && m._id !== id); 
-    //     return filteredMovies 
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
-        onMovieClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 55,
-        columnNumber: 9
-    }, undefined);
+    // let similarMovies =  movies.filter((m) =>
+    //  m.GenreName === Genre && m._id !== id); 
+    /* <h2>Similar Movies</h2> //shouold go below <hr />
+            {similarMovies.map((movie) => {
+            return {
+                id: movie.key,
+                Title: movie.Title,
+                Image: movie.ImageURL,
+                Director: movie.Director_name,
+                Genre: movie.Genre_name?.[0]
+            }
+            })} */ return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                movie: selectedMovie,
+                onMovieClick: ()=>setSelectedMovie(null)
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 47,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 48,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 59,
+        lineNumber: 54,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27222,13 +27223,13 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 65,
+                lineNumber: 60,
                 columnNumber: 21
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 63,
+        lineNumber: 58,
         columnNumber: 9
     }, undefined);
 };
@@ -27269,6 +27270,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
     }, undefined);
 };
 _c = MovieCard;
+//Similar-Movie Component:
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
