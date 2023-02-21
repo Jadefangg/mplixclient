@@ -9,8 +9,8 @@ return(
             <span> {movie.Title} </span>
         </div>
         <div>
-            <span>Director:</span>
-            <span> {movie.Director}</span>
+            <span>Genre:</span>
+            <span> {movie.Genre}</span>
         </div>
         <button onClick={onMovieClick}>Back</button>
 </div>
