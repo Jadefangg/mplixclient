@@ -4,22 +4,12 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 //importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
-//import Login View
-import {LoginView} from "../login-view/login-view.jsx";
-//import Sign up view
-import {SignupView} from "../signup-view/signup-view.jsx";
-
 
 export const MainView = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
-    const [user, setUser] = useState(storedUser? storedUser : null);
-    const [token, setToken] = useState(storedToken? storedToken : null);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [movies, setMovies] = useState([]);
-   
+
 useEffect(() => {
-    if(!token) return;
     fetch("https://movies-couch-api.vercel.app/movies") 
     .then((response) => response.json())
     .then((movies) => {
@@ -35,29 +25,34 @@ useEffect(() => {
         });
         setMovies(moviesFromApi); 
     });
-}, [token]);
+}, [ ]);
 
 if (selectedMovie) {
     // allowing to look up similar movies based on title, director, genre
-        // let similarMovies =  movies.filter((m) =>
-        //  m.GenreName === Genre && m._id !== id); 
-        /* <h2>Similar Movies</h2> //shouold go below <hr />
-            {similarMovies.map((movie) => {
-            return {
-                id: movie.key,
-                Title: movie.Title,
-                Image: movie.ImageURL,
-                Director: movie.Director_name,
-                Genre: movie.Genre_name?.[0]
-            }
-            })} */
+    // let filteredMovies = [];
+    //     const filterByGenre = (genre, id) => {
+    //     let similarMovies = movies.filter((m) =>
+    //      m.genreName === genre && m._id !== id); 
+    //     return filteredMovies
+    //     }; 
+    // const filterByGenre = (director, id) => {
+        // let similarMovies = movies.filter((m) =>
+        //  m.directorName === director && m._id !== id); 
+        // return filteredMovies
+        // };  
+    // const filterByGenre = (title, id) => {
+        // let similarMovies = movies.filter((m) =>
+        //  m.titleName === title && m._id !== id); 
+        // return filteredMovies
+        // }; or
+        
+    // let filteredMovies =  movies.filter((m) =>
+    //      m.GenreName === Genre && m._id !== id); 
+    //     return filteredMovies 
     
+        
         return (
-        <>
-            <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
-            <hr />
-            
-        </>
+        <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
         );
     }
     if (movies.length === 0) {
@@ -73,6 +68,5 @@ if (selectedMovie) {
             })}
             </div>
         );
-        <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
     };
         
