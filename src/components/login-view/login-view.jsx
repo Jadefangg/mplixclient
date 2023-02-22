@@ -54,6 +54,7 @@ export const LoginView = ({ onLoggedIn }) => {
                  onChange={(e) => setPassword(e.target.value)}
                  required />
             </label>
+            <button type="submit">Submit</button>
         </form>
     );
 };
