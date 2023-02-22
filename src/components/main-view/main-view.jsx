@@ -1,16 +1,33 @@
-//importing other compoents
+//importing other components
 import { useState, useEffect } from "react";
 // importing Moviecard-component
 import { MovieCard } from "../movie-card/movie-card";
 //importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
+// importing Login View
+import {LoginView} from "../login-view/login-view";
+// importing Signup VIew
+// import {SignupView} from "../signup-view/signup-view";
+
 
 export const MainView = () => {
-    const [selectedMovie, setSelectedMovie] = useState(null);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = useState(storedUser? storedUser : null);
+    const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
 useEffect(() => {
-    fetch("https://movies-couch-api.vercel.app/movies") 
+    //verifying token-authentication to access request
+    if(!token) {
+        return;
+    }
+    // set loading before sending API request
+    setLoading(true);
+    fetch("https://movies-couch-api.vercel.app/movies", {
+    headers: {Authorization: `Bearer ${token}`} 
+    	})
     .then((response) => response.json())
     .then((movies) => {
         console.log(movies); 
@@ -18,48 +35,62 @@ useEffect(() => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                Image: movie.ImageURL,
+                Image: src=("./images"),
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
         });
         setMovies(moviesFromApi); 
     });
-}, [ ]);
-
+}, [token]);
+if (!user) {
+    return (
+    <> 
+        <LoginView onLoggedIn={(user/*, token*/) => {
+            setUser(user);
+            setToken(token);
+        }} />
+      {/*  or
+        <SignupView /> 
+    */}
+     </>
+    );
+}
+// display movie-view when movie is selected 
 if (selectedMovie) {
     // allowing to look up similar movies based on title, director, genre
-    // let filteredMovies = [];
-    //     const filterByGenre = (genre, id) => {
-    //     let similarMovies = movies.filter((m) =>
-    //      m.genreName === genre && m._id !== id); 
-    //     return filteredMovies
-    //     }; 
-    // const filterByGenre = (director, id) => {
-        // let similarMovies = movies.filter((m) =>
-        //  m.directorName === director && m._id !== id); 
-        // return filteredMovies
-        // };  
-    // const filterByGenre = (title, id) => {
-        // let similarMovies = movies.filter((m) =>
-        //  m.titleName === title && m._id !== id); 
-        // return filteredMovies
-        // }; or
-        
-    // let filteredMovies =  movies.filter((m) =>
+            
+    // let similarMovies =  movies.filter((m) =>
     //      m.GenreName === Genre && m._id !== id); 
-    //     return filteredMovies 
-    
-        
+    //     return filteredMovies -->below of <hr /> an <h2>Similar MOvies </h2>
+    // followed by {similarMovies.map((movie) => {
+    //     return {
+    //         id: movie.key,
+    //         Title: movie.Title,
+    //         Image: movie.ImageURL,
+    //         Director: movie.Director_name,
+    //         Genre: movie.Genre_name?.[0]
+    //     };    
+    // }) }
         return (
-        <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
+        <>
+            <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
+        </>
         );
     }
+    // display test message if list of movies is empty
     if (movies.length === 0) {
         return <div>The list is empty!</div>;
     }
-
+// display movie-card with logout button, if user does not select a movie
     return (
+        // conditional rendering for loading statement
+        loading ? (
+            <p>Loading..</p>
+        ) : !movies || !movieslength ? (
+            <p>No movies found</p>
+        ) : (
+        <>
         <div>
             {movies.map((movie) => {
             return  <MovieCard key={movie.id}  movie={movie} onMovieClick={(newSelectedMovie) => {
@@ -67,6 +98,7 @@ if (selectedMovie) {
                 }} />;
             })}
             </div>
-        );
+            <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
+            </>
+        ));
     };
-        
