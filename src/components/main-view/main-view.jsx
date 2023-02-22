@@ -46,7 +46,7 @@ useEffect(() => {
 if (!user) {
     return (
     <> 
-        <LoginView onLoggedIn={(user/*, token*/) => {
+        <LoginView onLoggedIn={(user, token) => {
             setUser(user);
             setToken(token);
         }} />
@@ -62,7 +62,7 @@ if (selectedMovie) {
             
     // let similarMovies =  movies.filter((m) =>
     //      m.GenreName === Genre && m._id !== id); 
-    //     return filteredMovies -->below of <hr /> an <h2>Similar MOvies </h2>
+    //     return filteredMovies 
     // followed by {similarMovies.map((movie) => {
     //     return {
     //         id: movie.key,
@@ -75,6 +75,8 @@ if (selectedMovie) {
         return (
         <>
             <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
+            <hr />
+            {/* <h2>Similar Movies<h2> */}
         </>
         );
     }
