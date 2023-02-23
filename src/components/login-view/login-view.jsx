@@ -11,9 +11,9 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
     const data = {
         Username: username,
-        Password: password,
+        Password: password
         };
-    fetch("https://movies-couch-api.vercel.app/users/login", {
+    fetch("https://movies-couch-api.vercel.app/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
