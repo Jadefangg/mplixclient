@@ -28343,8 +28343,8 @@ const LoginView = ({ onLoggedIn  })=>{
         //prevents default behavior of the form which is to reload the entire page
         event.preventDefault();
         const data = {
-            access: username,
-            secret: password
+            Username: username,
+            Password: password
         };
         fetch("https://movies-couch-api.vercel.app/users/login", {
             method: "POST",
