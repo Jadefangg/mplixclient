@@ -7,26 +7,29 @@ import { MovieView } from "../movie-view/movie-view";
 // importing Login View
 import {LoginView} from "../login-view/login-view";
 // importing Signup VIew
-import {SignupView} from "../signup-view/signup-view";
+// import {SignupView} from "../signup-view/signup-view";
 
 // commented sections for testing purposes
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    // const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("token");
     const [user, setUser] = useState(storedUser? storedUser : null);
-    // const [token, setToken] = useState(storedToken? storedToken : null);
+    const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
 useEffect(() => {
     //verifying token-authentication to access request
-    // if(!token) {
-    //     return;
-    // }
+    if(!token) {
+        return;
+    }
+    else {
+        console.log(storedToken);
+    }
     // set loading before sending API request
     setLoading(true);
     fetch("https://movies-couch-api.vercel.app/movies", {
-    // headers: {Authorization: `Bearer ${token}`} 
+    headers: {Authorization: `Bearer ${token}`} 
     	})
     .then((response) => response.json())
     .then((movies) => {
@@ -42,13 +45,13 @@ useEffect(() => {
         });
         setMovies(moviesFromApi); 
     });
-}, []); //[token]
+}, [token]); //[token]
 if (!user) {
     return (
     <> 
-        <LoginView onLoggedIn={(user /*, token*/) => {
+        <LoginView onLoggedIn={(user , token) => {
             setUser(user);
-            // setToken(token);
+            setToken(token);
         }} />
        or
         <SignupView /> 
