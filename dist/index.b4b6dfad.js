@@ -28439,7 +28439,7 @@ $RefreshReg$(_c, "LoginView");
 //     const [password, setPassword] = useState("");
 //     const [email, setEmail] = useState("");
 //     const [birthday, setBirthday] = useState("");
-// // validation of signup view
+// validation of signup view
 //     const handleSubmit = (event) => {
 //         event.preventDefault();
 //     const data = {
@@ -28463,9 +28463,9 @@ $RefreshReg$(_c, "LoginView");
 //                 } 
 //             });
 //          };
-// // signup form with submit button
+// signup form with submit button
 //         return (
-// // handleSubmit is the callback of onSubmit, tells the login API to validate user & password
+// handleSubmit is the callback of onSubmit, tells the login API to validate user & password
 //         <form onSubmit={handleSubmit}>
 //             <label>
 //                 Username:
