@@ -13,7 +13,7 @@ export const LoginView = ({ onLoggedIn }) => {
         access: username,
         secret: password,
         };
-    fetch("https://movies-couch-api.vercel.app/users", {
+    fetch("https://movies-couch-api.vercel.app/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
