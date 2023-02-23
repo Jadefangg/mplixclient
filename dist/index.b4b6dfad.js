@@ -28443,17 +28443,17 @@ $RefreshReg$(_c, "LoginView");
 //     const handleSubmit = (event) => {
 //         event.preventDefault();
 //     const data = {
-//         username: username,
-//         secret: password,
-//         email: email,
-//         birthday: birthday
+//         Username: username,
+//         Password: password,
+//         Email: email,
+//         Birthday: birthday
 //         };
 //     fetch("https://movies-couch-api.vercel.app/users", {
 //         method: "POST",
-//         headers: {
+//          body: JSON.stringify(data),         
+//          headers: {
 //             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(data)        
+//         }                 
 //         }).then((response) => {
 //          if (response.ok) {
 //             alert("Signup successful");
