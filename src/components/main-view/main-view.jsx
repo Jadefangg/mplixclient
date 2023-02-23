@@ -23,9 +23,8 @@ useEffect(() => {
     if(!token) {
         return;
     }
-    else {
         console.log(storedToken);
-    }
+    
     // set loading before sending API request
     setLoading(true);
     fetch("https://movies-couch-api.vercel.app/movies", {
