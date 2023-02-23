@@ -5,7 +5,7 @@ import { MovieCard } from "../movie-card/movie-card";
 //importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
 // importing Login View
-// import {LoginView} from "../login-view/login-view";
+import {LoginView} from "../login-view/login-view";
 // importing Signup VIew
 import {SignupView} from "../signup-view/signup-view";
 
