@@ -37,7 +37,7 @@ useEffect(() => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                Image: movies.ImageURL, 
+                Image: movie.ImageURL, 
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
