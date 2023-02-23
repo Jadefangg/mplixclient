@@ -23,12 +23,12 @@ useEffect(() => {
     if(!token) {
         return;
     }
-        console.log(storedToken);
-    
+        
     // set loading before sending API request
     setLoading(true);
+    console.log(token);
     fetch("https://movies-couch-api.vercel.app/movies", {
-    headers: {Authorization: `Bearer ${token}`} 
+    headers: {Authorization: `Bearer ${token}`}, 
     	})
     .then((response) => response.json())
     .then((movies) => {
@@ -37,7 +37,7 @@ useEffect(() => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                Image: movies.ImageURL, //src=("./images")
+                Image: movies.ImageURL, 
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
@@ -46,16 +46,14 @@ useEffect(() => {
     });
 }, [token]); //[token]
 if (!user) {
+    // <> dentro LoginView despues or y le sigue SignupV</>
     return (
-    <> 
+    
         <LoginView onLoggedIn={(user , token) => {
             setUser(user);
             setToken(token);
         }} />
-       {/* or
-        <SignupView />  */}
-   
-     </>
+       
     );
 }
 // display movie-view when movie is selected 
