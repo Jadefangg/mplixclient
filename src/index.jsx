@@ -1,6 +1,6 @@
-import { createRoot} from 'react-dom/client';
+import { createRoot} from "react-dom/client";
 // import Main-component
-import { MainView } from './components/main-view/main-view';
+import { MainView } from "./components/main-view/main-view";// './components/tests/test.main-view'
 // Import statement to indicating bundle is needed 
 import "./index.scss";
 // Main component rendered
