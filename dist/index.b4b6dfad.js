@@ -27148,7 +27148,7 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$f7a6.prelude(module);
 
 try {
-//importing other compoents
+//importing other components
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
@@ -27158,10 +27158,10 @@ var _react = require("react");
 var _movieCard = require("../movie-card/movie-card");
 //importing Movieview componentS
 var _movieView = require("../movie-view/movie-view");
-//import Login View
-var _loginViewJsx = require("../login-view/login-view.jsx");
-//import Sign up view
-var _signupViewJsx = require("../signup-view/signup-view.jsx");
+// importing Login View
+var _loginView = require("../login-view/login-view");
+// importing Signup View
+var _signupView = require("../signup-view/signup-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
@@ -27169,17 +27169,25 @@ const MainView = ()=>{
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
+        //verifying token-authentication to access request
         if (!token) return;
-        fetch("https://movies-couch-api.vercel.app/movies").then((response)=>response.json()).then((movies)=>{
+        // set loading before sending API request
+        // setLoading(true);
+        console.log(token);
+        fetch("https://movies-couch-api.vercel.app/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()).then((movies)=>{
             console.log(movies);
             const moviesFromApi = movies.map((movie)=>{
                 return {
                     id: movie.key,
                     Title: movie.Title,
-                    Image: movie.ImageURL,
+                    // Image: movie.ImageURL, 
                     Director: movie.Director_name,
                     Genre: movie.Genre_name?.[0]
                 };
@@ -27188,63 +27196,109 @@ const MainView = ()=>{
         });
     }, [
         token
-    ]);
+    ]); //[token]
+    if (!user) // <> dentro LoginView despues or y le sigue SignupV</>
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                onLoggedIn: (user, token)=>{
+                    setUser(user);
+                    setToken(token);
+                }
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 52,
+                columnNumber: 9
+            }, undefined),
+            "or",
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Signup, {}, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 57,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true);
+    // display movie-view when movie is selected 
     if (selectedMovie) // allowing to look up similar movies based on title, director, genre
     // let similarMovies =  movies.filter((m) =>
-    //  m.GenreName === Genre && m._id !== id); 
-    /* <h2>Similar Movies</h2> //shouold go below <hr />
-            {similarMovies.map((movie) => {
-            return {
-                id: movie.key,
-                Title: movie.Title,
-                Image: movie.ImageURL,
-                Director: movie.Director_name,
-                Genre: movie.Genre_name?.[0]
-            }
-            })} */ return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+    //      m.GenreName === Genre && m._id !== id); 
+    //     return filteredMovies 
+    // followed by {similarMovies.map((movie) => {
+    //     return {
+    //         id: movie.key,
+    //         Title: movie.Title,
+    //         Image: movie.ImageURL,
+    //         Director: movie.Director_name,
+    //         Genre: movie.Genre_name?.[0]
+    //     };    
+    // }) }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
                 movie: selectedMovie,
                 onMovieClick: ()=>setSelectedMovie(null)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 57,
+                lineNumber: 79,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 58,
+                lineNumber: 80,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true);
+    // display test message if list of movies is empty
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 64,
+        lineNumber: 87,
         columnNumber: 16
     }, undefined);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                onMovieClick: (newSelectedMovie)=>{
-                    setSelectedMovie(newSelectedMovie);
-                }
-            }, movie.id, false, {
+    // display movie-card with logout button, if user does not select a movie
+    return(// conditional rendering for loading statement
+    // loading ? (
+    //     <p>Loading..</p>
+    // ) : !movies || !movieslength ? (
+    //     <p>No movies found</p>
+    // ) : (
+    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: movies.map((movie)=>{
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                        movie: movie,
+                        onMovieClick: (newSelectedMovie)=>{
+                            setSelectedMovie(newSelectedMovie);
+                        }
+                    }, movie.id, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 100,
+                        columnNumber: 21
+                    }, undefined);
+                })
+            }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 70,
-                columnNumber: 21
-            }, undefined);
-        })
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 68,
-        columnNumber: 9
-    }, undefined);
+                lineNumber: 98,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>{
+                    setUser(null);
+                    setToken(null);
+                },
+                children: "Logout"
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 105,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true)); //) missing a previus ) for the loading condition
 };
-_s(MainView, "rxqxSomN8dzq3oChKVl5wx3N23c=");
+_s(MainView, "skShail9kO25ilQX788tJ78Yq3c=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27254,7 +27308,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","../login-view/login-view.jsx":"9YtA0","../signup-view/signup-view.jsx":"4OGiN"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
