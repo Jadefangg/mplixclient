@@ -5,9 +5,9 @@ import { MovieCard } from "../movie-card/movie-card";
 //importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
 // importing Login View
-import {LoginView} from "../login-view/login-view";
-// importing Signup VIew
-import {SignupView} from "../signup-view/signup-view";
+import { LoginView } from "../login-view/login-view";
+// importing Signup View
+import { SignupView } from "../signup-view/signup-view";
 
 // commented sections for testing purposes
 export const MainView = () => {
@@ -25,7 +25,7 @@ useEffect(() => {
     }
         
     // set loading before sending API request
-    setLoading(true);
+    // setLoading(true);
     console.log(token);
     fetch("https://movies-couch-api.vercel.app/movies", {
     headers: {Authorization: `Bearer ${token}`}, 
@@ -37,7 +37,7 @@ useEffect(() => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                Image: movie.ImageURL, 
+                // Image: movie.ImageURL, 
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
@@ -48,13 +48,14 @@ useEffect(() => {
 if (!user) {
     // <> dentro LoginView despues or y le sigue SignupV</>
     return (
-    
-        // <LoginView onLoggedIn={(user , token) => {
-        //     setUser(user);
-        //     setToken(token);
-        // }} />
+    <>
+        <LoginView onLoggedIn={(user , token) => {
+            setUser(user);
+            setToken(token);
+        }} />
+        or
         <Signup />
-       
+        </>
     );
 }
 // display movie-view when movie is selected 
@@ -88,11 +89,11 @@ if (selectedMovie) {
 // display movie-card with logout button, if user does not select a movie
     return (
         // conditional rendering for loading statement
-        loading ? (
-            <p>Loading..</p>
-        ) : !movies || !movieslength ? (
-            <p>No movies found</p>
-        ) : (
+        // loading ? (
+        //     <p>Loading..</p>
+        // ) : !movies || !movieslength ? (
+        //     <p>No movies found</p>
+        // ) : (
     <>
         <div>
             {movies.map((movie) => {
@@ -103,5 +104,5 @@ if (selectedMovie) {
         </div>
             <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
     </>
-        ));
+        ); //) missing a previus ) for the loading condition
     };
