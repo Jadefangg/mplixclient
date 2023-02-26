@@ -46,7 +46,6 @@ useEffect(() => {
     });
 }, [token]); //[token]
 if (!user) {
-    // <> dentro LoginView despues or y le sigue SignupV</>
     return (
     <>
         <LoginView onLoggedIn={(user , token) => {
