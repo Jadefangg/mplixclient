@@ -1,4 +1,5 @@
 export const MovieView = ({ movie, onMovieClick }) => {
+    
 return( 
 <div>
         <div> 
