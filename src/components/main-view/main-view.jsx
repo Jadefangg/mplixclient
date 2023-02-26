@@ -26,7 +26,7 @@ useEffect(() => {
         
     // set loading before sending API request
     // setLoading(true);
-    console.log(token);
+    
     fetch("https://movies-couch-api.vercel.app/movies", {
     headers: {Authorization: `Bearer ${token}`}, 
     	})
@@ -37,7 +37,7 @@ useEffect(() => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                // Image: movie.ImageURL, 
+                Image: movie.ImageURL, 
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
@@ -76,7 +76,7 @@ if (selectedMovie) {
     // }) }
         return (
         <>
-            <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
+            <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} /> 
             <hr />
             {/* <h2>Similar Movies<h2> */}
         </>
