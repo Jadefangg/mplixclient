@@ -13,12 +13,12 @@ useEffect(() => {
     fetch("https://movies-couch-api.vercel.app/movies") 
     .then((response) => response.json())
     .then((movies) => {
-        console.log(movies); 
+        // console.log(movies); 
         const moviesFromApi = movies.map((movie) => {
             return {
                 id: movie.key,
                 Title: movie.Title,
-                Image: movie.ImageURL, //Images are not displaying->hence cause error
+                // Image: movie.ImageURL, //Images are not displaying->hence cause error
                 Director: movie.Director_name,
                 Genre: movie.Genre_name?.[0]
             };    
