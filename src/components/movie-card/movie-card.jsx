@@ -12,7 +12,6 @@ export const MovieCard = ({ movie, onMovieClick}) => {
       </div>
     );
 };
-//Similar-Movie Component:
 
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
