@@ -27301,7 +27301,7 @@ const MainView = ()=>{
             // console.log(movies); 
             const moviesFromApi = movies.map((movie)=>{
                 return {
-                    key: movie.id,
+                    id: movie.key,
                     Title: movie.Title,
                     Image: movie.ImageURL,
                     Director: movie.Director_Name,
