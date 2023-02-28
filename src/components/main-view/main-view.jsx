@@ -23,10 +23,7 @@ useEffect(() => {
     if(!token) {
         return;
     }
-        
-    // set loading before sending API request
-    // setLoading(true);
-    
+            
     fetch("https://movies-couch-api.vercel.app/movies", {
     headers: {Authorization: `Bearer ${token}`}, 
     	})
@@ -35,7 +32,7 @@ useEffect(() => {
         console.log(movies); 
         const moviesFromApi = movies.map((movie) => {
             return {
-                id: movie.key,
+                key: movie.id,
                 Title: movie.Title,
                 Image: movie.ImageURL, 
                 Director: movie.Director_name,
@@ -59,20 +56,7 @@ if (!user) {
 }
 // display movie-view when movie is selected 
 if (selectedMovie) {
-    // allowing to look up similar movies based on title, director, genre
-            
-    // let similarMovies =  movies.filter((m) =>
-    //      m.GenreName === Genre && m._id !== id); 
-    //     return filteredMovies 
-    // followed by {similarMovies.map((movie) => {
-    //     return {
-    //         id: movie.key,
-    //         Title: movie.Title,
-    //         Image: movie.ImageURL,
-    //         Director: movie.Director_name,
-    //         Genre: movie.Genre_name?.[0]
-    //     };    
-    // }) }
+    
         return (
         <>
             <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} /> 
@@ -87,12 +71,7 @@ if (selectedMovie) {
     }
 // display movie-card with logout button, if user does not select a movie
     return (
-        // conditional rendering for loading statement
-        // loading ? (
-        //     <p>Loading..</p>
-        // ) : !movies || !movieslength ? (
-        //     <p>No movies found</p>
-        // ) : (
+        
     <>
         <div>
             {movies.map((movie) => {
