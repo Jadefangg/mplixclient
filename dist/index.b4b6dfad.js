@@ -27382,7 +27382,6 @@ const MovieCard = ({ movie , onMovieClick  })=>{
     }, undefined);
 };
 _c = MovieCard;
-//Similar-Movie Component:
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
