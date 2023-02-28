@@ -27301,11 +27301,11 @@ const MainView = ()=>{
             // console.log(movies); 
             const moviesFromApi = movies.map((movie)=>{
                 return {
-                    id: movie.key,
+                    key: movie.id,
                     Title: movie.Title,
                     Image: movie.ImageURL,
-                    Director: movie.Director_name,
-                    Genre: movie.Genre_name?.[0]
+                    Director: movie.Director_Name,
+                    Genre: movie.Genre_Name
                 };
             });
             setMovies(moviesFromApi);
