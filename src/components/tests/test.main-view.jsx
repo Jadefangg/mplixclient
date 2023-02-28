@@ -17,7 +17,7 @@ useEffect(() => {
         const moviesFromApi = movies.map((movie) => {
             
             return {
-                key: movie.id,
+                id: movie.key,
                 Title: movie.Title,
                 Image: movie.ImageURL, //Images are not displaying->hence cause error
                 Director: movie.Director_Name,
@@ -47,3 +47,5 @@ if (selectedMovie) {
             </div>
         );
     };
+
+    
