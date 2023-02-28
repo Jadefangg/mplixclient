@@ -15,22 +15,26 @@ useEffect(() => {
     .then((movies) => {
         // console.log(movies); 
         const moviesFromApi = movies.map((movie) => {
-            
+            console.log(Object.keys(movies))
             return {
-                id: movie.key,
+                _id: movie.key,
                 Title: movie.Title,
                 Image: movie.ImageURL, //Images are not displaying->hence cause error
                 Director: movie.Director_Name,
                 Genre: movie.Genre_Name
             };    
         });
+        console.log(moviesFromApi[0])
         setMovies(moviesFromApi); 
     });
 }, [ ]);
 
 if (selectedMovie) {
     return (
+        <>
         <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} />
+        <hr />
+        </>
         );
     }
     if (movies.length === 0) {
