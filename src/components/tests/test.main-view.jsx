@@ -17,11 +17,11 @@ useEffect(() => {
         const moviesFromApi = movies.map((movie) => {
             
             return {
-                id: movie.key,
+                key: movie.id,
                 Title: movie.Title,
                 Image: movie.ImageURL, //Images are not displaying->hence cause error
-                Director: movie.Director_name,
-                Genre: movie.Genre_name?.[0]
+                Director: movie.Director_Name,
+                Genre: movie.Genre_Name
             };    
         });
         setMovies(moviesFromApi); 
