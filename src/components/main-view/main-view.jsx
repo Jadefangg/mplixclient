@@ -8,8 +8,14 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 // importing Signup View
 import { SignupView } from "../signup-view/signup-view";
+// importing container feature
+import Container from "react-bootstrap/Container";
+// importing row feature
+import Row   from "react-bootstrap/Row";
+// importing col feature
+import Col from "react-bootstrap/Col";
 
-// commented sections for testing purposes
+// exporting Main view variabels
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -43,46 +49,39 @@ useEffect(() => {
         console.log(moviesFromApi[0])
         setMovies(moviesFromApi); 
     });
-}, [token]); //[token]
-if (!user) {
-    return (
-    <>
-        <LoginView onLoggedIn={(user , token) => {
-            setUser(user);
-            setToken(token);
-        }} />
-        or
-        <SignupView />
-        </>
-    );
-}
-// display movie-view when movie is selected 
-if (selectedMovie) {
-    
-        return (
-        <>
-            <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} /> 
-            <hr />
-            {/* <h2>Similar Movies<h2> */}
-        </>
-        );
-    }
-    // display test message if list of movies is empty
-    if (movies.length === 0) {
-        return <div>The list is empty!</div>;
-    }
-// display movie-card with logout button, if user does not select a movie
-    return (
-        
-    <>
-        <div>
-            {movies.map((movie) => {
-            return  <MovieCard key={movie.id}  movie={movie} onMovieClick={(newSelectedMovie) => {
+}, []); //[token]
+ 
+return (
+    <Container>
+    <Row className="justify-content-md-center">
+        {!user ? (
+            <Col md={5}>
+            <LoginView onLoggedIn={(user) => setUser(user)} />
+            or
+            <SignupView />
+            </Col>
+        // display movie-view when movie is selected- ternary operator
+        ): selectedMovie ? (
+            <MovieView 
+            movie={selectedMovie}
+            onMovieClick={() => setSelectedMovie(null)}
+            />
+            ): movies.length === 0 ? (
+                <div>The list is empty!</div>
+            ): ( // display movie-card with logout button, if user does not select a movie
+                <>
+                {movies.map((movie) => (
+
+                 <MovieCard key={movie.id}  movie={movie} 
+                 onMovieClick={(newSelectedMovie) => {
                     setSelectedMovie(newSelectedMovie);
-                }} />;
-            })}
-        </div>
-            <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
-    </>
-        ); //) missing a previus ) for the loading condition
-    };
+                }} 
+                />
+            ))}
+                </>
+            )}
+    </Row>
+    </Container>
+    );
+};
+

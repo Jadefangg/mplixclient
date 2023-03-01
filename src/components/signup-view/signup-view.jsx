@@ -1,10 +1,14 @@
 import { useState } from "react";
+// importing from r-bootstrap Form feature
+import Form from"react-bootstrap/Form";
+// importing from r-bootstrap Button feature
+import Button from "react-bootstrap/Button";
 
 export const SignupView = () => {
     const [username, setUsername] = useState(""); 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [birthday, setBirthday] = useState("");
+    const [birthdate, setBirthdate] = useState("");
 
 // validation of signup view
     const handleSubmit = (event) => {
@@ -13,7 +17,7 @@ export const SignupView = () => {
         Username: username,
         Password: password,
         Email: email,
-        Birthday: birthday
+        Birthdate: birthdate
         };
 
     fetch("https://movies-couch-api.vercel.app/users", {
@@ -34,36 +38,41 @@ export const SignupView = () => {
 // signup form with submit button
         return (
 // handleSubmit is the callback of onSubmit, tells the login API to validate user & password
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input type= "text" 
+    <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                <Form.Control type="text" 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                minLength="5"/>
-            </label>
-            <label> 
-                Password:
-                <input type="password"
-                 value={password}
-                 onChange={(e) => setPassword(e.target.value)}
-                 required />
-            </label>
-            <label>
-                Email:
-                <input type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required />
-            </label>
-            <label>
-                Birthday:
-                <input type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-                required />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+                required
+                minLength="3"
+                />
+        </Form.Group>
+        <Form.Group controlId="formPassword">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required 
+            minLength="5" />
+        </Form.Group>
+        <Form.Group controlId="formEmail">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control type="text" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required/>
+        </Form.Group>
+        <Form.Group controlId="Birthdate">
+            <Form.Label>Birthdate:</Form.Label>
+            <Form.Control type="date"
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
+            required
+            />
+        </Form.Group>
+                <Button variant="primary" type="submit">Submit</Button> 
+    </Form> 
+
     );
 };

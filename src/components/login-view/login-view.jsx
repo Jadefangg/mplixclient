@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
-
+// import Button feature 
+import Form from "react-bootstrap/Form";
+// importing Button feature 
+import Button from "react-bootstrap/Button";
 
 export const LoginView = ({ onLoggedIn }) => {
  const [username, setUsername] = useState("");
@@ -38,23 +41,28 @@ export const LoginView = ({ onLoggedIn }) => {
 //  login form with submit button
     return (
         // handle submit is the callback of onSubmit, tells the login API to validate user & password
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input type= "text" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                minLength="5"
-                required />
-            </label>
-            <label> 
-                Password:
-                <input type="password"
-                 value={password}
-                 onChange={(e) => setPassword(e.target.value)}
-                 required />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formUsername">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control 
+            type="text"
+            value={username}
+            onChange= {(e) => setUsername(e.target.value)}
+            minLength="3"
+            required
+            />
+            </Form.Group>
+            <Form.Group controlId="formPassword">
+            <Form.Label></Form.Label>
+            <Form.Control 
+            type="password"
+            value={password}
+            onChange= {(e) => setPassword(e.target.value)}
+            minLength="6"
+            required
+            />
+            </Form.Group>
+            <Button variant="primary" type="submit" /*className="" - looking for a way to separte the button from the password rectangle*/>Submit</Button>  
+        </Form>
     );
 };

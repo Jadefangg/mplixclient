@@ -1,11 +1,17 @@
 import { createRoot} from "react-dom/client";
 // import Main-component
 import { MainView } from "./components/main-view/main-view"; //"./components/main-view/main-view" -> correct; test-"./components/tests/test.main-view"  
-// Import statement to indicating bundle is needed 
+// importing Container
+import Container from "react-bootstrap/Container"
+// Importing statement to indicating bundle is needed 
 import "./index.scss";
 // Main component rendered
 const MoviesCouchApplication = () => {
-    return <MainView />;
+    return (
+    <Container style={{border: "1px solid red"}}>
+        <MainView />
+    </Container>
+    );
 };
 // Find the root of your app
 const container  = document.querySelector("#root");
