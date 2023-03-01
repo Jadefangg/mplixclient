@@ -1,14 +1,27 @@
+// importing scss file
 import "./movie-view.scss";
-// import Col from "react-bootstrap/Col";
+// importing col component
+// import { Col } from "react-bootstrap/Col";
 export const MovieView = ({ movie, onMovieClick }) => {
     
 return( 
-<Col md={6} style={{border: "1px solid grey"}}>
-<MovieView style={{ border: "1px solid green"}}
-movie={selectedMovie}
-onMovieClick={() => setSelectedMovie(null)} 
-img={100}
-/>
-</Col>
+<div>
+    <div>
+    <img clasName="w-100" src={movie.ImgURL} />
+    </div>
+    <div>
+        <span>Title:</span>
+        <span>{movie.Title}</span>
+    </div>
+    <div>
+        <span>Director:</span>
+        <span>{movie.Director}</span>
+    </div>
+    <div>
+        <span>Genre:</span>
+        <span>{movie.Genre}</span>
+    </div>
+    <button onMovieClick={onBackClick} className="back-button" style={{ cursor: "pointer"}}></button>
+</div>
     );
 };
