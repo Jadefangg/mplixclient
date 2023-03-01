@@ -9,7 +9,7 @@ import { LoginView } from "../login-view/login-view";
 // importing Signup View
 import { SignupView } from "../signup-view/signup-view";
 // importing container feature
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
 // importing row feature
 import Row   from "react-bootstrap/Row";
 // importing col feature
@@ -51,8 +51,7 @@ useEffect(() => {
     });
 }, []); //[token]
  
-return (
-    <Container>
+return ( //<Container> -> is rendering issues & I do not know why
     <Row className="justify-content-md-center">
         {!user ? (
             <Col md={5}>
@@ -62,26 +61,28 @@ return (
             </Col>
         // display movie-view when movie is selected- ternary operator
         ): selectedMovie ? (
+            <Col md={6}>
             <MovieView 
             movie={selectedMovie}
             onMovieClick={() => setSelectedMovie(null)}
             />
+            </Col>
             ): movies.length === 0 ? (
                 <div>The list is empty!</div>
             ): ( // display movie-card with logout button, if user does not select a movie
                 <>
                 {movies.map((movie) => (
-
-                 <MovieCard key={movie.id}  movie={movie} 
+                <Col className="mb-4" key={movie._id}>
+                 <MovieCard  movie={movie} 
                  onMovieClick={(newSelectedMovie) => {
                     setSelectedMovie(newSelectedMovie);
                 }} 
                 />
+                </Col>
             ))}
                 </>
             )}
     </Row>
-    </Container>
     );
 };
 
