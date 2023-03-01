@@ -4,8 +4,8 @@
   "description": "client side of app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "parcel":"npm parcel src/index.html"
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
