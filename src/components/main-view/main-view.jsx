@@ -8,8 +8,10 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 // importing Signup View
 import { SignupView } from "../signup-view/signup-view";
+// importing breaking points
+import ThemeProvider from "react-bootstrap/ThemeProvider";
 // importing container feature
-// import Container from "react-bootstrap/Container";
+import Container from "react-bootstrap/Container";
 // importing row feature
 import Row   from "react-bootstrap/Row";
 // importing col feature
@@ -42,8 +44,8 @@ useEffect(() => {
                 _id: movie.key,
                 Title: movie.Title,
                 Image: movie.ImageURL, 
-                Director: movie.Director_Name,
-                Genre: movie.Genre_Name
+                Director: movie.Director,
+                Genre: movie.Genre
             };    
         });
         console.log(moviesFromApi[0])
@@ -52,7 +54,9 @@ useEffect(() => {
 }, []); //[token]
  
 return ( //<Container> -> is rendering issues & I do not know why
-    <Row className="justify-content-md-center">
+<ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
+    minBreakpoint="xs">
+    <Row  className="justify-content-md-center" >
         {!user ? (
             <Col md={5}>
             <LoginView onLoggedIn={(user) => setUser(user)} />
@@ -64,7 +68,7 @@ return ( //<Container> -> is rendering issues & I do not know why
             <Col md={6}>
             <MovieView 
             movie={selectedMovie}
-            onMovieClick={() => setSelectedMovie(null)}
+            onBackClick={() => setSelectedMovie(null)}
             />
             </Col>
             ): movies.length === 0 ? (
@@ -72,7 +76,7 @@ return ( //<Container> -> is rendering issues & I do not know why
             ): ( // display movie-card with logout button, if user does not select a movie
                 <>
                 {movies.map((movie) => (
-                <Col className="mb-4" key={movie._id}>
+                <Col className="mb-5" key={movie._id} md={4}>
                  <MovieCard  movie={movie} 
                  onMovieClick={(newSelectedMovie) => {
                     setSelectedMovie(newSelectedMovie);
@@ -80,9 +84,12 @@ return ( //<Container> -> is rendering issues & I do not know why
                 />
                 </Col>
             ))}
+                {/* <Button onClick={() => { setUser(null); }}>Logout</Button> */}
                 </>
+
             )}
     </Row>
+</ThemeProvider>
     );
 };
 
