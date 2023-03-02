@@ -2929,6 +2929,8 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 // import Main-component
 var _mainView = require("./components/main-view/main-view"); //"./components/main-view/main-view" -> correct; test-"./components/tests/test.main-view"  
+// bootstrap import
+var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
 // importing Container
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
@@ -2940,14 +2942,16 @@ const MoviesCouchApplication = ()=>{
         style: {
             border: "1px solid red"
         },
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {
+            className: "movies-couch"
+        }, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 12,
+            lineNumber: 14,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 11,
+        lineNumber: 13,
         columnNumber: 5
     }, undefined);
 };
@@ -2958,7 +2962,7 @@ const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MoviesCouchApplication, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 20,
+    lineNumber: 22,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2969,7 +2973,7 @@ $RefreshReg$(_c, "MoviesCouchApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","bootstrap/dist/css/bootstrap.min.css":"i5LP7"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("b1256bddb6a2acdc");
 
@@ -27308,8 +27312,12 @@ var _movieView = require("../movie-view/movie-view");
 var _loginView = require("../login-view/login-view");
 // importing Signup View
 var _signupView = require("../signup-view/signup-view");
+// importing breaking points
+var _themeProvider = require("react-bootstrap/ThemeProvider");
+var _themeProviderDefault = parcelHelpers.interopDefault(_themeProvider);
 // importing container feature
-// import Container from "react-bootstrap/Container";
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
 // importing row feature
 var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
@@ -27340,80 +27348,96 @@ const MainView = ()=>{
                     _id: movie.key,
                     Title: movie.Title,
                     Image: movie.ImageURL,
-                    Director: movie.Director_Name,
-                    Genre: movie.Genre_Name
+                    Director: movie.Director,
+                    Genre: movie.Genre
                 };
             });
             console.log(moviesFromApi[0]);
             setMovies(moviesFromApi);
         });
     }, []); //[token]
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
-        className: "justify-content-md-center",
-        children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-            md: 5,
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-                    onLoggedIn: (user)=>setUser(user)
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 58,
-                    columnNumber: 13
-                }, undefined),
-                "or",
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 60,
-                    columnNumber: 13
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 57,
-            columnNumber: 13
-        }, undefined) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-            md: 6,
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-                movie: selectedMovie,
-                onMovieClick: ()=>setSelectedMovie(null)
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 65,
-                columnNumber: 13
-            }, undefined)
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 64,
-            columnNumber: 13
-        }, undefined) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: "The list is empty!"
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 71,
-            columnNumber: 17
-        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-            children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                    className: "mb-4",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                        movie: movie,
-                        onMovieClick: (newSelectedMovie)=>{
-                            setSelectedMovie(newSelectedMovie);
-                        }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _themeProviderDefault.default), {
+        breakpoints: [
+            "xxl",
+            "xl",
+            "lg",
+            "md",
+            "sm",
+            "xs"
+        ],
+        minBreakpoint: "xs",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
+            className: "justify-content-md-center",
+            children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                md: 5,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                        onLoggedIn: (user)=>setUser(user)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 76,
-                        columnNumber: 18
+                        lineNumber: 62,
+                        columnNumber: 13
+                    }, undefined),
+                    "or",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 64,
+                        columnNumber: 13
                     }, undefined)
-                }, movie._id, false, {
+                ]
+            }, void 0, true, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 61,
+                columnNumber: 13
+            }, undefined) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                md: 6,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                    movie: selectedMovie,
+                    onBackClick: ()=>setSelectedMovie(null)
+                }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 75,
-                    columnNumber: 17
-                }, undefined))
-        }, void 0, false)
+                    lineNumber: 69,
+                    columnNumber: 13
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 68,
+                columnNumber: 13
+            }, undefined) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: "The list is empty!"
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 75,
+                columnNumber: 17
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                        className: "mb-5",
+                        md: 4,
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                            movie: movie,
+                            onMovieClick: (newSelectedMovie)=>{
+                                setSelectedMovie(newSelectedMovie);
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 80,
+                            columnNumber: 18
+                        }, undefined)
+                    }, movie._id, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 79,
+                        columnNumber: 17
+                    }, undefined))
+            }, void 0, false)
+        }, void 0, false, {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 59,
+            columnNumber: 5
+        }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 55,
-        columnNumber: 5
+        lineNumber: 57,
+        columnNumber: 1
     }, undefined);
 };
 _s(MainView, "skShail9kO25ilQX788tJ78Yq3c=");
@@ -27426,7 +27450,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-bootstrap/ThemeProvider":"dVixI","react-bootstrap/Container":"hEdsw"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27442,13 +27466,13 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 // importing Button and card features from bootstrap
 var _reactBootstrap = require("react-bootstrap");
-const MovieCard = ({ movie , onMovieClick  })=>{
+const MovieCard = ({ movie: movie1 , onMovieClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         className: "w-80",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                 variant: "top",
-                src: movie.ImageURL
+                src: movie1.ImageURL
             }, void 0, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
                 lineNumber: 9,
@@ -27457,7 +27481,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                        children: movie.Title
+                        children: movie1.Title
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 11,
@@ -27465,9 +27489,9 @@ const MovieCard = ({ movie , onMovieClick  })=>{
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                         children: [
-                            movie.Director,
+                            movie1.Director,
                             ", ",
-                            movie.Genre
+                            movie1.Genre
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-card/movie-card.jsx",
@@ -27475,7 +27499,7 @@ const MovieCard = ({ movie , onMovieClick  })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                        onClick: ()=>onMovieClick(movie),
+                        onClick: ()=>onMovieClick(movie1),
                         variant: "link",
                         children: "Open"
                     }, void 0, false, {
@@ -27501,14 +27525,14 @@ _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired,
-        Image: (0, _propTypesDefault.default).string,
-        Director: (0, _propTypesDefault.default).shape({
+        Image: (0, _propTypesDefault.default).string.isRequired,
+        Director: (0, _propTypesDefault.default).objectOf(movie)({
             Name: (0, _propTypesDefault.default).string,
             Bio: (0, _propTypesDefault.default).string,
-            Birthyear: (0, _propTypesDefault.default).date,
-            Deathyear: (0, _propTypesDefault.default).date
+            Birthdate: (0, _propTypesDefault.default).date,
+            Deathdate: (0, _propTypesDefault.default).string
         }),
-        Genre: (0, _propTypesDefault.default).shape({
+        Genre: (0, _propTypesDefault.default).objectOf(movie)({
             Name: (0, _propTypesDefault.default).string,
             Description: (0, _propTypesDefault.default).string
         })
@@ -41164,12 +41188,13 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieView", ()=>MovieView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _movieViewScss = require("./movie-view.scss");
-const MovieView = ({ movie , onMovieClick  })=>{
+const MovieView = ({ movie , onBackClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "movies-couch",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    clasName: "w-100",
+                    className: "w-100",
                     src: movie.ImgURL
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
@@ -41248,11 +41273,12 @@ const MovieView = ({ movie , onMovieClick  })=>{
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onMovieClick: onBackClick,
+                onClick: onBackClick,
                 className: "back-button",
                 style: {
                     cursor: "pointer"
-                }
+                },
+                children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 24,
@@ -41287,6 +41313,18 @@ parcelHelpers.export(exports, "LoginView", ()=>LoginView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+// importing Container
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+// importing Card
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+// importing Columns
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+// importing Row
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
 // import Button feature 
 var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
@@ -41325,74 +41363,122 @@ const LoginView = ({ onLoggedIn  })=>{
     };
     //  login form with submit button
     return(// handle submit is the callback of onSubmit, tells the login API to validate user & password
-    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
-        onSubmit: handleSubmit,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formUsername",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Username:"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 46,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        minLength: "3",
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 47,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 45,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formPassword",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {}, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 56,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        minLength: "5",
-                        required: true
+    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(CardGroup, {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Title, {
+                                    children: "Pleas Login"
+                                }, void 0, false, {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 59,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
+                                    className: "movies-couch",
+                                    onSubmit: handleSubmit,
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                                            controlId: "formUsername",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                                    children: "Username:"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/login-view/login-view.jsx",
+                                                    lineNumber: 62,
+                                                    columnNumber: 33
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                                    type: "text",
+                                                    value: username,
+                                                    onChange: (e)=>setUsername(e.target.value),
+                                                    minLength: "3",
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/login-view/login-view.jsx",
+                                                    lineNumber: 63,
+                                                    columnNumber: 33
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/login-view/login-view.jsx",
+                                            lineNumber: 61,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                                            controlId: "formPassword",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                                    children: "Password:"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/login-view/login-view.jsx",
+                                                    lineNumber: 72,
+                                                    columnNumber: 33
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                                    type: "password",
+                                                    value: password,
+                                                    onChange: (e)=>setPassword(e.target.value),
+                                                    minLength: "5",
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/login-view/login-view.jsx",
+                                                    lineNumber: 73,
+                                                    columnNumber: 33
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/login-view/login-view.jsx",
+                                            lineNumber: 71,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                                            variant: "primary",
+                                            type: "submit",
+                                            children: "Submit"
+                                        }, void 0, false, {
+                                            fileName: "src/components/login-view/login-view.jsx",
+                                            lineNumber: 81,
+                                            columnNumber: 33
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 60,
+                                    columnNumber: 29
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 58,
+                            columnNumber: 29
+                        }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
                         lineNumber: 57,
-                        columnNumber: 13
+                        columnNumber: 25
                     }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 55,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                variant: "primary",
-                type: "submit" /*className="" - looking for a way to separte the button from the password rectangle*/ ,
-                children: "Submit"
+                }, void 0, false, {
+                    fileName: "src/components/login-view/login-view.jsx",
+                    lineNumber: 56,
+                    columnNumber: 21
+                }, undefined)
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 65,
-                columnNumber: 13
+                lineNumber: 55,
+                columnNumber: 17
             }, undefined)
-        ]
-    }, void 0, true, {
+        }, void 0, false, {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 54,
+            columnNumber: 13
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 44,
+        lineNumber: 53,
         columnNumber: 9
     }, undefined));
 };
@@ -41406,7 +41492,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","react-bootstrap/Container":"hEdsw","react-bootstrap/Card":"lAynp","react-bootstrap/Col":"2L2I6","react-bootstrap/Row":"cMC39"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41421,6 +41507,12 @@ var _react = require("react");
 // importing from r-bootstrap Form feature
 var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
+// importing Container
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+// importing Card
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
 // importing from r-bootstrap Button feature
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
@@ -41455,129 +41547,160 @@ const SignupView = ()=>{
     };
     // signup form with submit button
     return(// handleSubmit is the callback of onSubmit, tells the login API to validate user & password
-    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
-        onSubmit: handleSubmit,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formUsername",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Username:"
+    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Row, {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Col, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
+                            className: "movies-couch",
+                            onSubmit: handleSubmit,
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                                    controlId: "formUsername",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                            children: "Username:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 52,
+                                            columnNumber: 37
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                            type: "text",
+                                            value: username,
+                                            onChange: (e)=>setUsername(e.target.value),
+                                            required: true,
+                                            minLength: "3"
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 53,
+                                            columnNumber: 33
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/signup-view/signup-view.jsx",
+                                    lineNumber: 51,
+                                    columnNumber: 33
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                                    controlId: "formPassword",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                            children: "Password:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 61,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                            type: "password",
+                                            value: password,
+                                            onChange: (e)=>setPassword(e.target.value),
+                                            required: true,
+                                            minLength: "5"
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 62,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/signup-view/signup-view.jsx",
+                                    lineNumber: 60,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                                    controlId: "formEmail",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                            children: "Email:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 69,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                            type: "text",
+                                            value: email,
+                                            onChange: (e)=>setEmail(e.target.value),
+                                            required: true
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 70,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/signup-view/signup-view.jsx",
+                                    lineNumber: 68,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                                    controlId: "Birthdate",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                            children: "Birthdate:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 76,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                            type: "date",
+                                            value: birthdate,
+                                            onChange: (e)=>setBirthdate(e.target.value),
+                                            required: true
+                                        }, void 0, false, {
+                                            fileName: "src/components/signup-view/signup-view.jsx",
+                                            lineNumber: 77,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/signup-view/signup-view.jsx",
+                                    lineNumber: 75,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                                    variant: "primary",
+                                    type: "submit",
+                                    children: "Submit"
+                                }, void 0, false, {
+                                    fileName: "src/components/signup-view/signup-view.jsx",
+                                    lineNumber: 83,
+                                    columnNumber: 33
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/signup-view/signup-view.jsx",
+                            lineNumber: 50,
+                            columnNumber: 21
+                        }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 43,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        required: true,
-                        minLength: "3"
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 44,
+                        lineNumber: 49,
                         columnNumber: 17
                     }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 42,
-                columnNumber: 17
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formPassword",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Password:"
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 52,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        required: true,
-                        minLength: "5"
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 53,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 51,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formEmail",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Email:"
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 60,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "text",
-                        value: email,
-                        onChange: (e)=>setEmail(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 61,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 59,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "Birthdate",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Birthdate:"
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 67,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "date",
-                        value: birthdate,
-                        onChange: (e)=>setBirthdate(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 68,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 66,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                variant: "primary",
-                type: "submit",
-                children: "Submit"
+                }, void 0, false, {
+                    fileName: "src/components/signup-view/signup-view.jsx",
+                    lineNumber: 48,
+                    columnNumber: 13
+                }, undefined)
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 74,
-                columnNumber: 17
+                lineNumber: 47,
+                columnNumber: 9
             }, undefined)
-        ]
-    }, void 0, true, {
+        }, void 0, false, {
+            fileName: "src/components/signup-view/signup-view.jsx",
+            lineNumber: 46,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 41,
-        columnNumber: 5
+        lineNumber: 45,
+        columnNumber: 1
     }, undefined));
 };
 _s(SignupView, "RIZRq4jE1cgzcLOHGIpSeTDhd80=");
@@ -41590,6 +41713,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt"}]},["gf9ir","iP3KC","d8Dch"], "d8Dch", "parcelRequirea9e5")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","react-bootstrap/Container":"hEdsw","react-bootstrap/Card":"lAynp"}],"i5LP7":[function() {},{}]},["gf9ir","iP3KC","d8Dch"], "d8Dch", "parcelRequirea9e5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
