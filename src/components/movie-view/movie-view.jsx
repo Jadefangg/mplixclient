@@ -2,12 +2,12 @@
 import "./movie-view.scss";
 // importing col component
 // import { Col } from "react-bootstrap/Col";
-export const MovieView = ({ movie, onMovieClick }) => {
+export const MovieView = ({ movie, onBackClick }) => {
     
 return( 
-<div>
+<div className="movies-couch">
     <div>
-    <img clasName="w-100" src={movie.ImgURL} />
+    <img className="w-100" src={movie.ImgURL} />
     </div>
     <div>
         <span>Title:</span>
@@ -21,7 +21,7 @@ return(
         <span>Genre:</span>
         <span>{movie.Genre}</span>
     </div>
-    <button onMovieClick={onBackClick} className="back-button" style={{ cursor: "pointer"}}></button>
+    <button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}}>Back</button>
 </div>
     );
 };
