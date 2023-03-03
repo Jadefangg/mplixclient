@@ -44,6 +44,7 @@ useEffect(() => {
                 _id: movie.key,
                 Title: movie.Title,
                 Image: movie.ImageURL, 
+                Description: movie.Description,
                 Director: movie.Director,
                 Genre: movie.Genre
             };    
