@@ -6,3 +6,33 @@ $backgroundcolor: black;
     color: $color;
     background-color: $backgroundcolor;
 }
+.main-view{
+    color: $color;
+    background-color: $backgroundcolor;
+    justify-content: center;
+}
+
+.movie-view{
+    color: $color;
+    background-color: $backgroundcolor;
+}
+
+.movie-card{
+    color: $color;
+    background-color: $backgroundcolor;
+    width: 100%;
+    height: auto;
+}
+.movie-card-button{
+color:$backgroundcolor;
+background-color:none ;
+font-weight: bold;
+}
+.login-view{
+    color: $color;
+    background-color: $backgroundcolor;
+}
+.signup-view{
+    color: $color;
+    background-color: $backgroundcolor;
+}

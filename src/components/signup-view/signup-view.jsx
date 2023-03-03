@@ -3,10 +3,14 @@ import { useState } from "react";
 import Form from"react-bootstrap/Form";
 // importing Container
 import Container from "react-bootstrap/Container";
+// importing Row
+import Row  from "react-bootstrap/Row";
+// importing Columns
+import Col from "react-bootstrap/Col";
 // importing Card
 import Card from "react-bootstrap/Card";
 // importing from r-bootstrap Button feature
-import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button"; 
 
 export const SignupView = () => {
     const [username, setUsername] = useState(""); 
@@ -46,7 +50,7 @@ export const SignupView = () => {
     <Row>
         <Col>
             <Card>
-                <Card.Body>
+                <Card.Body className="movies-couch">
                     <Form className="movies-couch" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>

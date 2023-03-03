@@ -5,13 +5,20 @@ import { Button, Card } from "react-bootstrap";
 // Movie card function component
 export const MovieCard = ({ movie, onMovieClick}) => {
     return (
-    <Card className="w-80">
+    <Card className="movie-card">
       <Card.Img variant="top" src={movie.ImageURL}/> 
-      <Card.Body>
+      <Card.Body className="movie-card">
           <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          {/* <Card.Text>{movie.Director}, {movie.Genre}</Card.Text> */}
-          <Button onClick={() => onMovieClick(movie)} variant="link">
+          <Card.Text>
+          <br />
+          {movie.Description}
+          <br />
+          {/* {movie.Director} */}
+          <br />
+          {/* {movie.Genre} */}
+          </Card.Text>
+          <br />
+          <Button className="movie-card-button" onClick={() => onMovieClick(movie)} variant="button">
               Open
           </Button>
           </Card.Body>
@@ -25,16 +32,16 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired,
     Image: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    Director: PropTypes.objectOf({
-      Name: PropTypes.string,
-      Bio: PropTypes.string,
-      Birthdate: PropTypes.string,
-      Deathdate: PropTypes.string
-      }),
-    Genre: PropTypes.objectOf({
-      Name: PropTypes.string,
-      Description: PropTypes.string
-    })  //need further examples-> help
+    // Director: PropTypes.arrayOf({
+    //   Name: PropTypes.string,
+    //   Bio: PropTypes.string,
+    //   Birthdate: PropTypes.string,
+    //   Deathdate: PropTypes.string
+    //   }),
+    // Genre: PropTypes.arrayOf({
+    //   Name: PropTypes.string,
+    //   Description: PropTypes.string
+    // })  //need further examples-> help
   }),
   onMovieClick: PropTypes.func.isRequired
 };

@@ -57,7 +57,7 @@ useEffect(() => {
 return ( //<Container> -> is rendering issues & I do not know why
 <ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
     minBreakpoint="xs">
-    <Row  className="justify-content-md-center" >
+    <Row  className="main-view" >
         {!user ? (
             <Col md={5}>
             <LoginView onLoggedIn={(user) => setUser(user)} />

@@ -5,21 +5,21 @@ import { Button, Card } from "react-bootstrap";
 export const MovieView = ({ movie, onBackClick }) => {
     
 return( 
-<Card className="movies-couch">
-    <Card.Img className="h-80" src={movie.ImgURL} />
-    <Card.Body>
+<Card className="movie-view">
+    <Card.Img className="w-80" src={movie.ImgURL} />
+    <Card.Body className="movie-view">
         <Card.Title>{movie.Title}</Card.Title>
-        <hr/>
+        <br />
         <Card.Text>     
-        {movie.Director.Name}
-        <hr/>
+        {/* {movie.Director.Name}
+        <br /> <br />
         {movie.Director.Bio}
-        <hr/>
+        <br /> <br />
         {movie.Director.Birthdate}
-        <hr/>
+        <br /> <br />
         {movie.Genre.Name}
-        <hr/>
-        {movie.Genre.Description}
+        <br /> <br />
+        {movie.Genre.Description} */}
         </Card.Text>
         <Button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}}>
             Back

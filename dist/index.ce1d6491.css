@@ -12011,6 +12011,35 @@ textarea.form-control-lg {
   background-color: #000;
 }
 
+.main-view {
+  color: orange;
+  background-color: #000;
+  justify-content: center;
+}
+
+.movie-view {
+  color: orange;
+  background-color: #000;
+}
+
+.movie-card {
+  color: orange;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+}
+
+.movie-card-button {
+  color: #000;
+  background-color: none;
+  font-weight: bold;
+}
+
+.login-view, .signup-view {
+  color: orange;
+  background-color: #000;
+}
+
 .back-button {
   color: #000;
   background-color: orange;

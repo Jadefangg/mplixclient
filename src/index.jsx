@@ -10,7 +10,7 @@ import "./index.scss";
 // Main component rendered
 const MoviesCouchApplication = () => {
     return (
-    <Container style={{border: "1px solid red"}}>
+    <Container >
         <MainView className="movies-couch"/>
     </Container>
     );
