@@ -13,12 +13,12 @@ export const MovieCard = ({ movie, onMovieClick}) => {
           <br />
           {movie.Description}
           <br />
-          {movie.Director}
+          {/* {movie.Director}
           <br />
-          {/* {movie.Genre} */}
+          {movie.Genre} */}
           </Card.Text>
           <br />
-          <Button className="movie-card-button" onClick={() => onMovieClick(movie)} variant="button">
+          <Button className="movie-card-button" onClick={() => onMovieClick(movie)} variant="button" active>
               Open
           </Button>
           </Card.Body>
@@ -32,13 +32,13 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired,
     ImageURL: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    Director: PropTypes.arrayOf({
-      Name: PropTypes.string,
-      Bio: PropTypes.string,
-      Birthdate: PropTypes.string,
-      Deathdate: PropTypes.string
-      }),
-    // Genre: PropTypes.arrayOf({
+    // Director: PropTypes.objectOf({
+    //   Name: PropTypes.string,
+    //   Bio: PropTypes.string,
+    //   Birthdate: PropTypes.string,
+    //   Deathdate: PropTypes.string
+    //   }),
+    // Genre: PropTypes.objectOf({
     //   Name: PropTypes.string,
     //   Description: PropTypes.string
     // })  //need further examples-> help

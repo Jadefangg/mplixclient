@@ -44,13 +44,17 @@ useEffect(() => {
                 _id: movie.key,
                 Title: movie.Title,
                 ImageURL: movie.ImageURL, 
-                Description: movie.Description,
+                Description: movie.Description, //destructure the object to be able to render it
                 Director: movie.Director,
                 Genre: movie.Genre
             };    
         });
         console.log(moviesFromApi[0])
         setMovies(moviesFromApi); 
+        // let similarMovies = movies.filter(movie.Genre.Name === Genre.Name && movie._id !== _id);
+        // console.log(similarmovies);
+        // or
+        // let similarMovies = movies.filter((m) m.genreName === Name && m._id !== id);
     });
 }, []); //[token]
  
@@ -71,10 +75,15 @@ return ( //<Container> -> is rendering issues & I do not know why
             movie={selectedMovie}
             onBackClick={() => setSelectedMovie(null)}
             />
+            {/* <br/>
+             <Col md={2}>
+                {similarMovies.map()}
+             </Col>
+            */}
             </Col>
             ): movies.length === 0 ? (
                 <div>The list is empty!</div>
-            ): ( // display movie-card with logout button, if user does not select a movie
+             ): ( // display movie-card with logout button, if user does not select a movie
                 <>
                 {movies.map((movie) => (
                 <Col className="mb-5" key={movie._id} md={4}>

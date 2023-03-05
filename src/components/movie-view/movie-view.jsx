@@ -10,18 +10,18 @@ return(
     <Card.Body className="movie-view">
         <Card.Title>{movie.Title}</Card.Title>
         <br />
-        <Card.Text>     
-         {movie.Director.Name} 
+        <Card.Text> Director:      
+         {' ' + movie.Director.Name} 
         <br /> <br />
-        {movie.Director.Bio}
-        <br /> <br />
-        {movie.Director.Birthdate}
-        <br /> <br />
-        {/* {movie.Genre.Name} */}
-        {/* <br /> <br /> */}
-        {/* {movie.Genre.Description} */} 
+        About: {' ' +movie.Director.Bio}
+        <br /> <br />Birthdate: 
+        {' ' + movie.Director.Birthdate}
+        <br /> <br />Genre: 
+        {' ' + movie.Genre.Name}
+        {/* <br /> <br />Description:
+        {movie.Genre.Description}  */}
         </Card.Text>
-        <Button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}}>
+        <Button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}} active>
             Back
         </Button>
     </Card.Body>

@@ -12017,12 +12017,7 @@ textarea.form-control-lg {
   justify-content: center;
 }
 
-.movie-view {
-  color: orange;
-  background-color: #000;
-}
-
-.movie-card {
+.movie-view, .movie-card {
   color: orange;
   width: 100%;
   height: auto;
@@ -12032,6 +12027,8 @@ textarea.form-control-lg {
 .movie-card-button {
   color: #000;
   background-color: none;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
 }
 

@@ -15,6 +15,8 @@ $backgroundcolor: black;
 .movie-view{
     color: $color;
     background-color: $backgroundcolor;
+    width: 100%;
+    height: auto;
 }
 
 .movie-card{
@@ -27,6 +29,8 @@ $backgroundcolor: black;
 color:$backgroundcolor;
 background-color:none ;
 font-weight: bold;
+justify-content: center;
+align-items: center;
 }
 .login-view{
     color: $color;
