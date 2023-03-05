@@ -1,6 +1,6 @@
 import { createRoot} from "react-dom/client";
 // import Main-component
-import { MainView } from "./components/main-view/main-view"; //"./components/main-view/main-view" -> correct; test-"./components/tests/test.main-view"  
+import { MainView } from "./components/main-view/main-view";   
 // bootstrap import
 import 'bootstrap/dist/css/bootstrap.min.css';
 // importing Container

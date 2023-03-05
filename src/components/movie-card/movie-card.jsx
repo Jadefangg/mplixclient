@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, onMovieClick}) => {
           <br />
           {movie.Description}
           <br />
-          {/* {movie.Director} */}
+          {movie.Director}
           <br />
           {/* {movie.Genre} */}
           </Card.Text>
@@ -30,14 +30,14 @@ export const MovieCard = ({ movie, onMovieClick}) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
-    Image: PropTypes.string.isRequired,
+    ImageURL: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    // Director: PropTypes.arrayOf({
-    //   Name: PropTypes.string,
-    //   Bio: PropTypes.string,
-    //   Birthdate: PropTypes.string,
-    //   Deathdate: PropTypes.string
-    //   }),
+    Director: PropTypes.arrayOf({
+      Name: PropTypes.string,
+      Bio: PropTypes.string,
+      Birthdate: PropTypes.string,
+      Deathdate: PropTypes.string
+      }),
     // Genre: PropTypes.arrayOf({
     //   Name: PropTypes.string,
     //   Description: PropTypes.string

@@ -11,7 +11,7 @@ import { SignupView } from "../signup-view/signup-view";
 // importing breaking points
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 // importing container feature
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
 // importing row feature
 import Row   from "react-bootstrap/Row";
 // importing col feature
@@ -43,7 +43,7 @@ useEffect(() => {
             return {
                 _id: movie.key,
                 Title: movie.Title,
-                Image: movie.ImageURL, 
+                ImageURL: movie.ImageURL, 
                 Description: movie.Description,
                 Director: movie.Director,
                 Genre: movie.Genre
