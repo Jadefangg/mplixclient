@@ -7,7 +7,7 @@ import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Row   from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // exporting Main view variabels
 export const MainView = () => {
