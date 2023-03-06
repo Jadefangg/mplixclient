@@ -1,19 +1,31 @@
-export const MovieView = ({ movie, onMovieClick }) => {
+// importing scss file
+import "./movie-view.scss";
+// importing Card component
+import { Button, Card } from "react-bootstrap";
+export const MovieView = ({ movie, onBackClick }) => {
     
 return( 
-<div>
-        <div> 
-            <img src={movie.Image} />
-        </div>
-        <div>
-            <span>Title:</span>
-            <span> {movie.Title} </span>
-        </div>
-        <div>
-            <span>Genre:</span>
-            <span> {movie.Genre}</span>
-        </div>
-        <button onClick={onMovieClick}>Back</button>
-</div>
+<Card className="movie-view">
+    <Card.Img className="w-80" src={movie.ImageURL} />
+    <Card.Body className="movie-view">
+        <Card.Title>{movie.Title}</Card.Title>
+        <br />
+        <Card.Text> Director:      
+         {' ' + movie.Director.Name} 
+        <br /> <br />
+        About: {' ' +movie.Director.Bio}
+        <br /> <br />Birthdate: 
+        {' ' + movie.Director.Birthdate}
+        <br /> <br />Genre: 
+        {' ' + movie.Genre.Name}
+        {/* <br /> <br />Description:
+        {movie.Genre.Description}  */}
+        </Card.Text>
+        <Button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}} active>
+            Back
+        </Button>
+    </Card.Body>
+</Card> 
+
     );
 };

@@ -1,4 +1,42 @@
-$color: steelblue;
-.my-flix {
+$color: orange;
+$backgroundcolor: black;
+ 
+@import "~bootstrap/scss/bootstrap.scss";
+.movies-couch{
     color: $color;
+    background-color: $backgroundcolor;
+}
+.main-view{
+    color: $color;
+    background-color: $backgroundcolor;
+    justify-content: center;
+}
+
+.movie-view{
+    color: $color;
+    background-color: $backgroundcolor;
+    width: 100%;
+    height: auto;
+}
+
+.movie-card{
+    color: $color;
+    background-color: $backgroundcolor;
+    width: 100%;
+    height: auto;
+}
+.movie-card-button{
+color:$backgroundcolor;
+background-color:none ;
+font-weight: bold;
+justify-content: center;
+align-items: center;
+}
+.login-view{
+    color: $color;
+    background-color: $backgroundcolor;
+}
+.signup-view{
+    color: $color;
+    background-color: $backgroundcolor;
 }

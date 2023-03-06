@@ -8,8 +8,16 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 // importing Signup View
 import { SignupView } from "../signup-view/signup-view";
+// importing breaking points
+import ThemeProvider from "react-bootstrap/ThemeProvider";
+// importing container feature
+// import Container from "react-bootstrap/Container";
+// importing row feature
+import Row   from "react-bootstrap/Row";
+// importing col feature
+import Col from "react-bootstrap/Col";
 
-// commented sections for testing purposes
+// exporting Main view variabels
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -35,54 +43,63 @@ useEffect(() => {
             return {
                 _id: movie.key,
                 Title: movie.Title,
-                Image: movie.ImageURL, 
-                Director: movie.Director_Name,
-                Genre: movie.Genre_Name
+                ImageURL: movie.ImageURL, 
+                Description: movie.Description, //destructure the object to be able to render it
+                Director: movie.Director,
+                Genre: movie.Genre
             };    
         });
         console.log(moviesFromApi[0])
         setMovies(moviesFromApi); 
+        // let similarMovies = movies.filter(movie.Genre.Name === Genre.Name && movie._id !== _id);
+        // console.log(similarmovies);
+        // or
+        // let similarMovies = movies.filter((m) m.genreName === Name && m._id !== id);
     });
-}, [token]); //[token]
-if (!user) {
-    return (
-    <>
-        <LoginView onLoggedIn={(user , token) => {
-            setUser(user);
-            setToken(token);
-        }} />
-        or
-        <SignupView />
-        </>
-    );
-}
-// display movie-view when movie is selected 
-if (selectedMovie) {
-    
-        return (
-        <>
-            <MovieView movie={selectedMovie} onMovieClick={() => setSelectedMovie(null)} /> 
-            <hr />
-            {/* <h2>Similar Movies<h2> */}
-        </>
-        );
-    }
-    // display test message if list of movies is empty
-    if (movies.length === 0) {
-        return <div>The list is empty!</div>;
-    }
-// display movie-card with logout button, if user does not select a movie
-    return (
-        
-    <>
-        <div>
-            {movies.map((movie) => {
-            return  <MovieCard key={movie.id}  movie={movie} onMovieClick={(newSelectedMovie) => {
+}, []); //[token]
+ 
+return ( //<Container> -> is rendering issues & I do not know why
+<ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
+    minBreakpoint="xs">
+    <Row  className="main-view" >
+        {!user ? (
+            <Col md={5}>
+            <LoginView onLoggedIn={(user) => setUser(user)} />
+            or
+            <SignupView />
+            </Col>
+        // display movie-view when movie is selected- ternary operator
+        ): selectedMovie ? (
+            <Col md={6}>
+            <MovieView 
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)}
+            />
+            {/* <br/>
+             <Col md={2}>
+                {similarMovies.map()}
+             </Col>
+            */}
+            </Col>
+            ): movies.length === 0 ? (
+                <div>The list is empty!</div>
+             ): ( // display movie-card with logout button, if user does not select a movie
+                <>
+                {movies.map((movie) => (
+                <Col className="mb-5" key={movie._id} md={4}>
+                 <MovieCard  movie={movie} 
+                 onMovieClick={(newSelectedMovie) => {
                     setSelectedMovie(newSelectedMovie);
-                }} />;
-            })}
-        </div>
-            <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
-    </>
-        ); //) missing a previus ) for the loading condition
-    };
+                }} 
+                />
+                </Col>
+            ))}
+                {/* <Button onClick={() => { setUser(null); }}>Logout</Button> */}
+                </>
+
+            )}
+    </Row>
+</ThemeProvider>
+    );
+};
+
