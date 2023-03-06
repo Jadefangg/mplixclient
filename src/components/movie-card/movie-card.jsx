@@ -1,10 +1,8 @@
-//importing PropTypes library
 import PropTypes from "prop-types";
-// importing Button and card features from bootstrap
 import { Button, Card } from "react-bootstrap";
-// importing Link
 import Link from "react-router-dom";
-// Movie card function component
+
+// Movie card component
 export const MovieCard = ({ movie}) => {
     return (
     <Card className="movie-card">
@@ -34,15 +32,15 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired,
     ImageURL: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    Director: PropTypes.objectOf({
-      Name: PropTypes.string,
-      Bio: PropTypes.string,
-      Birthdate: PropTypes.string,
-      Deathdate: PropTypes.string
-      }),
-    Genre: PropTypes.objectOf({
-      Name: PropTypes.string,
-      Description: PropTypes.string
-    })  
-  })
+    // Director: PropTypes.objectOf({
+    //   Name: PropTypes.string,
+    //   Bio: PropTypes.string,
+    //   Birthdate: PropTypes.string,
+    //   Deathdate: PropTypes.string
+    //   }),
+    // Genre: PropTypes.objectOf({
+    //   Name: PropTypes.string,
+    //   Description: PropTypes.string
+    // })  
+  }).isRequired
 };

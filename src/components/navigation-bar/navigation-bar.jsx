@@ -1,6 +1,6 @@
-// importing components 
+import React from "react";
 import {Navbar, Container, Nav} from "react-bootstrap";
-// importing Link
+
 import Link from "react-router-dom";
 
 export const NavigationBar = ({user, onLoggedOut}) =>{

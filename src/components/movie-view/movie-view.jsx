@@ -3,9 +3,7 @@
 import { Button, Card } from "react-bootstrap";
 // Params
 import { useParams } from "react-router";
-// importing Link
 import Link from "react-router-dom";
-// importing scss file
 import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {

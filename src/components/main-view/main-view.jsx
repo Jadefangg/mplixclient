@@ -1,22 +1,12 @@
-//importing other components
 import { useState, useEffect } from "react";
-// importing Moviecard-component
 import { MovieCard } from "../movie-card/movie-card";
-//importing Movieview componentS
 import { MovieView } from "../movie-view/movie-view"; 
-// importing Login View
 import { LoginView } from "../login-view/login-view";
-// importing Signup View
 import { SignupView } from "../signup-view/signup-view";
-// importing breaking points
 import ThemeProvider from "react-bootstrap/ThemeProvider";
-// importing row feature
 import Row   from "react-bootstrap/Row";
-// importing col feature
 import Col from "react-bootstrap/Col";
-// importing NavigationBar
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-// importing components for nagivation
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 
 // exporting Main view variabels
@@ -34,7 +24,7 @@ useEffect(() => {
     }
             
     fetch("https://movies-couch-api.vercel.app/movies", {
-    headers: {Authorization: `Bearer ${token}`}, 
+    headers: {Authorization: `Bearer ${token}`},  
     	})
     .then((response) => response.json())
     .then((movies) => {
@@ -57,9 +47,9 @@ useEffect(() => {
         // or
         // let similarMovies = movies.filter((m) m.genreName === Name && m._id !== id);
     });
-}, []); 
+}, [token]); 
  
-return ( //<Container> -> is rendering issues & I do not know why
+return ( 
 <BrowserRouter>
 <ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
     minBreakpoint="xs">
