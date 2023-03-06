@@ -1,9 +1,16 @@
-// importing scss file
-import "./movie-view.scss";
+
 // importing Card component
 import { Button, Card } from "react-bootstrap";
-export const MovieView = ({ movie, onBackClick }) => {
-    
+// Params
+import { useParams } from "react-router";
+// importing Link
+import Link from "react-router-dom";
+// importing scss file
+import "./movie-view.scss";
+
+export const MovieView = ({ movies }) => {
+    const {movieId} = useParams();
+    const movie = movies.find((m) => m._id === movieId);
 return( 
 <Card className="movie-view">
     <Card.Img className="w-80" src={movie.ImageURL} />
@@ -18,12 +25,11 @@ return(
         {' ' + movie.Director.Birthdate}
         <br /> <br />Genre: 
         {' ' + movie.Genre.Name}
-        {/* <br /> <br />Description:
-        {movie.Genre.Description}  */}
         </Card.Text>
-        <Button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}} active>
-            Back
-        </Button>
+        <br />
+        <Link to={"/"}>
+        <Button className="back-button" style={{ cursor: "pointer"}} active>Back</Button>
+        </Link>
     </Card.Body>
 </Card> 
 
