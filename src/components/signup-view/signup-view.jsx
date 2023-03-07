@@ -1,15 +1,9 @@
 import { useState } from "react";
-// importing from r-bootstrap Form feature
 import Form from"react-bootstrap/Form";
-// importing Container
 import Container from "react-bootstrap/Container";
-// importing Row
 import Row  from "react-bootstrap/Row";
-// importing Columns
 import Col from "react-bootstrap/Col";
-// importing Card
 import Card from "react-bootstrap/Card";
-// importing from r-bootstrap Button feature
 import Button from "react-bootstrap/Button"; 
 
 export const SignupView = () => {

@@ -1,16 +1,10 @@
 import React from "react";
 import { useState } from "react";
-// importing Container
 import Container from "react-bootstrap/Container";
-// importing Card
 import Card from "react-bootstrap/Card";
-// importing Columns
 import Col from "react-bootstrap/Col";
-// importing Row
 import Row from "react-bootstrap/Row";
-// import Button feature 
 import Form from "react-bootstrap/Form";
-// importing Button feature 
 import Button from "react-bootstrap/Button";
 
 
