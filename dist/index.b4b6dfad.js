@@ -27296,7 +27296,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
-// import { MovieCard } from "../movie-card/movie-card";
+var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 var _loginView = require("../login-view/login-view");
 var _signupView = require("../signup-view/signup-view");
@@ -27328,7 +27328,7 @@ const MainView = ()=>{
             const moviesFromApi = movies.map((movie)=>{
                 // console.log(Object.keys(movies))
                 return {
-                    _id: movie.key,
+                    _id: movie._id,
                     Title: movie.Title,
                     ImageURL: movie.ImageURL,
                     Description: movie.Description,
@@ -27438,7 +27438,7 @@ const MainView = ()=>{
                                         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                                 className: "mb-5",
                                                 md: 4,
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieCard, {
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                     movie: movie
                                                 }, void 0, false, void 0, void 0)
                                             }, movie._id, false, void 0, void 0))
@@ -27482,20 +27482,18 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-bootstrap/ThemeProvider":"dVixI","react-router-dom":"9xmpe","../navigation-bar/navigation-bar":"bsPVM"}],"ggaUx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-bootstrap/ThemeProvider":"dVixI","react-router-dom":"9xmpe","../navigation-bar/navigation-bar":"bsPVM","../movie-card/movie-card":"bwuIu"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$e9f6.prelude(module);
 
 try {
-// importing Card component
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieView", ()=>MovieView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactBootstrap = require("react-bootstrap");
-// Params
 var _reactRouter = require("react-router");
 var _reactRouterDom = require("react-router-dom");
 var _reactRouterDomDefault = parcelHelpers.interopDefault(_reactRouterDom);
@@ -27513,7 +27511,7 @@ const MovieView = ({ movies  })=>{
                 src: movie.ImageURL
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 14,
+                lineNumber: 11,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -27523,12 +27521,12 @@ const MovieView = ({ movies  })=>{
                         children: movie.Title
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 16,
+                        lineNumber: 13,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 17,
+                        lineNumber: 14,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
@@ -27537,39 +27535,39 @@ const MovieView = ({ movies  })=>{
                             " " + movie.Director.Name,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 20,
+                                lineNumber: 17,
                                 columnNumber: 13
                             }, undefined),
                             " ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 20,
+                                lineNumber: 17,
                                 columnNumber: 20
                             }, undefined),
                             "About: ",
                             " " + movie.Director.Bio,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 22,
+                                lineNumber: 19,
                                 columnNumber: 13
                             }, undefined),
                             " ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 22,
+                                lineNumber: 19,
                                 columnNumber: 20
                             }, undefined),
                             "Birthdate:",
                             " " + movie.Director.Birthdate,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 24,
+                                lineNumber: 21,
                                 columnNumber: 13
                             }, undefined),
                             " ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 24,
+                                lineNumber: 21,
                                 columnNumber: 20
                             }, undefined),
                             "Genre:",
@@ -27577,12 +27575,12 @@ const MovieView = ({ movies  })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 18,
+                        lineNumber: 15,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 27,
+                        lineNumber: 24,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDomDefault.default), {
@@ -27596,24 +27594,24 @@ const MovieView = ({ movies  })=>{
                             children: "Back"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 29,
+                            lineNumber: 26,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 28,
+                        lineNumber: 25,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 15,
+                lineNumber: 12,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/movie-view/movie-view.jsx",
-        lineNumber: 13,
+        lineNumber: 10,
         columnNumber: 5
     }, undefined);
 };
@@ -46755,7 +46753,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         as: (0, _reactRouterDomDefault.default),
                                         to: "/",
                                         children: [
-                                            "Login=",
+                                            "Login",
                                             " "
                                         ]
                                     }, void 0, true, {
@@ -46830,6 +46828,132 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react":"21dqq"}],"i5LP7":[function() {},{}]},["gf9ir","iP3KC","d8Dch"], "d8Dch", "parcelRequirea9e5")
+},{"react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX","react":"21dqq"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
+var _reactRouterDomDefault = parcelHelpers.interopDefault(_reactRouterDom);
+const MovieCard = ({ movie  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+        className: "movie-card",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                variant: "top",
+                src: movie.ImageURL
+            }, void 0, false, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 9,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                className: "movie-card",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                        children: movie.Title
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 11,
+                        columnNumber: 15
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/movie-card/movie-card.jsx",
+                                lineNumber: 13,
+                                columnNumber: 17
+                            }, undefined),
+                            movie.Description,
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/movie-card/movie-card.jsx",
+                                lineNumber: 15,
+                                columnNumber: 17
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/movie-card/movie-card.jsx",
+                                lineNumber: 15,
+                                columnNumber: 23
+                            }, undefined),
+                            movie.Director.Name,
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/movie-card/movie-card.jsx",
+                                lineNumber: 17,
+                                columnNumber: 17
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/movie-card/movie-card.jsx",
+                                lineNumber: 17,
+                                columnNumber: 23
+                            }, undefined),
+                            movie.Genre.Name
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 12,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 20,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDomDefault.default), {
+                        to: `/movies/${encodeURIComponent(movie._id)}`,
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            className: "movie-card-button",
+                            variant: "link",
+                            active: true,
+                            children: "Open"
+                        }, void 0, false, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 22,
+                            columnNumber: 19
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 21,
+                        columnNumber: 19
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 10,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 8,
+        columnNumber: 7
+    }, undefined);
+};
+_c = MovieCard;
+// defined props constrains for Movie Card
+MovieCard.propTypes = {
+    movie: (0, _propTypesDefault.default).shape({
+        Title: (0, _propTypesDefault.default).string.isRequired,
+        ImageURL: (0, _propTypesDefault.default).string.isRequired,
+        Description: (0, _propTypesDefault.default).string.isRequired
+    }).isRequired
+};
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"6NQvI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5XEqX"}],"i5LP7":[function() {},{}]},["gf9ir","iP3KC","d8Dch"], "d8Dch", "parcelRequirea9e5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
