@@ -32,7 +32,7 @@ useEffect(() => {
         const moviesFromApi = movies.map((movie) => {
             // console.log(Object.keys(movies))
             return {
-                _id: movie.key,
+                _id: movie._id,
                 Title: movie.Title,
                 ImageURL: movie.ImageURL, 
                 Description: movie.Description, 
