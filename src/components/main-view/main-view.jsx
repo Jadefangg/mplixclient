@@ -8,6 +8,7 @@ import Row   from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 // exporting Main view variabels
 export const MainView = () => {
@@ -42,8 +43,6 @@ useEffect(() => {
         });
         console.log(moviesFromApi)
         setMovies(moviesFromApi); 
-        // let similarMovies = movies.filter(movie.Genre.Name === Genre.Name && movie._id !== _id);
-        // console.log(similarmovies);
         // or
         // let similarMovies = movies.filter((m) m.genreName === Name && m._id !== id);
     });
@@ -63,9 +62,10 @@ return (
                 <Route
                 path="/signup"
                 element={
+                    // console.log("hi")|| 
                     <>
                     {user ? (
-                    <Navigate to="/signup" />
+                    <Navigate to="/" />
                     ):( <Col md={5}>
                             <SignupView />
                         </Col>
@@ -78,9 +78,9 @@ return (
                 element={
                     <>
                     {user ? (
-                        <Navigate to="/login" />
+                        <Navigate to="/" />
                     ): ( <Col md={5}>
-                        <LoginView onLoggedIn={(user) => setUser(user) }  /*Is it missing the token ?*//> 
+                        <LoginView onLoggedIn={() => setUser(user) }  /*Is it missing the token ?*//> 
                         </Col>
                     )}
                     </>

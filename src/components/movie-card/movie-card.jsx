@@ -1,3 +1,4 @@
+import React from "react"; 
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -19,11 +20,15 @@ export const MovieCard = ({ movie}) => {
                 </Card.Text>
                 <br />
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button className="movie-card-button" variant="link" active>Open</Button>
+                  <Button className="movie-card-button" variant="button" style={{ cursor: "pointer"}} active>Open</Button>
                   </Link>
             </Card.Body>
       </Card>
     );
+    // query to add in the backend? 
+    // let similarMovies = movies.filter((movie) => movie.Genre.Name === Genre.Name && movie._id !== _id);
+    // console.log(similarMovies);
+
 };
 
 // defined props constrains for Movie Card

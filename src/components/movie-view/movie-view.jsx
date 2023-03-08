@@ -1,6 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {
@@ -23,7 +23,7 @@ return(
             </Card.Text>
             <br />
             <Link to={"/"}>
-            <Button className="back-button" style={{ cursor: "pointer"}} active>Back</Button>
+            <Button className="back-button" variant="button" style={{ cursor: "pointer"}} active>Back</Button>
             </Link>
         </Card.Body>
     </Card> 
