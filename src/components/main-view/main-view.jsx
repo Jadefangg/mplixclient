@@ -40,7 +40,7 @@ useEffect(() => {
                 Genre: movie.Genre
             };    
         });
-        console.log(moviesFromApi[0])
+        console.log(moviesFromApi)
         setMovies(moviesFromApi); 
         // let similarMovies = movies.filter(movie.Genre.Name === Genre.Name && movie._id !== _id);
         // console.log(similarmovies);
@@ -55,6 +55,7 @@ return (
     minBreakpoint="xs">
         <NavigationBar
         user={user}
+        // token={token}
         onLoggedOut={() => {setUser(null); setToken(null); localStorage.clear();
         }} />
     <Row  className="main-view" >
@@ -63,8 +64,8 @@ return (
                 path="/signup"
                 element={
                     <>
-                    {!user ? (
-                    <Navigate to="/" />
+                    {user ? (
+                    <Navigate to="/signup" />
                     ):( <Col md={5}>
                             <SignupView />
                         </Col>
@@ -76,10 +77,10 @@ return (
                 path="/login"
                 element={
                     <>
-                    {!user ? (
-                        <Navigate to="/" />
+                    {user ? (
+                        <Navigate to="/login" />
                     ): ( <Col md={5}>
-                        <LoginView onLoggedIn={(user /*token*/) => setUser(user)/*setToken(token);*/}  /*Is it missing the token ?*//> 
+                        <LoginView onLoggedIn={(user) => setUser(user) }  /*Is it missing the token ?*//> 
                         </Col>
                     )}
                     </>
@@ -87,7 +88,7 @@ return (
                 />
                 <Route
                 path="/movies/:movieId"
-                elemenet={
+                element={
                     <>
                     {!user ? (
                         <Navigate to="/login" replace/>
