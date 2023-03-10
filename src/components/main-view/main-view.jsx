@@ -10,20 +10,33 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 
+
 // exporting Main view variabels
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    const [user, setUser] = useState(storedUser? storedUser : null);
+    const [username,setUsername] = useState(storedToken? storedToken : null); 
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
     
-useEffect(() => {
-    //verifying token-authentication to access request
-    if(!token) {
-        return;
-    }
-            
+    const toggleFavorite = (movie) => {
+        const index = favoriteMovies.indexOf(movie);
+        if (index > -1) {
+          deleteFavoriteMovie(movie);
+          setFavoriteMovies(
+            favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
+          );
+        } else {
+          addFavoriteMovie(movie);
+          setFavoriteMovies([...favoriteMovies, movie]);
+        }
+      };
+
+    useEffect(() => {
+        //verifying token-authentication to access request
+        if(!token) {
+            return;
+        }                
     fetch("https://movies-couch-api.vercel.app/movies", {
     headers: {Authorization: `Bearer ${token}`},  
     	})
@@ -43,20 +56,26 @@ useEffect(() => {
         });
         console.log(moviesFromApi)
         setMovies(moviesFromApi); 
-        // or
-        // let similarMovies = movies.filter((m) m.genreName === Name && m._id !== id);
+        
+        // const findSimilarMovies = movies.filter((m), m.genreName === Name && m._id !== id);
     });
-}, [token]); 
- 
+}, [token]);
+// similar movies function
+const favoriteMovies = () => {}
+const clearLocalCurrentUser = () => {
+    setUsername(null);
+    setToken(null);
+    localStorage.clear();
+};
+
 return ( 
 <BrowserRouter>
 <ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
     minBreakpoint="xs">
         <NavigationBar
-        user={user}
-        // token={token}
-        onLoggedOut={() => {setUser(null); setToken(null); localStorage.clear();
-        }} />
+        username={username} 
+        onLoggedOut={clearLocalCurrentUser}
+         />
     <Row  className="main-view" >
         <Routes>
                 <Route
@@ -118,6 +137,21 @@ return (
                      ))}
                     </>
                 )}
+                </>
+              }
+            />
+            <Route
+                path="/profile"
+                element={
+                    <>
+                    {username ? (
+                        <Col className="mb-5" >
+                        <ProfileView  token={token}  />
+                    </Col>
+                    ) : (
+                    <Navigate to="/login" />
+                    )
+                }
                 </>
               }
             />

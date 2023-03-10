@@ -6,13 +6,12 @@ export function FavoriteMovies({favoriteMovieList}) {
     
     return(
         <>
-        <Row>
-            <Col xs={2} sm={4}>
-            <h4>Favorite Movies</h4>
-            </Col>
-            </Row>
             <Row>
-                
+                <Col xs={2} sm={4}>
+                <h4>Favorite Movies</h4>
+                </Col>
+                </Row>
+                <Row>
                 {favoriteMovieList.map((map) => {
                     return(
                     <Col _id={movies._id}>

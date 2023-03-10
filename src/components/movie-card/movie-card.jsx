@@ -4,7 +4,10 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Movie card component
-export const MovieCard = ({ movie}) => {
+export const MovieCard = ({ movie, favoriteMovies, toggleFavorite}) => {
+  const handletoggle = (movie) => {
+    toggleFavorite(movie);
+};
     return (
       <Card className="movie-card">
         <Card.Img variant="top" src={movie.ImageURL}/> 

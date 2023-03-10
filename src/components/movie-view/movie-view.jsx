@@ -1,11 +1,14 @@
+import {React, useEffect} from "react";
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import "./movie-view.scss";
+import { Link } from "react-router-dom";import "./movie-view.scss";
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({ movies, favoriteMovies, toggleFavorite, findSimilarMovies }) => {
     const {movieId} = useParams();
     const movie = movies.find((m) => m._id === movieId);
+    const handletoggle = (movie) => {
+        toggleFavorite(movie);
+    };
 return( 
     <Card className="movie-view">
         <Card.Img className="w-80" src={movie.ImageURL} />
