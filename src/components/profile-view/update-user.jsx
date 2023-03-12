@@ -5,47 +5,50 @@ import Form from "react-bootstrap/Form"
 
 function UpdateUser({handleSubmit, handleUpdate}) {
     return (
-        <Form onSubmit={(e) => handleSubmit(e.value.target)}>
+        <Form onSubmit={(e) => this.editUser(e, 
+        this.username,
+        this.password,
+        this.email,
+        this.birthday
+        )}>
             <h4>Update User info:</h4>
             <Form.Group>
-                <Form.Label>Username:</Form.Label>
+                <Form.Label>Name:</Form.Label>
                 <Form.Control>
                     type="text"
-                    placholder="name"
                     defaultValue={username}
-                    onChange= {(e) => handleUpdate(e.value.target)}
+                    onChange= {(e) => this.setUsername(e.value.target)}
                 </Form.Control>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Password:</Form.Label>
                 <Form.Control>
                     type="password"
-                    placholder="password"
                     defaultValue={password}
-                    onChange= {(e) => handleUpdate(e.value.target)}
+                    onChange= {(e) => this.setPassword(e.value.target)}
                 </Form.Control>
                 </Form.Group>
             <Form.Group>
                 <Form.Label>E-mail:</Form.Label>
                 <Form.Control>
                     type="email"
-                    placholder="email"
                     defaultValue={email}
-                    onChange= {(e) => handleUpdate(e.value.target)}
+                    onChange= {(e) => this.setEmail(e.value.target)}
                 </Form.Control>
-                <Button variant="button" type="submit">Update</Button>
-                </Form.Group>
-                <Form.Group>
+            </Form.Group>
+            <Form.Group>
                 <Form.Label>Birthday:</Form.Label>
                 <Form.Control>
                     type="date"
-                    placholder="birthday"
-                    defaultValue={email}
-                    onChange= {(e) => handleUpdate(e.value.target)}
+                    defaultValue={birthday}
+                    onChange= {(e) => this.setBirthday(e.value.target)}
                     ref={birthdayInputRef}
-                </Form.Control>
-                <Button variant="button" type="submit">Update</Button>
-                </Form.Group>
+            </Form.Control>
+            </Form.Group>
+                <Form.Group>
+                <Button variant="button" type="submit" onClick={() => this.editUser}>Update</Button>
+                <Button variant="button" type="submit" onClick={() => this.onDeleteUser}>Update</Button>
+            </Form.Group>
         </Form>
     )
 }

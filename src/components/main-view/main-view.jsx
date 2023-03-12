@@ -15,14 +15,16 @@ import { ProfileView } from "../profile-view/profile-view";
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    const [username,setUsername] = useState(storedToken? storedToken : null); 
+    const [username, setUsername] = localStorage.getItem("username"); 
+    
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
+    const [user, setUser] = useState(storedToken? storedToken : null);
     
     const toggleFavorite = (movie) => {
         const index = favoriteMovies.indexOf(movie);
         if (index > -1) {
-          deleteFavoriteMovie(movie);
+            onRemoveFavorite(movie);
           setFavoriteMovies(
             favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
           );
@@ -62,11 +64,6 @@ export const MainView = () => {
 }, [token]);
 // similar movies function
 const favoriteMovies = () => {}
-const clearLocalCurrentUser = () => {
-    setUsername(null);
-    setToken(null);
-    localStorage.clear();
-};
 
 return ( 
 <BrowserRouter>
@@ -74,7 +71,11 @@ return (
     minBreakpoint="xs">
         <NavigationBar
         username={username} 
-        onLoggedOut={clearLocalCurrentUser}
+        onLoggedOut={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+        }}
          />
     <Row  className="main-view" >
         <Routes>
@@ -99,7 +100,7 @@ return (
                     {user ? (
                         <Navigate to="/" />
                     ): ( <Col md={5}>
-                        <LoginView onLoggedIn={() => setUser(user) }  /*Is it missing the token ?*//> 
+                        <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token); }}  /> 
                         </Col>
                     )}
                     </>

@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export function FavoriteMovies({favoriteMovieList}) {
+export function FavoriteMovies({favoriteMovie}) {
     
     return(
         <>
@@ -12,14 +12,14 @@ export function FavoriteMovies({favoriteMovieList}) {
                 </Col>
                 </Row>
                 <Row>
-                {favoriteMovieList.map((map) => {
+                {favoriteMovie.map((ImageURL, _id, Title) => {
                     return(
-                    <Col _id={movies._id}>
-                    <img src={movies.ImageURL}/>
+                    <Col key={_id}>
+                    <img src={ImageURL}/>
                     <Link href={`/movies/${movies._id}`}>
-                        <h4>{movies.Title}</h4>
+                        <h4>{Title}</h4>
                     </Link>
-                    <Button variant="button" onClick={() => removeFav(movies._id)}>Remove from List</Button> 
+                    <Button variant="button" onClick={() => onRemoveFavorite(movie._id)}>Remove from List</Button> 
                     </Col> 
                 )}
                 )}

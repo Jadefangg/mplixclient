@@ -2,147 +2,150 @@ import React, {useEffect, useState} from "react";
 import Form from "react-bootstrap/Form";
 import { Col, Row}  from "react-bootstrap";
 import { Button, Card, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import axios from "axios";
 import UserInfo from "./user-info"; 
-import { FavoriteMovies } from "./favorite-movies";
 import UpdateUser from "./update-user";
-import { MovieCard } from "../movie-card/movie-card";
 
-const ProfileView = ({ movies, toggleFavorite }) => {
-    const [user, setUser] = useState({
-        username: "",
-        password: "",
-        email:"",
-        birthdate:"",
-        favoriteMovies:[]
-       })
-    const favoriteMovieList = movies.filter((movies) =>{
-        return user.favoriteMoviesList.includes(movies._id);
-    })
-    const getUser = (username, token) => {
-        const response =  fetch(
-              `https://myflixapi.smartcoder.dev/v1/users/${username}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            const { success, message, data } = response.json();
-            if (data) {
-              setUser({ ...data });
-            } else {
-              alert(message);
-              console.error(error)
-            }
-          }
-        getUser(username, token);
+class ProfileView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: null,
+            password: null,
+            email:null,
+            birthdate: null,
+            favoriteMovies:[]
+        }
     }
-    // const handleSubmit = (e) => {}
-    const removeFav = async (id) => {
-        const response = fetch(
-            `https://myflixapi.smartcoder.dev/v1/users/${username}/movies/${movie.id}`,
-            {
-              method: "DELETE",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          const { success, message, data } =  response.json();
-         if (data) {
-            setUser({ ...data });
-          } else {
-            alert(message);
-            console.error(error)
-          };
-        }
-    const deleteUser = async () => {
-        const response =  fetch(`https://movies-couch-api.vercel.app/users/${username}`,
-            {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            });
-            const { success, message, data } =  response.json();
-            if (success) {
-              alert(message);
-              message("Successful deletion")
-            } else {
-              console.error(message);
-              alert("Update failed");
-            }
-        };
-    const handleUpdate = () => {
-        preventDefault();
-    
-        const userData ={
-            username: username,
-            password: password,
-            email:email,
-            birthday:birthday
-        };
-        const response = fetch(
-              `https://movies-couch-api.vercel.app/users/${username}`,
-              {
-                method: "PUT",
-                body: JSON.stringify(userData),
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            const { success, message, data } =  response.json();
-            if (success) {
-              alert(message);
-              setUpdateUser(false);
-            } else {
-              console.error(message);
-              alert("Update failed");
-            }
-        };
-    
-    useEffect(() => {
-        const initFavoriteMovies = movies.filter((movie) =>
-        user.favoriteMovies.includes(movie._id)
-        );
-        setFavoriteMovies([initFavoriteMovies]);
-    }, [movies, user]);
-    
-    // function for the Fav-mov
-    const toggleFavorite = (movie) => {
-        const index = favoriteMoviesList.indexOf(movie);
-        if (index > -1 ) {
-            deleteFavoriteMovie(movie);
-            setFavoriteMovies(favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie._id));
-        } else {
-            addFavoriteMovie(movie);
-            setFavoriteMovies([favoriteMovies, movie]);
-        }
+} 
+    componentDidmount = () => {
+        const accessToken = localStorage.getItem("token");
+        this.getUser(accessToken);
+    }
+// remove fav-mov
+    onRemoveFavorite = (e, movie) => {
+        const username = localStorage.getItem("user");
+        console.log(username);
+        const token = localStorage.getItem("token");
+        console.log(this.props);
+        axios
+        .delete(`https://movies-couch-api.vercel.app/users/${username}/movies/${movie.id}`,
+            {headers: {Authorization: `Bearer ${token}`} }
+        )
+        .then((response) => {
+            console.log(response);
+            alert( `The Movie ${movie.id} was removed from favorite list`);
+            this.componentDidmount();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     };
-    
-            
-        const handleToggle = (movie) => {
-            toggleFavorite(movie);
-        };
-        const formatDate = (birthday) => {
-            const date = new Date(birthday);
-            const year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let dayOfTheMonth = date.getDate();
-            if (month < 10) {
-                month = `0${dayOfTheMonth}`;
-            } return `${year}-${month}-${dayOfTheMonth}`
-        };
+// log-out function
+    onLoggedOut = () =>  {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        this.setState({ user:null });
+        window.open("/", "_self")
+    } 
+// retrieving user info
+    getUser = (token) => {
+        const username= localStorage.getItem("user");
+        axios
+
+        .get(`https://movies-couch-api.vercel.app/users/${username}`, {
+            headers: {Authorization: `Bearer ${token}`}
+        })
+        .then((response) => {
+            this.setState({
+                username: response.data.username,
+                password: response.data.password,
+                email: response.data.email,
+                birthday: response.data.birthday,
+                favoriteMovies: response.data.favoriteMovies
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    };
+// edit username info
+    editUser = (e) => {
+        e.preventDefault();
+        const username = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        axios
+            .put(`https://movies-couch-api.vercel.app/users/${username}`,
+            {
+                username: this.state.username,
+                password: this.state.password,
+                email: this.state.email,
+                birthday: this.state.birthday
+            }, 
+            {headers: {Authorization: `Bearer ${token}`}}
+            )
+            .then((response) =>{
+                this.setState({
+                    username: response.data.username,
+                    password: response.data.password,
+                    email: response.data.email,
+                    birthday: response.data.birthday,
+                    favoriteMovies: response.data.favoriteMovies
+                });
+                localStorage.setItem("user", this.state.username);
+                const data = response.data;
+                console.log(data);
+                console.log(this.state.username);
+                alert("Profile updatd!");
+                window.open("/users/${username}", "_self");
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+    // delete username
+    onDeleteUser= () => {
+        const username = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        axios
+        .delete(`https://movies-couch-api.vercel.app/users/${username}`,
+        {headers: {Authorization: `Bearer ${token}`}, 
+    })
+    .then((response) => {
+        console.log(response);
+        alert(`Profile with this ${username} has been deleted.`);
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        window.open("/", "_self");
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    setUsername = (value) => {
+        this.setState({username: value});
+        this.username = value;
+    }
+    setPassword = (value) => {
+        this.setState({password: value});
+        this.password = value;
+    }
+    setEmail = (value) => {
+        this.setState({email: value});
+        this.email = value;
+    }
+    setBirthday = (value) => {
+        this.setState({birthday: value});
+        this.birthday = value;
+    }
 
     
-
-
+render() {
+    const { movies } = this.props;
+    const { FavoriteMovies, username, email, birthday, password } = this.state;
 return(
     <Container>
         <Row> 
@@ -160,8 +163,8 @@ return(
                     </Card.Body>
                 </Card>
             </Col>
-            <FavoriteMovies favoriteMoviesList={favoriteMoviesList}/>
+            <FavoriteMovies favoriteMovies={favoriteMovies}/>
         </Row>
     </Container>
 
-)
+);}
