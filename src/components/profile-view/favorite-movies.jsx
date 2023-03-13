@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export function FavoriteMovies({favoriteMovie}) {
+export function FavoriteMovies({favoriteMovieList}) {
     
     return(
         <>
@@ -12,7 +12,7 @@ export function FavoriteMovies({favoriteMovie}) {
                 </Col>
                 </Row>
                 <Row>
-                {favoriteMovie.map((ImageURL, _id, Title) => {
+                {favoriteMovieList.map((ImageURL, _id, Title) => {
                     return(
                     <Col key={_id}>
                     <img src={ImageURL}/>

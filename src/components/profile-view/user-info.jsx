@@ -4,10 +4,13 @@ function UserInfo({ name, email}) {
     return(
         <>
         <h4>Your info</h4>
-        <p placholder="Your name" >{name}</p>
+        <p placholder="Name" >{name}</p>
         <br/>
         <p placholder="e-mail">{email}</p>
-        
+        <br/>
+        <p placholder="password">{password}</p>
+        <br/>
+        <p placholder="birthday">{birthday}</p>
         </>
     )
 }
