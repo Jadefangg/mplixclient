@@ -23,18 +23,18 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
     
-    const toggleFavorite = (movie) => {
-        const index = favoriteMovies.indexOf(movie);
-        if (index > -1) {
-            onRemoveFavorite(movie);
-          setFavoriteMovies(
-            favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
-          );
-        } else {
-          addFavoriteMovie(movie);
-          setFavoriteMovies([...favoriteMovies, movie]);
-        }
-      };
+    // const toggleFavorite = (movie) => {
+    //     const index = favoriteMovies.indexOf(movie);
+    //     if (index > -1) {
+    //         onRemoveFavorite(movie);
+    //       setFavoriteMovies(
+    //         favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
+    //       );
+    //     } else {
+    //       addFavoriteMovie(movie);
+    //       setFavoriteMovies([...favoriteMovies, movie]);
+    //     }
+    //   };
 
     useEffect(() => {
         //verifying token-authentication to access request
@@ -149,7 +149,7 @@ return (
                     <>
                     {user ? (
                         <Col className="mb-5" >
-                            <TestProfile token={token}  user={user} movies={movies}/>
+                            <TestProfile   user={user} movies={movies}/>
                         {/* <ProfileView  token={token}  user={user} movies={movies}/> */}
                     </Col>
                     ) : (
