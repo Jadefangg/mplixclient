@@ -12,6 +12,10 @@ import axios from "axios";
 
 export function TestProfile({ user, token, movies,  }) {
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [birthday, setBirthday] = useState("");
     
     // const favoriteMovies = movies.filter(m => {
     //     user.favoriteMovies.includes(m._id);
@@ -20,12 +24,28 @@ export function TestProfile({ user, token, movies,  }) {
     // const getUser = () => {}
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("submitted");
     }
     // const onRemoveFavorite = (_id) => {}
-    const handleUpdate = (e) => {
-
+    const handleEdit = (e) => {
+        const updateUser={
+            username,
+            password,
+            email,
+            birthday
+        };
+        setUsername("");
+        setPassword("");
+        setEmail("");
+        setBirthday("");
     }
-    // useEffect(() => {}, [])
+    useEffect(() => {
+        console.log("setUsername");
+        console.log("setPassword");
+        console.log("setEmail");
+        console.log("setBirthday");
+    });
+    // , [])
 
     return (
         <Container>
@@ -51,36 +71,36 @@ export function TestProfile({ user, token, movies,  }) {
                         <Card.Body>
                             <Form onSubmit={(e) => handleSubmit(e)}> 
                                 <h4>Update User info:</h4>
-                                <Form.Group>
+                                <Form.Group >
                                     <Form.Label>Name:</Form.Label>
-                                    <Form.Control>
+                                    <Form.Control controlId="formUsername">
                                         type="text"
-                                        {/* defaultValue={user.Username} */}
-                                        onChange= {(e) => handleUpdate(e)}
+                                        value={user.Username}
+                                        onChange= {(e) => handleEdit(e)}
                                     </Form.Control>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group controlId="formPassword">
                                     <Form.Label>Password:</Form.Label>
                                     <Form.Control>
                                         type="password"
-                                        {/* defaultValue={user.Password} */}
-                                        onChange= {(e) => handleUpdate(e)}
+                                        value={user.Password}
+                                        onChange= {(e) => handleEdit(e)}
                                     </Form.Control>
                                     </Form.Group>
-                                <Form.Group>
+                                <Form.Group controlId="formEmail">
                                     <Form.Label>E-mail:</Form.Label>
                                     <Form.Control>
                                         type="email"
-                                        {/* defaultValue={user.Email} */}
-                                        onChange= {(e) => handleUpdate(e)}
+                                        value={user.Email}
+                                        onChange= {(e) => handleEdit(e)}
                                     </Form.Control>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group controlId="formBirthday">
                                     <Form.Label>Birthday:</Form.Label>
                                     <Form.Control>
                                         type="date"
-                                        {/* defaultValue={user.Birthday} */}
-                                        onChange= {(e) => handleUpdate(e)}
+                                        value={user.Birthday}
+                                        onChange= {(e) => handleEdit(e)}
                                         {/* ref={birthdayInputRef} */}
                                 </Form.Control>
                                 </Form.Group>
