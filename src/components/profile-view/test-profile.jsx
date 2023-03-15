@@ -2,119 +2,222 @@ import React, {useEffect, useState} from "react";
 import Form from "react-bootstrap/Form";
 import { Col, Row}  from "react-bootstrap";
 import { Button, Card, Container } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
-import { PropTypes } from "prop-types";
-import axios from "axios";
+
 
 // import UserInfo from "./user-info"; 
 // import UpdateUser from "./update-user";
 // import FavoriteMovies from "./favorite-movies";
 
-export function TestProfile({ user, token, movies,  }) {
+    export const TestProfile= ({user, movies, token}) => {
+            // const [username, setUsername] = useState("");
+            // const [password, setPassword] = useState("");
+            // const [email, setEmail] = useState("");
+            // const [birthday, setBirthday] = useState("");
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [birthday, setBirthday] = useState("");
+        // const [user, setUser] = setState([]);
+   // user related functions
+    // useEffect(() => {
+    //     const user= JSON.parse(localStorage.getItem("user"));
+    //     if (user) {setUser(user);}
+
+        // if(!user && !token) {
+        //     return window.open("/", "_self")}
+    // }, [])
+    // get uSer
+    // function getUser(username) {
+        //   Make a request to retrieve user data from API
+        //   return fetch(`/users/${username}`)
+        //   .then(response => response.json())
+        //   .then(data => {
+            // Extract user information from the response and return it as an object
+        //     const { username, password, email, birthday } = data;
+        //     return { username, password, email, birthday };
+        //   })
+        //   .catch(error => {
+        //     console.error(`Error retrieving user: ${username}: `, error);
+        //   });
+        // }
+        // const [updateUser, setUpdateUser] = useState(false);
+            
+    // update user
+    // function editUser() {
+    //     const [formData, setFormData] = useState({username:"", password: "", email: "", birthday:""}); 
+    //     const handleChange = (event) => {
+    //         const {username, value} = event.target;
+    //         setFormData((prevFormData) => ({...prevFormData, [username]:value}))
+    //     };
+    //     const handleSubmit =  (event) => {
+    //         event.preventDefault();
+    //         alert(`Username: ${formData.username}, Password: ${formData.password}, Email: ${formData.email}, Birthday: ${formData.birthday}`)
+    //     } 
+    // };
     
+    // delete user
+    // const handleDeleteUser = async () => {
+    //     try {
+    //         const response = await fetch(
+    //             `https://movies-couch-api.vercel.app/users/${user.username}`,
+    //             {
+    //                 method: "DELETE",
+    //                 headers: {
+    //                     Authorization: `Bearer ${token}`,
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             }
+    //         );
+    //         const { success, message, data } = await response.json();
+    //         if (success) {
+    //             onDelete();
+    //         } else {
+    //             alert(message);
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log("submitted");
+    // }
+
+    // favorite-movies functions
+    // const onRemoveFavorite = (_id) => {}
+    // const handleEdit = async (event) => {
+    //     event.preventDefault();
+    //     const userData={
+    //         username: username,
+    //         password: password,
+    //         email: email,
+    //         birthday: birthday
+    //     }; 
+        // console.log(userData)
+    //     try {
+    //         const response = await fetch(
+    //             `https://movies-couch-api.vercel.app/users/${user.username}`,
+    //             {
+    //                 method: "PUT",
+    //                 body: JSON.stringify(userData),
+    //                 headers: {
+    //                     Authorization: `Bearer ${token}`,
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             }
+    //         );
+    //         const { success, message, data } = await response.json();
+    //         if (success) {
+    //             alert(message);
+    //             setUpdateUser(false);
+    //         } else {
+    //             console.error(message);
+    //             alert("Update failed");
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
     // const favoriteMovies = movies.filter(m => {
     //     user.favoriteMovies.includes(m._id);
     // }); //fav mov only needs from there a button
 
-    // const getUser = () => {}
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("submitted");
-    }
-    // const onRemoveFavorite = (_id) => {}
-    const handleEdit = (e) => {
-        const updateUser={
-            username,
-            password,
-            email,
-            birthday
-        };
-        setUsername("");
-        setPassword("");
-        setEmail("");
-        setBirthday("");
-    }
-    useEffect(() => {
-        console.log("setUsername");
-        console.log("setPassword");
-        console.log("setEmail");
-        console.log("setBirthday");
-    });
-    // , [])
+    // log-out function
+    // onLoggedOut = () =>  {
+    //     localStorage.removeItem("token");
+    //     localStorage.removeItem("user");
+    //     this.setState({ user:null });
+    //     window.open("/", "_self")
+    // } 
+    // useEffect(() => {
+    //     if (birthdayInputRef.current) {
+    //         birthdayInputRef.current.value = formatDate(birthday);
+    //     }
+    // }, [updateUser])
+
+    // const formatDate = (birthday) => {
+    //     const date = new Date(birthday);
+    //     const year = date.getFullYear();
+    //     let month = date.getMonth() + 1;
+    //     let dayOfTheMonth = date.getDate();
+    //     if (month < 10) {
+    //         month = `0${month}`;
+    //     }
+    //     if (dayOfTheMonth < 10) {
+    //         dayOfTheMonth = `0${dayOfTheMonth}`;
+    //     }
+    //     return `${year}-${month}-${dayOfTheMonth}`;
+    // };
 
     return (
-        <Container>
-            <Row>
-                <Col xs={12} sm={4} md={6} lg={6}>
-                    <Card>
-                        <Card.Body>
-                            <div>
-                                <h4>Your info</h4>
-                                <p placholder="Name" >{user.Username}</p>
-                                <br/>
-                                <p placholder="e-mail">{user.Email}</p>
-                                <br/>
-                                <p placholder="password">{user.Password}</p>
-                                <br/>
-                                <p placholder="birthday">{user.Birthday}</p>
-                            </div>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col xs={12} sm={6} md={4} lg={4}>
-                    <Card>
-                        <Card.Body>
-                            <Form onSubmit={(e) => handleSubmit(e)}> 
-                                <h4>Update User info:</h4>
-                                <Form.Group >
-                                    <Form.Label>Name:</Form.Label>
-                                    <Form.Control controlId="formUsername">
-                                        type="text"
-                                        value={user.Username}
-                                        onChange= {(e) => handleEdit(e)}
-                                    </Form.Control>
-                                </Form.Group>
-                                <Form.Group controlId="formPassword">
-                                    <Form.Label>Password:</Form.Label>
-                                    <Form.Control>
-                                        type="password"
-                                        value={user.Password}
-                                        onChange= {(e) => handleEdit(e)}
-                                    </Form.Control>
-                                    </Form.Group>
-                                <Form.Group controlId="formEmail">
-                                    <Form.Label>E-mail:</Form.Label>
-                                    <Form.Control>
-                                        type="email"
-                                        value={user.Email}
-                                        onChange= {(e) => handleEdit(e)}
-                                    </Form.Control>
-                                </Form.Group>
-                                <Form.Group controlId="formBirthday">
-                                    <Form.Label>Birthday:</Form.Label>
-                                    <Form.Control>
-                                        type="date"
-                                        value={user.Birthday}
-                                        onChange= {(e) => handleEdit(e)}
-                                        {/* ref={birthdayInputRef} */}
-                                </Form.Control>
-                                </Form.Group>
-                                    <Form.Group>
-                                    <Button variant="button" type="submit" >Submit</Button>
-                                    {/* <Button variant="button" type="submit" onClick={() => this.onDeleteUser}>Delete</Button> */}
-                                </Form.Group>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                {/* <FavoriteMovies favoriteMovies={favoriteMoviesList} /> */}
-            </Row>
-        </Container>
+        <React.Fragment>
+            <Container className="profile-view">
+                <Row className="d-flex justify-content-center p-4">
+                    <Col xs={12} sm={4} md={6} lg={6} >
+                        <Card>
+                            <Card.Body clasName="user-profile">
+                            <>
+                             <h3>Username</h3>
+                             <p >{user.Username}</p>
+                             <br/>
+                             <h3>Password</h3>
+                             <p >{user.Password}</p>
+                             <br/>
+                             <h3>Email</h3>
+                             <p >{user.Email}</p>
+                             <br/>
+                             <h3 >Birthday</h3>
+                             <p >{user.Birthday}</p>
+                             <br/>
+                            </>
+                            </Card.Body>
+                            <Button className="edit-button"
+                                variant="primary"
+                                // onClick={() => setUpdateUser(true)}
+                                >EDIT
+                            </Button>
+                        </Card>
+                    </Col>
+                    </Row> 
+                   {/* <Row className="d-flex justify-content-center p-4">
+                        <Col sm={8} md={6} lg={5} xl={4} xxl={3}>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title>Profile Information</Card.Title>
+                                    <Card.Text></Card.Text>
+                                    <form onSubmit={editUser} className="w-100">
+                                        <label htmlFor="username"></label>
+                                        <input type="text" id="username" name="username" value={formData.username} onChange={handleChange}></input>
+                                        <br/>
+                                        <label htmlFor="password"></label>
+                                        <input type="password" id="password" name="password" value={formData.password} onChange={handleChange}></input>
+                                        <br/>
+                                        <label htmlFor="email"></label>
+                                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}></input>
+                                        <br/>
+                                        <label htmlFor="birthday"></label>
+                                        <input type="date" id="birthday" name="birthday" value={formData.birthday} onChange={handleChange}></input>
+                                    </form>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row> */}
 
+                    {/* <Row className="justify-content-center py-5">
+                    <h2 className="text-center mb-5">Favorite Movies</h2>
+                    {favoriteMovies.length ? (
+                        favoriteMovies.map((movie) => (
+                            <MovieCard
+                                movie={movie}
+                                isFavorite={true}
+                                toggleFavorite={handleToggle}
+                                _id={movie._id}
+                            />
+                        ))
+                    ) : (
+                        <p>No favorite movies</p>
+                    )}
+                </Row> */}
+        </Container>
+    </React.Fragment>
     );
-}
+};
