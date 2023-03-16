@@ -9,11 +9,17 @@ import { Button, Card, Container } from "react-bootstrap";
 // import FavoriteMovies from "./favorite-movies";
 
     export const TestProfile= ({user, movies, token}) => {
-            // const [username, setUsername] = useState("");
-            // const [password, setPassword] = useState("");
-            // const [email, setEmail] = useState("");
-            // const [birthday, setBirthday] = useState("");
-
+           const [user, setUset] = useState({
+            username: "",
+            password: "",
+            email: "",
+            birthday: ""
+        });
+        setUser({
+            ...user,
+            username: "newUsername"
+          }); //could be integrated to edit function
+          
         // const [user, setUser] = setState([]);
    // user related functions
     // useEffect(() => {
@@ -40,17 +46,17 @@ import { Button, Card, Container } from "react-bootstrap";
         // const [updateUser, setUpdateUser] = useState(false);
             
     // update user
-    // function editUser() {
-    //     const [formData, setFormData] = useState({username:"", password: "", email: "", birthday:""}); 
-    //     const handleChange = (event) => {
-    //         const {username, value} = event.target;
-    //         setFormData((prevFormData) => ({...prevFormData, [username]:value}))
-    //     };
-    //     const handleSubmit =  (event) => {
-    //         event.preventDefault();
-    //         alert(`Username: ${formData.username}, Password: ${formData.password}, Email: ${formData.email}, Birthday: ${formData.birthday}`)
-    //     } 
-    // };
+    function editUser() {
+        const [formData, setFormData] = useState({username:"", password: "", email: "", birthday:""}); 
+        const handleChange = (event) => {
+            const {username, value} = event.target;
+            setFormData((prevFormData) => ({...prevFormData, [username]:value}))
+        };
+        const handleSubmit =  (event) => {
+            event.preventDefault();
+            alert(`Username: ${formData.username}, Password: ${formData.password}, Email: ${formData.email}, Birthday: ${formData.birthday}`)
+        } 
+    };
     
     // delete user
     // const handleDeleteUser = async () => {
@@ -178,7 +184,7 @@ import { Button, Card, Container } from "react-bootstrap";
                         </Card>
                     </Col>
                     </Row> 
-                   {/* <Row className="d-flex justify-content-center p-4">
+                   <Row className="d-flex justify-content-center p-4">
                         <Col sm={8} md={6} lg={5} xl={4} xxl={3}>
                             <Card>
                                 <Card.Body>
@@ -200,7 +206,7 @@ import { Button, Card, Container } from "react-bootstrap";
                                 </Card.Body>
                             </Card>
                         </Col>
-                    </Row> */}
+                    </Row>
 
                     {/* <Row className="justify-content-center py-5">
                     <h2 className="text-center mb-5">Favorite Movies</h2>
