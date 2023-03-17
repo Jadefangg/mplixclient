@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"; 
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
 import { Col, Row}  from "react-bootstrap";
 import { Button, Card, Container } from "react-bootstrap";
 import axios from "axios";
@@ -10,14 +10,14 @@ import axios from "axios";
 // import FavoriteMovies from "./favorite-movies";
 
     export const TestProfile= ({user, movies, token}) => {
-    //    update user dunction
-        function editUser({user, token})  {
-            const [formData, setFormData] = useState({
-                username: user.username,
-                password: user.password,
-                email: user.email,
-                birthday: user.birthday
-            })
+        const [formData, setFormData] = useState({
+            username: user.username,
+            password: user.password,
+            email: user.email,
+            birthday: user.birthday
+        });
+        // get user?
+    //    update user function
             const handleSubmit= event => {
                 event.preventDefault();
                 const token = localStorage.getItem("token");
@@ -38,7 +38,11 @@ import axios from "axios";
                 const value = event.target.value;
                 setFormData(prevState => ({...prevState, [name]: value})); 
             }
-        }
+            useEffect(() => {
+                editUser({user, token});
+            }, [])
+            function editUser({user, token})  {
+            }
     
     
     // delete user
@@ -46,8 +50,7 @@ import axios from "axios";
     // 
 
     return (
-        <React.Fragment>
-            <Container className="profile-view">
+        <Container className="profile-view">
                 <Row className="d-flex justify-content-center p-4">
                     <Col xs={12} sm={4} md={6} lg={6} >
                         <Card>
@@ -76,10 +79,10 @@ import axios from "axios";
                                 <Card.Body>
                                     <Card.Title>Profile Information</Card.Title>
                                     <Card.Text></Card.Text>
-                                        <form >
+                                        <form onSubmit={handleSubmit}>
                                         <label>
                                             Username:
-                                            <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                                            <input type="text" name="username" value={formData.username} onChange={handleChange} /> 
                                         </label>
                                         <br />
                                         <label>
@@ -104,7 +107,6 @@ import axios from "axios";
                         </Col>
                     </Row>
             </Container>
-        </React.Fragment>
-        );
+        ); 
     };
 };
