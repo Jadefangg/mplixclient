@@ -5,67 +5,65 @@ import { Button, Card, Container } from "react-bootstrap";
 import axios from "axios";
 
 
-// import UserInfo from "./user-info"; 
-// import UpdateUser from "./update-user";
-// import FavoriteMovies from "./favorite-movies";
-
     export const TestProfile= ({user, movies, token}) => {
-        const [formData, setFormData] = useState({
-            username: user.username,
-            password: user.password,
-            email: user.email,
-            birthday: user.birthday
-        });
-        // get user?
+        
+        const [username, setUsername] = useState(user.Username); 
+        const [password, setPassword] = useState(user.Password);
+        const [email, setEmail] = useState(user.Email);
+        const [birthday, setBirthday] = useState(user.Birthday);
+
     //    update user function
             const handleSubmit= event => {
                 event.preventDefault();
                 const token = localStorage.getItem("token");
-                axios.put(`https://movies-couch-api.vercel.app/users/${user.username}`,
-                formData,
+                const data = {
+                    Username: username,
+                    Password: password,
+                    Email: email,
+                    Birthday: birthday
+                }
+                axios.put(`https://movies-couch-api.vercel.app/users/${user.Username}`,
+                data,
                 {headers: {Authorization: `Bearer ${token}`}}
                 )
                 .then((response) =>{
                     console.log(response.data);
                     alert("Profile updated!");
-                    window.open(`/users/${user.username}`, "_self");
+                    window.open(`/profile`, "_self");
             })
             .catch(function (error) {
                 console.log(error);
             });
-            const handleChange = event => {
-                const name = event.target.name;
-                const value = event.target.value;
-                setFormData(prevState => ({...prevState, [name]: value})); 
-            }
-            useEffect(() => {
-                editUser({user, token});
-            }, [])
-            function editUser({user, token})  {
-            }
-    
-    
-    // delete user
-    // remove fav-mov
-    // 
+    };
+    useEffect(() =>{
+        const token = localStorage.getItem("token");
+        axios.get(`https://movies-couch-api.vercel.app/users/${user.Username}`,
+        {headers: {Authorization: `Bearer ${token}`}})
+        .then(response => {
+            setUsers(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, []);
 
     return (
         <Container className="profile-view">
                 <Row className="d-flex justify-content-center p-4">
-                    <Col xs={12} sm={4} md={6} lg={6} >
+                    <Col >
                         <Card>
-                            <Card.Body clasName="user-profile">
+                            <Card.Body className="profile-view">
                             <>
-                             <h3>Username</h3>
+                             <h3>Username:</h3>
                              <p >{user.Username}</p>
                              <br/>
-                             <h3>Password</h3>
+                             <h3>Password:</h3>
                              <p >{user.Password}</p>
                              <br/>
-                             <h3>Email</h3>
+                             <h3>Email:</h3>
                              <p >{user.Email}</p>
                              <br/>
-                             <h3 >Birthday</h3>
+                             <h3 >Birthday:</h3>
                              <p >{user.Birthday}</p>
                              <br/>
                             </>
@@ -74,33 +72,52 @@ import axios from "axios";
                     </Col>
                     </Row> 
                    <Row className="d-flex justify-content-center p-4">
-                        <Col sm={8} md={6} lg={5} xl={4} xxl={3}>
+                        <Col >
                             <Card>
-                                <Card.Body>
+                                <Card.Body className="form-profile">
                                     <Card.Title>Profile Information</Card.Title>
                                     <Card.Text></Card.Text>
                                         <form onSubmit={handleSubmit}>
                                         <label>
                                             Username:
-                                            <input type="text" name="username" value={formData.username} onChange={handleChange} /> 
+                                            <input 
+                                            type="text"
+                                            name="username"
+                                            // value={user.Username}
+                                            onChange={(e) => setUsername(e.target.value)}
+
+                                             /> 
                                         </label>
                                         <br />
                                         <label>
                                             Password:
-                                            <input type="password" name="password" value={formData.password} onChange={handleChange} />
+                                            <input 
+                                            type="password"
+                                            name="password"
+                                            // value={user.Password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                             />
                                         </label>
                                         <br />
                                         <label>
                                             Email:
-                                            <input type="email" name="email" value={formData.email} onChange={handleChange} />
+                                            <input 
+                                            type="email"
+                                            name="email"
+                                            // value={user.Email}
+                                            onChange={(e) => setEmail(e.target.value)}  />
                                         </label>
                                         <br />
                                         <label>
                                             Birthday:
-                                            <input type="date" name="birthday" value={formData.birthday} onChange={handleChange} />
+                                            <input 
+                                            type="date" 
+                                            name="birthday"
+                                            // value={user.Birthday}
+                                            onChange={(e) => setBirthday(e.target.value)}  />
                                         </label>
                                         <br />
-                                        <button  onClick={editUser}>Update User</button>
+                                        <button  type="submit"  className="button-edit">Update User</button>
                                     </form>
                                 </Card.Body>
                             </Card>
@@ -108,5 +125,4 @@ import axios from "axios";
                     </Row>
             </Container>
         ); 
-    };
 };
