@@ -5,13 +5,8 @@ import { Button, Card, Container } from "react-bootstrap";
 import axios from "axios";
 
 
-    export const TestProfile= ({user, movies, token}) => {
+    export const TestProfile= ({user, setUser, movies, token}) => {
         
-        const [username, setUsername] = useState(user.Username); 
-        const [password, setPassword] = useState(user.Password);
-        const [email, setEmail] = useState(user.Email);
-        const [birthday, setBirthday] = useState(user.Birthday);
-
     //    update user function
             const handleSubmit= event => {
                 event.preventDefault();
@@ -35,18 +30,20 @@ import axios from "axios";
                 console.log(error);
             });
     };
+    //get users 
     useEffect(() =>{
         const token = localStorage.getItem("token");
         axios.get(`https://movies-couch-api.vercel.app/users/${user.Username}`,
         {headers: {Authorization: `Bearer ${token}`}})
         .then(response => {
-            setUsers(response.data);
+            setUser(response.data);
         })
         .catch(error => {
             console.log(error);
         });
-    }, []);
+    }, [user.Username, token]);
 
+// let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id)) 
     return (
         <Container className="profile-view">
                 <Row className="d-flex justify-content-center p-4">
