@@ -14,15 +14,15 @@ class ProfileView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: null,
+            username: null,
             password: null,
             email:null,
-            birthdate: null,
+            birthday: null,
             favoriteMovies:[]
         }
     }
  
-    componentDidmount = () => {
+    componentDidMount = () => {
         const accessToken = localStorage.getItem("token");
         this.getUser(accessToken);
     }
@@ -33,12 +33,12 @@ class ProfileView extends React.Component {
         const token = localStorage.getItem("token");
         console.log(this.props);
         axios
-        .delete(`https://movies-couch-api.vercel.app/users/${user}/movies/${movie.id}`,
+        .delete(`https://movies-couch-api.vercel.app/users/${user.username}/movies/${movie._id}`,
             {headers: {Authorization: `Bearer ${token}`} }
         )
         .then((response) => {
             console.log(response);
-            alert( `The Movie ${movie.id} was removed from favorite list`);
+            alert( `The Movie ${movie._id} was removed from favorite list`);
             this.componentDidmount();
         })
         .catch(function (error) {
@@ -54,15 +54,15 @@ class ProfileView extends React.Component {
     } 
 // retrieving user info
     getUser = (token) => {
-        const user= localStorage.getItem("user");
+        const username= localStorage.getItem("user");
         axios
 
-        .get(`https://movies-couch-api.vercel.app/users/${user}`, {
+        .get(`https://movies-couch-api.vercel.app/users/${username}`, {
             headers: {Authorization: `Bearer ${token}`}
         })
         .then((response) => {
             this.setState({
-                user: response.data.user,
+                username: response.data.username,
                 password: response.data.password,
                 email: response.data.email,
                 birthday: response.data.birthday,
@@ -79,9 +79,9 @@ class ProfileView extends React.Component {
         const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
         axios
-            .put(`https://movies-couch-api.vercel.app/users/${user}`,
+            .put(`https://movies-couch-api.vercel.app/users/${username}`,
             {
-                user: this.state.user,
+                username: this.state.username,
                 password: this.state.password,
                 email: this.state.email,
                 birthday: this.state.birthday
@@ -90,18 +90,18 @@ class ProfileView extends React.Component {
             )
             .then((response) =>{
                 this.setState({
-                    user: response.data.user,
+                    username: response.data.userusername,
                     password: response.data.password,
                     email: response.data.email,
                     birthday: response.data.birthday,
                     favoriteMovies: response.data.favoriteMovies
                 });
-                localStorage.setItem("user", this.state.user);
+                localStorage.setItem("user", this.state.username);
                 const data = response.data;
                 console.log(data);
-                console.log(this.state.user);
+                console.log(this.state.username);
                 alert("Profile updatd!");
-                window.open("/users/${username}", "_self");
+                window.open(`/users/${username}`, "_self");
             })
             .catch(function (error) {
                 console.log(error);
@@ -112,12 +112,12 @@ class ProfileView extends React.Component {
         const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
         axios
-        .delete(`https://movies-couch-api.vercel.app/users/${user}`,
+        .delete(`https://movies-couch-api.vercel.app/users/${username}`,
         {headers: {Authorization: `Bearer ${token}`}, 
     })
     .then((response) => {
         console.log(response);
-        alert(`Profile with this ${user} has been deleted.`);
+        alert(`Profile with this ${username} has been deleted.`);
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         window.open("/", "_self");
@@ -127,9 +127,9 @@ class ProfileView extends React.Component {
         });
     }
 
-    setUser = (value) => {
+    setUsername = (value) => {
         this.setState({username: value});
-        this.user = value;
+        this.username = value;
     }
     setPassword = (value) => {
         this.setState({password: value});
@@ -147,65 +147,42 @@ class ProfileView extends React.Component {
     
 render() {
     const { movies } = this.props;
-    const { FavoriteMovies, user, email, birthday, password } = this.state;
+    const { FavoriteMovies, username, email, birthday, password } = this.state;
     return(
         <Container>
             <Row> 
-                <Col xs={12} sm={4} md={6} lg={6}>
+                <Col xs={12} sm={4} md={6} lg={6} clasName="user-profile">
                     <Card>
                         <Card.Body>
-                        <UserInfo user={user} email={email} />
+                        <>
+                         <h3>username={this.username}</h3>
+                         <br/>
+                         <h3>password={this.password}</h3>
+                         <br/>
+                         <h3>email={this.email}</h3>
+                         <br/>
+                         <h3>birthday={this.birthday}</h3>
+                         <br/>
+                        </>
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col xs={12} sm={6} md={4} lg={4}>
+                {/* <Col xs={12} sm={6} md={4} lg={4}>
                     <Card>
                         <Card.Body>
-                            <UpdateUser handleSubmit={handleSubmit} handleUpdate={handleUpdate}/>
+                            <UpdateUser 
+                            editUser={this.editUser}
+                            setUsername={this.setUsername}
+                            setPassword={this.setPassword}
+                            setEmail={this.setEmail}
+                            setBirthday={this.setBirthday} />
                         </Card.Body>
                     </Card>
-                </Col>
-                <FavoriteMovies favoriteMovies={favoriteMovies}/>
+                </Col> */}
+                {/* <FavoriteMovies favoriteMovies={favoriteMovies}/> */}
             </Row>
         </Container>
 
         );
     }
 }
-{/* <Form className="profile-edit" onSubmit={handleEdit}>
-    <Form.Group controlId="formUsername">
-    <Form.Label>User:</Form.Label>
-    <Form.Control 
-    type="text"
-    value={user.username}
-    onChange= {(e) => setUser(e.target.value)}
-    minLength="3"
-    />
-    </Form.Group>
-    <Form.Group controlId="formPassword">
-    <Form.Label>Password:</Form.Label>
-    <Form.Control 
-    type="password"
-    value={user.Password}
-    onChange= {(e) => setPassword(e.target.value)}
-    minLength="5" 
-    />
-    </Form.Group>
-    <Form.Group controlId="formEmail">
-    <Form.Label>Email:</Form.Label>
-    <Form.Control 
-    value={user.email}
-    onChange= {(e) => setEmail(e.target.value)}
-    />
-    </Form.Group>
-    </Form.Group>
-    <Form.Group controlId="formBirthday">
-    <Form.Label>Birthday:</Form.Label>
-    <Form.Control 
-    type="date"
-    value={user.Birthday}
-    onChange= {(e) => setBirthday(e.target.value)}
-    />
-    </Form.Group>
-    <Button variant="primary" type="Edit">Edit</Button>  
-</Form> */}
