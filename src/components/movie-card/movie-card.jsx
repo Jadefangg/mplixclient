@@ -2,12 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Movie card component
 export const MovieCard = ({ movie, favoriteMovies  }) => {
   function addMovie(){
+    const user = localStorage.getItem("user");
+    console.log(user);
+    const token = localStorage.getItem("token");
+    console.log(token);
+    axios.post(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`,
+    {header: {Authorization: `Bearer ${token}`}}
+    ) 
+    .then((response) => {
+        console.log(response);
+        alert(`The Movie: ${movies._id} was added to Favorite List`)
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
     favoriteMovies.add();
-  }
+  } //useEffect?
 
     return (
       <Card className="movie-card">
@@ -24,12 +39,14 @@ export const MovieCard = ({ movie, favoriteMovies  }) => {
                 </Card.Text>
                 <br />
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button className="movie-card-button" variant="button" style={{ cursor: "pointer"}} active>Open</Button>
-                  <Button onClick={addMovie}>Add to Favorite List</Button>
+                  <Button className="movie-card-button" active>Open</Button>
+                  <br/> <br/>
+                  <Button onClick={addMovie} className="movie-card-button">Add to Favorite List</Button> 
                   </Link>
             </Card.Body>
       </Card>
     );
+    // Button-fav mov-> needs function
     // query to add in the backend? 
     // let similarMovies = movies.filter((movie) => movie.Genre.Name === Genre.Name && movie._id !== _id);
     // console.log(similarMovies);
@@ -42,15 +59,7 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired,
     ImageURL: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    // Director: PropTypes.objectOf({
-    //   Name: PropTypes.string,
-    //   Bio: PropTypes.string,
-    //   Birthdate: PropTypes.string,
-    //   Deathdate: PropTypes.string
-    //   }),
-    // Genre: PropTypes.objectOf({
-    //   Name: PropTypes.string,
-    //   Description: PropTypes.string
-    // })  
-  }).isRequired
+    // Director: PropTypes.string,
+    // Genre: PropTypes.string
+    }).isRequired
 };
