@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from "react"; 
+import  {React, useEffect, useState} from "react"; 
 // import Form from "react-bootstrap/Form";
 import { Col, Row}  from "react-bootstrap";
-import { Button, Card, Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import axios from "axios";
 
 
     export const TestProfile= ({user, setUser, movies, token}) => {
-        
-    //    update user function
+        const [username, setUsername] = useState();
+        const [password, setPassword] = useState();
+        const [email, setEmail] = useState();
+        const [birthday, setBirthday] = useState();
+        //    update user function
             const handleSubmit= event => {
                 event.preventDefault();
                 const token = localStorage.getItem("token");
@@ -114,7 +117,7 @@ import axios from "axios";
                                             onChange={(e) => setBirthday(e.target.value)}  />
                                         </label>
                                         <br />
-                                        <button  type="submit"  className="button-edit">Update User</button>
+                                        <button  type="submit" >Update User</button>
                                     </form>
                                 </Card.Body>
                             </Card>
