@@ -3,6 +3,7 @@ import  {React, useEffect, useState} from "react";
 import { Col, Row}  from "react-bootstrap";
 import { Card, Container } from "react-bootstrap";
 import axios from "axios";
+import FavoriteMovies from "./favorite-movies";
 
 
     export const TestProfile= ({user, setUser, movies, token}) => {
@@ -48,7 +49,7 @@ import axios from "axios";
     // Fav-movies 
     const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id)) 
     // remove-fav_Movies
-     removeFavMovie = async (movie) =>{
+     removeFavMovie = async (movies) =>{
         const user = localStorage.getItem("user");
         console.log(user);
         const token = localStorage.getItem("token");
@@ -138,6 +139,11 @@ import axios from "axios";
                                     </form>
                                 </Card.Body>
                             </Card>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                        {/* <FavoriteMovies /> */}
                         </Col>
                     </Row>
             </Container>
