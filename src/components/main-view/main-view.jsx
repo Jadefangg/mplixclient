@@ -23,19 +23,6 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
     
-    // const toggleFavorite = (movie) => {
-    //     const index = favoriteMovies.indexOf(movie);
-    //     if (index > -1) {
-    //         onRemoveFavorite(movie);
-    //       setFavoriteMovies(
-    //         favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
-    //       );
-    //     } else {
-    //       addFavoriteMovie(movie);
-    //       setFavoriteMovies([...favoriteMovies, movie]);
-    //     }
-    //   };
-
     useEffect(() => {
         //verifying token-authentication to access request
         if(!token) {
@@ -61,11 +48,10 @@ export const MainView = () => {
         console.log(moviesFromApi)
         setMovies(moviesFromApi); 
         
-        // const findSimilarMovies = movies.filter((m), m.genreName === Name && m._id !== id);
+    
     });
 }, [token]);
-// similar movies function
-const favoriteMovies = () => {}
+
 
 return ( 
 <BrowserRouter>
@@ -84,7 +70,6 @@ return (
                 <Route
                 path="/signup"
                 element={
-                    // console.log("hi")|| 
                     <>
                     {user ? (
                     <Navigate to="/" />
@@ -146,10 +131,11 @@ return (
             <Route
                 path="/profile"
                 element={
+                    console.log(user) ||
                     <>
                     {user ? (
                         <Col className="mb-5" >
-                            <TestProfile   user={user} movies={movies}/>
+                            <TestProfile   user={user} setUser={setUser} movies={movies}/>
                         {/* <ProfileView  token={token}  user={user} movies={movies}/> */}
                     </Col>
                     ) : (
