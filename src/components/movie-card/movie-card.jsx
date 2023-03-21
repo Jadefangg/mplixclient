@@ -4,8 +4,11 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Movie card component
-export const MovieCard = ({ movie }) => {
-  
+export const MovieCard = ({ movie, favoriteMovies  }) => {
+  function addMovie(){
+    favoriteMovies.add();
+  }
+
     return (
       <Card className="movie-card">
         <Card.Img variant="top" src={movie.ImageURL} alt="movie-poster"/> 
@@ -22,6 +25,7 @@ export const MovieCard = ({ movie }) => {
                 <br />
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
                   <Button className="movie-card-button" variant="button" style={{ cursor: "pointer"}} active>Open</Button>
+                  <Button onClick={addMovie}>Add to Favorite List</Button>
                   </Link>
             </Card.Body>
       </Card>
