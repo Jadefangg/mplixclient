@@ -27,7 +27,7 @@ import axios from "axios";
                 .then((response) =>{
                     console.log(response.data);
                     alert("Profile updated!");
-                    window.open(`/profile`, "_self");
+                    // window.open(`/profile`, "_self");
             })
             .catch(function (error) {
                 console.log(error);
@@ -45,8 +45,25 @@ import axios from "axios";
             console.log(error);
         });
     }, [user.Username, token]);
-
-// let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id)) 
+    // Fav-movies 
+    const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id)) 
+    // remove-fav_Movies
+     removeFavMovie = async (movie) =>{
+        const user = localStorage.getItem("user");
+        console.log(user);
+        const token = localStorage.getItem("token");
+        console.log(token);
+        axios.delete(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movies._id}`,
+        {header: {Authorization: `Bearer ${token}`}}
+        ) 
+        .then((response) => {
+            console.log(response);
+            alert(`The Movie: ${movies._id} was removed from Favorite List`)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+     }
     return (
         <Container className="profile-view">
                 <Row className="d-flex justify-content-center p-4">
