@@ -12,9 +12,9 @@ export const MovieView = ({ movies, favoriteMovies }) => {
         // if movie is not found return to homepage
         return <Redirect to="/" />;
     };
-    function addMovie(){
-        favoriteMovies.add();
-      }
+    // function addMovie(){
+    //     favoriteMovies.add();
+    //   }
 return( 
     <Card className="movie-view">
         <Card.Img className="w-80" src={movie.ImageURL} alt="movie-poster"/>
@@ -22,18 +22,19 @@ return(
             <Card.Title>{movie.Title}</Card.Title>
             <br />
             <Card.Text> Director:      
-             {' ' + movie.Director.Name} 
+             {` + ${movie.Director.Name}`} 
             <br /> <br />
-            About: {' ' +movie.Director.Bio}
+            About: {` + ${movie.Director.Bio}`}
             <br /> <br />Birthdate: 
-            {' ' + movie.Director.Birthdate}
+            {` + ${movie.Director.Birthdate}` }
             <br /> <br />Genre: 
-            {' ' + movie.Genre.Name}
+            { ` + ${movie.Genre.Name}` }
             </Card.Text>
             <br />
             <Link to={"/"}>
-            <Button variant="button" className="back-button" style={{ cursor: "pointer"}} active>Back</Button>
-            <Button onClick={addMovie}>Add to Favorite List</Button>
+            <Button className="back-button" active>Back</Button>
+            <br/> <br/>
+            <Button /*onClick={addMovie}*/>Add to Favorite List</Button>
             </Link>
         </Card.Body>
     </Card> 
