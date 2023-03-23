@@ -42,6 +42,9 @@ export const SignupView = () => {
 // handleSubmit is the callback of onSubmit, tells the login API to validate user & password
 <Container>
     <Row>
+        <p class="movies-couch">Logo</p>
+    </Row>
+    <Row>
         <Col>
             <Card>
                 <Card.Body className="movies-couch">
