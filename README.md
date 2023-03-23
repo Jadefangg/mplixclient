@@ -1,14 +1,14 @@
 ## Movies-couch_client
-Table of Contents:
-Overview
-How to Run
-Links
-Process
-Technologies used
-Dependencies
-API
-Features
-Credits
+##Table of Contents:
+* [Overview]
+* [How to Run]
+* [Links]
+* [Process]
+* [Technologies Used]
+* [Dependencies]
+* [API]
+* [Features]
+* [Credits]
 ##Overview
 Movies-Couch is the client-side part of the app, based on the existing server side. This movie app allows users to access information about different movies.
 Users can register, update, their personal data, and manage as well their favorite movies.
