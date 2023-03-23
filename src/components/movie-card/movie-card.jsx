@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 // Movie card component
-export const MovieCard = ({ movie, favoriteMovies  }) => {
+export const MovieCard = ({ user, token, movie, favoriteMovies  }) => {
   function addMovie(){
     const user = localStorage.getItem("user");
     console.log(user);
@@ -16,7 +16,7 @@ export const MovieCard = ({ movie, favoriteMovies  }) => {
     ) 
     .then((response) => {
         console.log(response);
-        alert(`The Movie: ${movies._id} was added to Favorite List`)
+        alert(`The Movie: ${movie._id} was added to Favorite List`)
     })
     .catch(function (error) {
         console.log(error);
@@ -24,7 +24,7 @@ export const MovieCard = ({ movie, favoriteMovies  }) => {
     favoriteMovies.add();
   } //useEffect?
 
-    return (
+  return (
       <Card className="movie-card">
         <Card.Img variant="top" src={movie.ImageURL} alt="movie-poster"/> 
         <Card.Body className="movie-card">
@@ -59,7 +59,7 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired,
     ImageURL: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    // Director: PropTypes.string,
-    // Genre: PropTypes.string
+    Director: PropTypes.object,
+    Genre: PropTypes.object
     }).isRequired
 };
