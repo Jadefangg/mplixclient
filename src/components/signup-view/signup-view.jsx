@@ -1,22 +1,16 @@
 import { useState } from "react";
-// importing from r-bootstrap Form feature
 import Form from"react-bootstrap/Form";
-// importing Container
 import Container from "react-bootstrap/Container";
-// importing Row
 import Row  from "react-bootstrap/Row";
-// importing Columns
 import Col from "react-bootstrap/Col";
-// importing Card
 import Card from "react-bootstrap/Card";
-// importing from r-bootstrap Button feature
 import Button from "react-bootstrap/Button"; 
 
 export const SignupView = () => {
     const [username, setUsername] = useState(""); 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [birthdate, setBirthdate] = useState("");
+    const [birthday, setBirthday] = useState("");
 
 // validation of signup view
     const handleSubmit = (event) => {
@@ -25,7 +19,7 @@ export const SignupView = () => {
         Username: username,
         Password: password,
         Email: email,
-        Birthdate: birthdate
+        Birthday: birthday
         };
 
     fetch("https://movies-couch-api.vercel.app/users", {
@@ -47,6 +41,9 @@ export const SignupView = () => {
         return (
 // handleSubmit is the callback of onSubmit, tells the login API to validate user & password
 <Container>
+    <Row>
+        <p class="movies-couch">Logo</p>
+    </Row>
     <Row>
         <Col>
             <Card>
@@ -76,11 +73,11 @@ export const SignupView = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             required/>
                         </Form.Group>
-                        <Form.Group controlId="Birthdate">
-                            <Form.Label>Birthdate:</Form.Label>
+                        <Form.Group controlId="Birthday">
+                            <Form.Label>Birthday:</Form.Label>
                             <Form.Control type="date"
-                            value={birthdate}
-                            onChange={(e) => setBirthdate(e.target.value)}
+                            value={birthday}
+                            onChange={(e) => setBirthday(e.target.value)}
                             required
                             />
                         </Form.Group>

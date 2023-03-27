@@ -1,105 +1,154 @@
-//importing other components
 import { useState, useEffect } from "react";
-// importing Moviecard-component
-import { MovieCard } from "../movie-card/movie-card";
-//importing Movieview componentS
-import { MovieView } from "../movie-view/movie-view"; 
-// importing Login View
-import { LoginView } from "../login-view/login-view";
-// importing Signup View
-import { SignupView } from "../signup-view/signup-view";
-// importing breaking points
 import ThemeProvider from "react-bootstrap/ThemeProvider";
-// importing container feature
-// import Container from "react-bootstrap/Container";
-// importing row feature
 import Row   from "react-bootstrap/Row";
-// importing col feature
 import Col from "react-bootstrap/Col";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view"; 
+import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
+
+// import { ProfileView } from "../profile-view/profile-view";
+import { TestProfile } from "../profile-view/test-profile";
+
 
 // exporting Main view variabels
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    const [user, setUser] = useState(storedUser? storedUser : null);
+    
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState(null);
-
-useEffect(() => {
-    //verifying token-authentication to access request
-    if(!token) {
-        return;
-    }
-            
+    const [user, setUser] = useState(storedUser? storedUser : null);
+    
+    useEffect(() => {
+        //verifying token-authentication to access request
+        if(!token) {
+            return;
+        }                
     fetch("https://movies-couch-api.vercel.app/movies", {
-    headers: {Authorization: `Bearer ${token}`}, 
+    headers: {Authorization: `Bearer ${token}`},  
     	})
     .then((response) => response.json())
     .then((movies) => {
         console.log(movies); 
         const moviesFromApi = movies.map((movie) => {
-            console.log(Object.keys(movies))
+            // console.log(Object.keys(movies))
             return {
-                _id: movie.key,
+                _id: movie._id,
                 Title: movie.Title,
                 ImageURL: movie.ImageURL, 
-                Description: movie.Description, //destructure the object to be able to render it
+                Description: movie.Description, 
                 Director: movie.Director,
                 Genre: movie.Genre
             };    
         });
-        console.log(moviesFromApi[0])
+        console.log(moviesFromApi)
         setMovies(moviesFromApi); 
-        // let similarMovies = movies.filter(movie.Genre.Name === Genre.Name && movie._id !== _id);
-        // console.log(similarmovies);
-        // or
-        // let similarMovies = movies.filter((m) m.genreName === Name && m._id !== id);
+        
+    
     });
-}, []); //[token]
- 
-return ( //<Container> -> is rendering issues & I do not know why
+}, [token]);
+
+
+return ( 
+<BrowserRouter>
 <ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
     minBreakpoint="xs">
+        <NavigationBar
+        user={user} 
+        onLoggedOut={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+        }}
+         />
     <Row  className="main-view" >
-        {!user ? (
-            <Col md={5}>
-            <LoginView onLoggedIn={(user) => setUser(user)} />
-            or
-            <SignupView />
-            </Col>
-        // display movie-view when movie is selected- ternary operator
-        ): selectedMovie ? (
-            <Col md={6}>
-            <MovieView 
-            movie={selectedMovie}
-            onBackClick={() => setSelectedMovie(null)}
-            />
-            {/* <br/>
-             <Col md={2}>
-                {similarMovies.map()}
-             </Col>
-            */}
-            </Col>
-            ): movies.length === 0 ? (
-                <div>The list is empty!</div>
-             ): ( // display movie-card with logout button, if user does not select a movie
-                <>
-                {movies.map((movie) => (
-                <Col className="mb-5" key={movie._id} md={4}>
-                 <MovieCard  movie={movie} 
-                 onMovieClick={(newSelectedMovie) => {
-                    setSelectedMovie(newSelectedMovie);
-                }} 
+        <Routes>
+                <Route
+                path="/signup"
+                element={
+                    <>
+                    {user ? (
+                    <Navigate to="/" />
+                    ):( <Col md={5}>
+                            <SignupView />
+                        </Col>
+                    )}
+                    </>
+                }
                 />
-                </Col>
-            ))}
-                {/* <Button onClick={() => { setUser(null); }}>Logout</Button> */}
+                <Route 
+                path="/login"
+                element={
+                    <>
+                    {user ? (
+                        <Navigate to="/" />
+                    ): ( <Col md={5}>
+                        <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token); }}  /> 
+                        </Col>
+                    )}
+                    </>
+                }
+                />
+                <Route
+                path="/movies/:movieId"
+                element={
+                    <>
+                    {!user ? (
+                        <Navigate to="/login" replace/>
+                        ): movies.length === 0 ? (
+                            <div>The list is empty!</div>
+                            ): ( <Col md={8}>
+                            <MovieView movies={movies} />
+                            </Col>
+                        )}
+                    </>
+                }
+                />
+                <Route
+                path="/"
+                element={
+                    <>
+                    {!user ? (
+                        <Navigate to="/login" replace/>
+                    ) : movies.length === 0 ? (
+                        <div>The list is empty!</div>
+                    ) : (
+                        <>
+                        {movies.map((movie) => (
+                        <Col className="mb-5" key={movie._id} md={4}>
+                            <MovieCard  movie={movie} />
+                        </Col>
+                     ))}
+                    </>
+                )}
                 </>
-
-            )}
+              }
+            />
+            <Route
+                path="/profile"
+                element={
+                    console.log(user) ||
+                    <>
+                    {user ? (
+                        <Col className="mb-5" >
+                            <TestProfile   user={user} setUser={setUser} movies={movies}/>
+                        {/* <ProfileView  token={token}  user={user} movies={movies}/> */}
+                    </Col>
+                    ) : (
+                    <Navigate to="/login" />
+                    )
+                }
+                </>
+              }
+            />
+        </Routes>
     </Row>
 </ThemeProvider>
+</BrowserRouter>
     );
 };
 

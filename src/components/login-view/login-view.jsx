@@ -1,16 +1,10 @@
 import React from "react";
 import { useState } from "react";
-// importing Container
 import Container from "react-bootstrap/Container";
-// importing Card
 import Card from "react-bootstrap/Card";
-// importing Columns
 import Col from "react-bootstrap/Col";
-// importing Row
 import Row from "react-bootstrap/Row";
-// import Button feature 
 import Form from "react-bootstrap/Form";
-// importing Button feature 
 import Button from "react-bootstrap/Button";
 
 
@@ -52,13 +46,16 @@ export const LoginView = ({ onLoggedIn }) => {
         // handle submit is the callback of onSubmit, tells the login API to validate user & password
         <Container>
             <Row>
+                <p class="movies-couch">Logo</p>
+            </Row>
+            <Row>
                 <Col>
                     <Card>
                             <Card.Body className="movies-couch">
                             <Card.Title>Pleas Login</Card.Title>
                             <Form className="movies-couch" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
-                                <Form.Label>Username:</Form.Label>
+                                <Form.Label>User:</Form.Label>
                                 <Form.Control 
                                 type="text"
                                 value={username}

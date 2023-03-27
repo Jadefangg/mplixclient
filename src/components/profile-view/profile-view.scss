@@ -1,0 +1,17 @@
+$color: orange;
+$backgroundcolor: black;
+.profile-view{
+    color: $color;
+    background-color: $backgroundcolor
+ }
+ .form-profile{
+    color: $color;
+    background-color: $backgroundcolor;
+    justify-content: center;
+    align-items: center;
+ }
+.li-element {
+align-items: center;
+align-content: center;
+list-style: none;
+}
