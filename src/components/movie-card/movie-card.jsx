@@ -5,24 +5,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 // Movie card component
-export const MovieCard = ({ user, token, movie, favoriteMovies  }) => {
-  function addMovie(){
-    const user = localStorage.getItem("user");
-    console.log(user);
-    const token = localStorage.getItem("token");
-    console.log(token);
-    axios.post(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`,
-    {header: {Authorization: `Bearer ${token}`}}
-    ) 
-    .then((response) => {
-        console.log(response);
-        alert(`The Movie: ${movie._id} was added to Favorite List`)
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-    favoriteMovies.add();
-  } //useEffect?
+ function MovieCard ({ movie, removeFavMovie  }) {
+  
 
   return (
       <Card className="movie-card">
@@ -41,17 +25,19 @@ export const MovieCard = ({ user, token, movie, favoriteMovies  }) => {
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
                   <Button className="movie-card-button" active>Open</Button>
                   <br/> <br/>
-                  <Button onClick={addMovie} className="movie-card-button">Add to Favorite List</Button> 
+                  <Button 
+                  onClick={function (event) {event.preventDefault();
+                    removeFavMovie(movie._id);
+                  }} className="movie-card-button">Remove from Favorite List</Button> 
                   </Link>
             </Card.Body>
       </Card>
     );
-    // Button-fav mov-> needs function
-    // query to add in the backend? 
-    // let similarMovies = movies.filter((movie) => movie.Genre.Name === Genre.Name && movie._id !== _id);
-    // console.log(similarMovies);
+    
 
 };
+
+export {MovieCard};
 
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
