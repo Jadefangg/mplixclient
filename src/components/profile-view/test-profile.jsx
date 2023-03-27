@@ -7,11 +7,26 @@ import FavoriteMovies from "./favorite-movies";
 
 
     export const TestProfile= ({user, setUser, movies, token}) => {
+        
         const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
         const [email, setEmail] = useState("");
         const [birthday, setBirthday] = useState("");
+        //get users 
+    useEffect(() =>{
+        const token = window.localStorage.getItem("token");
+        axios.get(`https://movies-couch-api.vercel.app/users/${user.Username}`,
+        {headers: {Authorization: `Bearer ${token}`}})
+        .then(response => {
+            setUser(response.data);
+        })
+        .catch(error => {
+            console.error("An error ocurred" + error);
+        });
+    }, [user.Username, token]);
+    
         //    update user function
+        // const updateUser {};
             const handleSubmit= (event) => {
                 event.preventDefault();
                 const token = localStorage.getItem("token");
@@ -33,27 +48,26 @@ import FavoriteMovies from "./favorite-movies";
             .catch(function (error) {
                 console.log(error);
             });
-    };
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        setUsername(e.target.value);
-        setPassword(e.target.value);
-        setEmail(e.target.value);
-        setBirthday(e.target.value);
-    }   
-     //get users 
-    useEffect(() =>{
-        const token = localStorage.getItem("token");
-        axios.get(`https://movies-couch-api.vercel.app/users/${user.Username}`,
+        };
+        const handleUpdate = (e) => {
+            e.preventDefault();
+            setUsername(e.target.value);
+            setPassword(e.target.value);
+            setEmail(e.target.value);
+            setBirthday(e.target.value);
+        }   
+    
+    // delete user
+    const deleteUser = function () {
+        axios.delete(`https://movies-couch-api.vercel.app/users/${user.Username}`,
         {headers: {Authorization: `Bearer ${token}`}})
         .then(response => {
-            setUser(response.data);
+            console.log(response.data)
         })
         .catch(error => {
-            console.log(error);
-        });
-    }, [user.Username, token]);
-    // delete user
+            console.error("An error ocurred" + error)
+        })
+    }
     // Fav-movies 
     const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id)) 
     // remove-fav_Movies
@@ -70,9 +84,10 @@ import FavoriteMovies from "./favorite-movies";
         alert(`The Movie: ${movies._id} was removed from Favorite List`)
     })
     .catch(function (error) {
-        console.log(error);
+        console.error(" An error ocurred" +error);
     })
  }
+
 
     return (
         <Container className="profile-view">
@@ -82,16 +97,16 @@ import FavoriteMovies from "./favorite-movies";
                             <Card.Body className="profile-view">
                             <>
                              <h3>Username:</h3>
-                             <p >{username}</p>
+                             <p >{user.Username}</p>
                              <br/>
                              {/* <h3>Password:</h3>
                              <p >{setPassword}</p>
                              <br/> */}
                              <h3>Email:</h3>
-                             <p >{email}</p>
+                             <p >{user.Email}</p>
                              <br/>
                              <h3 >Birthday:</h3>
-                             <p >{birthday}</p>
+                             <p >{user.Birthday.slice(0,10)}</p>
                              <br/>
                             </>
                             </Card.Body>
@@ -112,7 +127,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="text"
                                                 name="username"
-                                                class=".li-element"
+                                                class=""
                                                 // value={user.Username}
                                                 onChange={(e) => handleUpdate(e)}
                                                 /> 
@@ -125,7 +140,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="password"
                                                 name="password"
-                                                class=".li-element"
+                                                class=""
                                                 // value={user.Password}
                                                 onChange={(e) => handleUpdate(e)}
                                                  />
@@ -138,7 +153,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="email"
                                                 name="email"
-                                                class=".li-element"
+                                                class=""
                                                 // value={user.Email}
                                                 onChange={(e) => handleUpdate(e)}  
                                                 />
@@ -151,7 +166,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="date" 
                                                 name="birthday"
-                                                class=".li-element"
+                                                class=""
                                                 // value={user.Birthday}
                                                 onChange={(e) => handleUpdate(e)}
                                                  />
@@ -159,7 +174,10 @@ import FavoriteMovies from "./favorite-movies";
                                             </ListGroup.Item>
                                             <br />
                                             <ListGroup.Item>
-                                            <button  type="submit" class=".li-element">Update User</button>
+                                            <button  type="submit" class="" onChange={()=> updateUser()}>Update User</button>
+                                            </ListGroup.Item>
+                                            <ListGroup.Item>
+                                            <button type="submit" class="" onChange={()=> deleteUser()} >Delete User</button>
                                             </ListGroup.Item>
                                         </form>
                                     </ListGroup>
@@ -176,12 +194,12 @@ import FavoriteMovies from "./favorite-movies";
             </Container>
         ); 
 };
-TestProfile.propTypes = {
-    user: Proptypes.shape({
-    _id: Proptypes.number.isRequired,
-    username: Proptypes.string.isRequired,
-    password: Proptypes.string.isRequired,
-    email: Proptypes.string.isRequired,
-    birthday: Proptypes.date.isRequired
-})
-};
+// TestProfile.propTypes = {
+//     user: Proptypes.shape({
+//     _id: Proptypes.number.isRequired,
+//     username: Proptypes.string.isRequired,
+//     password: Proptypes.string.isRequired,
+//     email: Proptypes.string.isRequired,
+//     birthday: Proptypes.date.isRequired
+// })
+// };
