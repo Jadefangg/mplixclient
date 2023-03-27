@@ -4,6 +4,8 @@ import Row   from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { toast } from "react-bootstrap";
+import "react-toastify/dist/ReactToastify.css";
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; 
@@ -15,7 +17,7 @@ import { TestProfile } from "../profile-view/test-profile";
 
 
 // exporting Main view variabels
-export const MainView = () => {
+function MainView()  {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     
@@ -23,6 +25,12 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
     
+
+    // run whenever a user logs out
+    const onLoggedOut= function () {
+        setUser(null);
+        setToken(null);
+        localStorage.clear();}
     useEffect(() => {
         //verifying token-authentication to access request
         if(!token) {
@@ -52,6 +60,75 @@ export const MainView = () => {
     });
 }, [token]);
 
+//add Fav-movie
+const addFavMovie = function (_id) {
+    axios.put(
+      `https://myflix-movie-app-elenauj.onrender.com/users/${user.Username}/topMovies/${movieId}`,
+      {
+       headers: {Authorization: `Bearer ${token}`} }
+    )
+      .then(function (response) {
+        if (response.status === 401) {
+          throw new Error(
+            "Sorry, you're not authorized to access this resource. "
+          );
+        } else if (response.status === 404) {
+            throw new Error('No such movie found.');
+        } else if (response.status === 409) {
+          throw new Error('You already added this movie to the list.');
+        } else if (response.ok) {
+          return response.json();
+        }
+      })
+      .then(function (updatedUser) {
+        toast.success('Movie has been added to your Favorite Movies.');
+        setUser(updatedUser);
+      })
+      .catch(function (error) {
+        if (error.message) {
+          toast.error(error.message);
+        } else {
+          toast.error(
+            'An error occurred while trying to add movie. Please try again later.'
+          );
+        }
+        console.error('An error occurred:' + error);
+      });
+  };
+ // remove Fav-movie
+  const removeFavMovie = function (movieId) {
+    axios.delete(
+      `https://myflix-movie-app-elenauj.onrender.com/users/${user.Username}/topMovies/${movieId}`,
+      {
+        headers: {Authorization: `Bearer ${token}`},
+      }
+    )
+      .then(function (response) {
+        if (response.status === 401) {
+          throw new Error(
+            "Sorry, you're not authorized to access this resource. "
+          );
+        } else if (response.ok) {
+          return response.json();
+        }
+      })
+      .then(function (updatedUser) {
+        toast.success('Movie has been removed from your Favorite Movies.');
+        setUser(updatedUser);
+      })
+      .catch(function (error) {
+        if (error.message) {
+          toast.error(error.message);
+        } else {
+          toast.error(
+            'An error occurred while trying to delete. Please try again later.'
+          );
+        }
+        console.error('An error occurred:' + error);
+      });
+  }; 
+
+
 
 return ( 
 <BrowserRouter>
@@ -59,11 +136,7 @@ return (
     minBreakpoint="xs">
         <NavigationBar
         user={user} 
-        onLoggedOut={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-        }}
+        onLoggedOut={onLoggedOut}
          />
     <Row  className="main-view" >
         <Routes>
@@ -102,7 +175,8 @@ return (
                         ): movies.length === 0 ? (
                             <div>The list is empty!</div>
                             ): ( <Col md={8}>
-                            <MovieView movies={movies} />
+                            <MovieView movies={movies} addFavMovie={addFavMovie} removeFavMovie={removeFavMovie}
+                            favoriteMovies={user.favoriteMovies} />
                             </Col>
                         )}
                     </>
@@ -135,8 +209,9 @@ return (
                     <>
                     {user ? (
                         <Col className="mb-5" >
-                            <TestProfile   user={user} setUser={setUser} movies={movies}/>
-                        {/* <ProfileView  token={token}  user={user} movies={movies}/> */}
+                            <TestProfile   user={user} setUser={setUser} movies={movies} onLoggedOut={onLoggedOut}/>
+                        {/* <ProfileView  token={token}  user={user}  setUser={setUser}  
+                        movies={movies} removeFavMovie={removeFavMovie} onLoggedOut={onLoggedOut}/>*/}
                     </Col>
                     ) : (
                     <Navigate to="/login" />
@@ -152,3 +227,4 @@ return (
     );
 };
 
+export {MainView};
