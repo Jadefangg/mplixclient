@@ -1,17 +1,15 @@
 import React from "react";
 
-function UserInfo({ Username, Email, Password, Birthday}) {
+function UserInfo({ Username, Email, Birthday}) {
     return(
         <>
         <h4>Your info</h4>
-        <p placholder="Name" >{Username}</p>
+        <p placholder="Name" >{user.Username}</p>
         <br/>
-        <p placholder="e-mail">{Email}</p>
+        <p placholder="e-mail">{user.Email}</p>
         <br/>
-        <p placholder="password">{Password}</p>
-        <br/>
-        <p placholder="birthday">{Birthday}</p>
+        <p placholder="birthday">{user.Birthday}</p>
         </>
     )
 }
-export default UserInfo
+export {UserInfo}; 
