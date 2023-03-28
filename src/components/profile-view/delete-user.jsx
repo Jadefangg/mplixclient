@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { toast } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 
-function DeleteUser ({onLoggeOut, token, user}) {
+function DeleteUser ({onLoggedOut, token, user}) {
     const deleteUser = function () {
         axios.delete(`https://movies-couch-api.vercel.app/users/${user.Username}`, 
         {headers: {Authorization: `Bearer ${token}`}})
@@ -14,7 +14,7 @@ function DeleteUser ({onLoggeOut, token, user}) {
                 throw new Error("User was not found.")
             } else if(response.ok) {
                 toast.success(`You succesfully deleted the account with the username ${user.Username}.`);
-                onLoggeOut();
+                onLoggedOut();
             }
         })
         .catch(function (error) {
