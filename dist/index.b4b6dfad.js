@@ -51262,7 +51262,7 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _favoriteMovies = require("./favorite-movies");
 var _favoriteMoviesDefault = parcelHelpers.interopDefault(_favoriteMovies);
 var _s = $RefreshSig$();
-const TestProfile = ({ user , setUser , movies , token  })=>{
+const TestProfile = ({ user , setUser , movies , token , onLoggedOut  })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -51285,7 +51285,7 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
         token
     ]);
     //    update user function
-    // const updateUser {};
+    // implement function such as in userupdate file
     const handleSubmit = (event)=>{
         event.preventDefault();
         const token = localStorage.getItem("token");
@@ -51302,7 +51302,6 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
         }).then((response)=>{
             console.log(response.data);
             alert("Profile updated!");
-        // window.open(`/profile`, "_self");
         }).catch(function(error) {
             console.log(error);
         });
@@ -51320,10 +51319,17 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((response)=>{
-            console.log(response.data);
-        }).catch((error)=>{
-            console.error("An error ocurred" + error);
+        }).then(function(response) {
+            if (response.status === 401) throw new Error("Sorry, you're not authorized to access this resource.");
+            else if (response.status === 404) throw new Error("User was not found.");
+            else if (response.ok) {
+                toast.success(`You succesfully deleted the account with the username ${user.Username}.`);
+                onLoggedOut();
+            }
+        }).catch(function(error) {
+            if (error.message) toast.error(error.message);
+            else toast.error("An error ocurred while trying to delete. Please try again later.");
+            console.error("An error occured: " + error);
         });
     };
     // Fav-movies 
@@ -51360,79 +51366,79 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                         children: "Username:"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 99,
+                                        lineNumber: 110,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         children: user.Username
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 100,
+                                        lineNumber: 111,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 101,
+                                        lineNumber: 112,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         children: "Email:"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 105,
+                                        lineNumber: 116,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         children: user.Email
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 106,
+                                        lineNumber: 117,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 107,
+                                        lineNumber: 118,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         children: "Birthday:"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 108,
+                                        lineNumber: 119,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         children: user.Birthday.slice(0, 10)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 109,
+                                        lineNumber: 120,
                                         columnNumber: 30
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 110,
+                                        lineNumber: 121,
                                         columnNumber: 30
                                     }, undefined)
                                 ]
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/test-profile.jsx",
-                            lineNumber: 97,
+                            lineNumber: 108,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/test-profile.jsx",
-                        lineNumber: 96,
+                        lineNumber: 107,
                         columnNumber: 25
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/test-profile.jsx",
-                    lineNumber: 95,
+                    lineNumber: 106,
                     columnNumber: 21
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/test-profile.jsx",
-                lineNumber: 94,
+                lineNumber: 105,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -51446,12 +51452,12 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                     children: "Profile Information"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 131,
                                     columnNumber: 37
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {}, void 0, false, {
                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                    lineNumber: 121,
+                                    lineNumber: 132,
                                     columnNumber: 37
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup), {
@@ -51470,23 +51476,23 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                                             onChange: (e)=>handleUpdate(e)
                                                         }, void 0, false, {
                                                             fileName: "src/components/profile-view/test-profile.jsx",
-                                                            lineNumber: 127,
+                                                            lineNumber: 138,
                                                             columnNumber: 49
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                                    lineNumber: 125,
+                                                    lineNumber: 136,
                                                     columnNumber: 45
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 124,
+                                                lineNumber: 135,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 136,
+                                                lineNumber: 147,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -51501,23 +51507,23 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                                             onChange: (e)=>handleUpdate(e)
                                                         }, void 0, false, {
                                                             fileName: "src/components/profile-view/test-profile.jsx",
-                                                            lineNumber: 140,
+                                                            lineNumber: 151,
                                                             columnNumber: 49
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                                    lineNumber: 138,
+                                                    lineNumber: 149,
                                                     columnNumber: 45
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 137,
+                                                lineNumber: 148,
                                                 columnNumber: 44
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 149,
+                                                lineNumber: 160,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -51532,23 +51538,23 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                                             onChange: (e)=>handleUpdate(e)
                                                         }, void 0, false, {
                                                             fileName: "src/components/profile-view/test-profile.jsx",
-                                                            lineNumber: 153,
+                                                            lineNumber: 164,
                                                             columnNumber: 49
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                                    lineNumber: 151,
+                                                    lineNumber: 162,
                                                     columnNumber: 45
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 150,
+                                                lineNumber: 161,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 162,
+                                                lineNumber: 173,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -51563,23 +51569,23 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                                             onChange: (e)=>handleUpdate(e)
                                                         }, void 0, false, {
                                                             fileName: "src/components/profile-view/test-profile.jsx",
-                                                            lineNumber: 166,
+                                                            lineNumber: 177,
                                                             columnNumber: 49
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 175,
                                                     columnNumber: 45
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 163,
+                                                lineNumber: 174,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 175,
+                                                lineNumber: 186,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -51590,12 +51596,12 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                                     children: "Update User"
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                                    lineNumber: 177,
+                                                    lineNumber: 188,
                                                     columnNumber: 45
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 176,
+                                                lineNumber: 187,
                                                 columnNumber: 45
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -51606,61 +51612,61 @@ const TestProfile = ({ user , setUser , movies , token  })=>{
                                                     children: "Delete User"
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 191,
                                                     columnNumber: 45
                                                 }, undefined)
                                             }, void 0, false, {
                                                 fileName: "src/components/profile-view/test-profile.jsx",
-                                                lineNumber: 179,
+                                                lineNumber: 190,
                                                 columnNumber: 45
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/profile-view/test-profile.jsx",
-                                        lineNumber: 123,
+                                        lineNumber: 134,
                                         columnNumber: 41
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/test-profile.jsx",
-                                    lineNumber: 122,
+                                    lineNumber: 133,
                                     columnNumber: 37
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/test-profile.jsx",
-                            lineNumber: 119,
+                            lineNumber: 130,
                             columnNumber: 33
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/test-profile.jsx",
-                        lineNumber: 118,
+                        lineNumber: 129,
                         columnNumber: 29
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/test-profile.jsx",
-                    lineNumber: 117,
+                    lineNumber: 128,
                     columnNumber: 25
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/test-profile.jsx",
-                lineNumber: 116,
+                lineNumber: 127,
                 columnNumber: 20
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {}, void 0, false, {
                     fileName: "src/components/profile-view/test-profile.jsx",
-                    lineNumber: 189,
+                    lineNumber: 200,
                     columnNumber: 25
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/test-profile.jsx",
-                lineNumber: 188,
+                lineNumber: 199,
                 columnNumber: 21
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/test-profile.jsx",
-        lineNumber: 93,
+        lineNumber: 104,
         columnNumber: 9
     }, undefined);
 }; // TestProfile.propTypes = {
