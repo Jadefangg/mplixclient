@@ -6,7 +6,7 @@ import axios from "axios";
 import FavoriteMovies from "./favorite-movies";
 
 
-    export const TestProfile= ({user, setUser, movies, token}) => {
+    export const TestProfile= ({user, setUser, movies, token, onLoggedOut}) => {
         
         const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ import FavoriteMovies from "./favorite-movies";
     }, [user.Username, token]);
     
         //    update user function
-        // const updateUser {};
+        // implement function such as in userupdate file
             const handleSubmit= (event) => {
                 event.preventDefault();
                 const token = localStorage.getItem("token");
@@ -43,7 +43,6 @@ import FavoriteMovies from "./favorite-movies";
                 .then((response) =>{
                     console.log(response.data);
                     alert("Profile updated!");
-                    // window.open(`/profile`, "_self");
             })
             .catch(function (error) {
                 console.log(error);
@@ -59,15 +58,27 @@ import FavoriteMovies from "./favorite-movies";
     
     // delete user
     const deleteUser = function () {
-        axios.delete(`https://movies-couch-api.vercel.app/users/${user.Username}`,
+        axios.delete(`https://movies-couch-api.vercel.app/users/${user.Username}`, 
         {headers: {Authorization: `Bearer ${token}`}})
-        .then(response => {
-            console.log(response.data)
+        .then(function (response) {
+            if (response.status === 401) {
+                throw new Error("Sorry, you're not authorized to access this resource.");
+            } else if( response.status === 404) {
+                throw new Error("User was not found.")
+            } else if(response.ok) {
+                toast.success(`You succesfully deleted the account with the username ${user.Username}.`);
+                onLoggedOut();
+            }
         })
-        .catch(error => {
-            console.error("An error ocurred" + error)
-        })
-    }
+        .catch(function (error) {
+            if (error.message) {
+                toast.error(error.message);
+            } else {
+                toast.error("An error ocurred while trying to delete. Please try again later.");
+            }
+            console.error("An error occured: " + error)
+        });
+    };
     // Fav-movies 
     const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id)) 
     // remove-fav_Movies
