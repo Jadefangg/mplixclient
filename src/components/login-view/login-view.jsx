@@ -46,7 +46,7 @@ export const LoginView = ({ onLoggedIn }) => {
         // handle submit is the callback of onSubmit, tells the login API to validate user & password
         <Container>
             <Row>
-                <p class="movies-couch">Logo</p>
+                <p className="movies-couch">Logo</p>
             </Row>
             <Row>
                 <Col>
