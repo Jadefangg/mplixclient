@@ -24772,7 +24772,22 @@ textarea.form-control-lg {
   justify-content: center;
 }
 
-.movie-view, .movie-card {
+.movie-view {
+  color: orange;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+}
+
+.movie-card {
+  color: orange;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+  margin-top: 20px;
+}
+
+.movie-card-body {
   color: orange;
   width: 100%;
   height: auto;

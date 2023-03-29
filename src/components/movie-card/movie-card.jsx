@@ -9,19 +9,13 @@ import axios from "axios";
   
 
   return (
-      <Card className="movie-card">
+      <Card className="movie-card" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={movie.ImageURL} alt="movie-poster"/> 
-        <Card.Body className="movie-card">
+        <Card.Body className="movie-card-body">
               <Card.Title>{movie.Title}</Card.Title>
                 <Card.Text>
-                <br />
-                {movie.Description}
-                <br /><br />
-                {movie.Director.Name} 
-                <br /><br />
                 {movie.Genre.Name} 
                 </Card.Text>
-                <br />
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
                   <Button className="movie-card-button" active>Open</Button>
                   <br/> <br/>
