@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -10,29 +10,54 @@ function MovieCard({ movie, user, updateUser }) {
   const token = window.localStorage.getItem("token");
 
   const addFavorite = () => {
-    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`,{
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` }
+    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` }
     })
-    .then(response => {
+      .then(response => {
         if (response.ok) {
-            return response.json();
+          return response.json();
         } else {
-            alert("Failed");
-            return false;
+          alert("Failed");
+          return false;
         }
-    })
-    .then(user => {
+      })
+      .then(user => {
         if (user) {
-            alert("Movie added to favorites");
-            setInFavorite(true);
-            updateUser(user);
+          alert("Movie added to favorites");
+          setInFavorite(true);
+          updateUser(user);
         }
-    })
-    .catch(e => {
+      })
+      .catch(e => {
         alert(e);
-    });
-}
+      });
+  }
+
+  const removeFavorite = () => {
+    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("Failed");
+          return false;
+        }
+      })
+      .then(user => {
+        if (user) {
+          alert("Movie deleted from favorites");
+          setInFavorite(false);
+          updateUser(user);
+        }
+      })
+      .catch(e => {
+        alert(e);
+      });
+  }
 
   return (
     <Card className="movie-card" style={{ width: '18rem' }}>
@@ -48,21 +73,21 @@ function MovieCard({ movie, user, updateUser }) {
           {inFavorite ? <Button
             onClick={(e) => {
               e.preventDefault();
-              remFavorite(movie._id);
-            }} 
+              removeFavorite(movie._id);
+            }}
             className="movie-card-button"
           >
-           Remove from Favorite</Button>
-           : <Button
-           onClick={(e) => {
-             e.preventDefault();
-             console.log(movie._id);
-             addFavorite(movie._id);
-           }} 
-           className="movie-card-button"
-         >
-          Add to Favorite</Button>
-           }
+            Remove from Favorite</Button>
+            : <Button
+              onClick={(e) => {
+                e.preventDefault();
+                console.log(movie._id);
+                addFavorite(movie._id);
+              }}
+              className="movie-card-button"
+            >
+              Add to Favorite</Button>
+          }
         </Link>
       </Card.Body>
     </Card>
