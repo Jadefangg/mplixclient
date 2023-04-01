@@ -207,7 +207,6 @@ function MainView() {
             <Route
               path="/profile"
               element={
-                console.log(user) ||
                 <>
                   {user ? (
                     <Col className="mb-5" >
