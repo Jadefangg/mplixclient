@@ -1,7 +1,7 @@
 ## Movies-couch_client
 ##Table of Contents:
 * [Overview](#overview)
-* [How to Run] (#how-to-run)
+* [How to Run](#how-to-run)
 * [Links](#links)
 * [Process](#process)
 * [Technologies Used](#technologies-used)
