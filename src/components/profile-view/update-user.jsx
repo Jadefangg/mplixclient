@@ -131,9 +131,6 @@ export const UpdateView = ({ user }) => {
                                         Update User
                                     </Button>
                                 </ListGroup.Item>
-                                {/* <ListGroup.Item>
-                                    <button type="submit" className="" onChange={() => deleteUser()} >Delete User</button>
-                                </ListGroup.Item> */}
                             </form>
                         </ListGroup>
                     </Card.Body>

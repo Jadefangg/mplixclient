@@ -6,6 +6,7 @@ import axios from "axios";
 import FavoriteMovies from "./favorite-movies";
 import { UserInfo } from "./user-info";
 import { UpdateView } from "./update-user";
+import { DeleteUser } from "./delete-user";
 
 
 export const TestProfile = ({ user, setUser, movies, token, onLoggedOut }) => {
@@ -27,29 +28,6 @@ export const TestProfile = ({ user, setUser, movies, token, onLoggedOut }) => {
             });
     }, []);
 
-    // delete user
-    const deleteUser = function () {
-        axios.delete(`https://movies-couch-api.vercel.app/users/${user.Username}`,
-            { headers: { Authorization: `Bearer ${token}` } })
-            .then(function (response) {
-                if (response.status === 401) {
-                    throw new Error("Sorry, you're not authorized to access this resource.");
-                } else if (response.status === 404) {
-                    throw new Error("User was not found.")
-                } else if (response.ok) {
-                    toast.success(`You succesfully deleted the account with the username ${user.Username}.`);
-                    onLoggedOut();
-                }
-            })
-            .catch(function (error) {
-                if (error.message) {
-                    toast.error(error.message);
-                } else {
-                    toast.error("An error ocurred while trying to delete. Please try again later.");
-                }
-                console.error("An error occured: " + error)
-            });
-    };
     // Fav-movies 
     const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id))
     // remove-fav_Movies
@@ -87,6 +65,11 @@ export const TestProfile = ({ user, setUser, movies, token, onLoggedOut }) => {
                 <Col>
                     {/* <FavoriteMovies /> */}
                     {/* <Button onClick={removeFavMovie} className="movie-card-button">Remove from Favorite List</Button> */}
+                </Col>
+            </Row>
+            <Row className="d-flex justify-content-center p-4">
+                <Col >
+                    <DeleteUser user={user} />
                 </Col>
             </Row>
         </Container>

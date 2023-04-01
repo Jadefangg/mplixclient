@@ -51237,6 +51237,7 @@ var _favoriteMovies = require("./favorite-movies");
 var _favoriteMoviesDefault = parcelHelpers.interopDefault(_favoriteMovies);
 var _userInfo = require("./user-info");
 var _updateUser = require("./update-user");
+var _deleteUser = require("./delete-user");
 var _s = $RefreshSig$();
 const TestProfile = ({ user , setUser , movies , token , onLoggedOut  })=>{
     _s();
@@ -51258,25 +51259,6 @@ const TestProfile = ({ user , setUser , movies , token , onLoggedOut  })=>{
             console.error("An error ocurred" + error);
         });
     }, []);
-    // delete user
-    const deleteUser = function() {
-        (0, _axiosDefault.default).delete(`https://movies-couch-api.vercel.app/users/${user.Username}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then(function(response) {
-            if (response.status === 401) throw new Error("Sorry, you're not authorized to access this resource.");
-            else if (response.status === 404) throw new Error("User was not found.");
-            else if (response.ok) {
-                toast.success(`You succesfully deleted the account with the username ${user.Username}.`);
-                onLoggedOut();
-            }
-        }).catch(function(error) {
-            if (error.message) toast.error(error.message);
-            else toast.error("An error ocurred while trying to delete. Please try again later.");
-            console.error("An error occured: " + error);
-        });
-    };
     // Fav-movies 
     const favoriteMovies = movies.filter((m)=>user.FavoriteMovies.includes(m._id));
     // remove-fav_Movies
@@ -51306,17 +51288,17 @@ const TestProfile = ({ user , setUser , movies , token , onLoggedOut  })=>{
                         user: user
                     }, void 0, false, {
                         fileName: "src/components/profile-view/test-profile.jsx",
-                        lineNumber: 78,
+                        lineNumber: 56,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/test-profile.jsx",
-                    lineNumber: 77,
+                    lineNumber: 55,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/test-profile.jsx",
-                lineNumber: 76,
+                lineNumber: 54,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -51326,34 +51308,54 @@ const TestProfile = ({ user , setUser , movies , token , onLoggedOut  })=>{
                         user: user
                     }, void 0, false, {
                         fileName: "src/components/profile-view/test-profile.jsx",
-                        lineNumber: 83,
+                        lineNumber: 61,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/test-profile.jsx",
-                    lineNumber: 82,
+                    lineNumber: 60,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/test-profile.jsx",
-                lineNumber: 81,
+                lineNumber: 59,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {}, void 0, false, {
                     fileName: "src/components/profile-view/test-profile.jsx",
-                    lineNumber: 87,
+                    lineNumber: 65,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/test-profile.jsx",
-                lineNumber: 86,
+                lineNumber: 64,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
+                className: "d-flex justify-content-center p-4",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _deleteUser.DeleteUser), {
+                        user: user
+                    }, void 0, false, {
+                        fileName: "src/components/profile-view/test-profile.jsx",
+                        lineNumber: 72,
+                        columnNumber: 21
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/profile-view/test-profile.jsx",
+                    lineNumber: 71,
+                    columnNumber: 17
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/profile-view/test-profile.jsx",
+                lineNumber: 70,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/test-profile.jsx",
-        lineNumber: 75,
+        lineNumber: 53,
         columnNumber: 9
     }, undefined);
 };
@@ -51367,7 +51369,7 @@ $RefreshReg$(_c, "TestProfile");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","axios":"jo6P5","./favorite-movies":"dTTQH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./user-info":"66eot","./update-user":"2SBwg"}],"dTTQH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","axios":"jo6P5","./favorite-movies":"dTTQH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./user-info":"66eot","./update-user":"2SBwg","./delete-user":"fKFLs"}],"dTTQH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8767 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -51813,6 +51815,61 @@ $RefreshReg$(_c, "UpdateView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"i5LP7":[function() {},{}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequirea9e5")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fKFLs":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1aa7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1aa7.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DeleteUser", ()=>DeleteUser);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactBootstrap = require("react-bootstrap");
+var _reactToastifyCss = require("react-toastify/dist/ReactToastify.css");
+function DeleteUser({ user  }) {
+    const token = window.localStorage.getItem("token");
+    const deregisterUser = function() {
+        const userWarning = confirm(`Are you sure? Deleting your account is permanent.`);
+        if (!userWarning) alert("Phew! That was close!");
+        else fetch(`https://movies-couch-api.vercel.app/users/${user.Username}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        }).then((response)=>{
+            if (response.ok) {
+                alert("Account successfully deleted");
+                localStorage.clear();
+                window.location.reload();
+            } else alert("Something went wrong");
+        }).catch((e)=>console.log(e));
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+            className: "",
+            onClick: deregisterUser,
+            type: "button",
+            children: "Delete Account"
+        }, void 0, false, {
+            fileName: "src/components/profile-view/delete-user.jsx",
+            lineNumber: 41,
+            columnNumber: 13
+        }, this)
+    }, void 0, false);
+}
+_c = DeleteUser;
+var _c;
+$RefreshReg$(_c, "DeleteUser");
+
+  $parcel$ReactRefreshHelpers$1aa7.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-toastify/dist/ReactToastify.css":"gJP2Y","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gJP2Y":[function() {},{}],"i5LP7":[function() {},{}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequirea9e5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
