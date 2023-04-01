@@ -22,13 +22,13 @@ return(
             <Card.Title>{movie.Title}</Card.Title>
             <br />
             <Card.Text> Director:      
-             {` + ${movie.Director.Name}`} 
+             {` ${movie.Director.Name}`} 
             <br /> <br />
-            About: {` + ${movie.Director.Bio}`}
+            About: {` ${movie.Director.Bio}`}
             <br /> <br />Birthdate: 
-            {` + ${movie.Director.Birthdate}` }
+            {` ${movie.Director.Birthdate}` }
             <br /> <br />Genre: 
-            { ` + ${movie.Genre.Name}` }
+            { ` ${movie.Genre.Name}` }
             </Card.Text>
             <br />
             <Link to={"/"}>

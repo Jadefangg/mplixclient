@@ -24772,14 +24772,7 @@ textarea.form-control-lg {
   justify-content: center;
 }
 
-.movie-view {
-  color: orange;
-  width: 100%;
-  height: auto;
-  background-color: #000;
-}
-
-.movie-card {
+.movie-view, .movie-card {
   color: orange;
   width: 100%;
   height: auto;

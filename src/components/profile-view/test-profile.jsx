@@ -4,6 +4,7 @@ import { Col, ListGroup, ListGroupItem, Row}  from "react-bootstrap";
 import { Card, Container } from "react-bootstrap";
 import axios from "axios";
 import FavoriteMovies from "./favorite-movies";
+import { UserInfo } from "./user-info";
 
 
     export const TestProfile= ({user, setUser, movies, token, onLoggedOut}) => {
@@ -104,24 +105,7 @@ import FavoriteMovies from "./favorite-movies";
         <Container className="profile-view">
                 <Row className="d-flex justify-content-center p-4">
                     <Col >
-                        <Card>
-                            <Card.Body className="profile-view">
-                            <>
-                             <h3>Username:</h3>
-                             <p >{user.Username}</p>
-                             <br/>
-                             {/* <h3>Password:</h3>
-                             <p >{setPassword}</p>
-                             <br/> */}
-                             <h3>Email:</h3>
-                             <p >{user.Email}</p>
-                             <br/>
-                             <h3 >Birthday:</h3>
-                             <p >{user.Birthday.slice(0,10)}</p>
-                             <br/>
-                            </>
-                            </Card.Body>
-                        </Card>
+                    <UserInfo user={user}/>
                     </Col>
                     </Row> 
                    <Row className="d-flex justify-content-center p-4">
@@ -138,7 +122,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="text"
                                                 name="username"
-                                                class=""
+                                                className=""
                                                 // value={user.Username}
                                                 onChange={(e) => handleUpdate(e)}
                                                 /> 
@@ -151,7 +135,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="password"
                                                 name="password"
-                                                class=""
+                                                className=""
                                                 // value={user.Password}
                                                 onChange={(e) => handleUpdate(e)}
                                                  />
@@ -164,7 +148,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="email"
                                                 name="email"
-                                                class=""
+                                                classNAme=""
                                                 // value={user.Email}
                                                 onChange={(e) => handleUpdate(e)}  
                                                 />
@@ -177,7 +161,7 @@ import FavoriteMovies from "./favorite-movies";
                                                 <input 
                                                 type="date" 
                                                 name="birthday"
-                                                class=""
+                                                className=""
                                                 // value={user.Birthday}
                                                 onChange={(e) => handleUpdate(e)}
                                                  />
@@ -185,10 +169,10 @@ import FavoriteMovies from "./favorite-movies";
                                             </ListGroup.Item>
                                             <br />
                                             <ListGroup.Item>
-                                            <button  type="submit" class="" onChange={()=> updateUser()}>Update User</button>
+                                            <button  type="submit" className="" onChange={()=> updateUser()}>Update User</button>
                                             </ListGroup.Item>
                                             <ListGroup.Item>
-                                            <button type="submit" class="" onChange={()=> deleteUser()} >Delete User</button>
+                                            <button type="submit" className="" onChange={()=> deleteUser()} >Delete User</button>
                                             </ListGroup.Item>
                                         </form>
                                     </ListGroup>
