@@ -45,15 +45,24 @@ function MovieCard({ movie, user, updateUser }) {
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button className="movie-card-button" active>Open</Button>
           <br /> <br />
-          <Button
+          {inFavorite ? <Button
             onClick={(e) => {
               e.preventDefault();
-              console.log(movie._id);
-              addFavorite(movie._id);
+              remFavorite(movie._id);
             }} 
             className="movie-card-button"
           >
-           Add to Favorite</Button>
+           Remove from Favorite</Button>
+           : <Button
+           onClick={(e) => {
+             e.preventDefault();
+             console.log(movie._id);
+             addFavorite(movie._id);
+           }} 
+           className="movie-card-button"
+         >
+          Add to Favorite</Button>
+           }
         </Link>
       </Card.Body>
     </Card>

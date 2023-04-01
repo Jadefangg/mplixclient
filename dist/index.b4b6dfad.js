@@ -46474,7 +46474,18 @@ function MovieCard({ movie , user , updateUser  }) {
                                 lineNumber: 47,
                                 columnNumber: 18
                             }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            inFavorite ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    remFavorite(movie._id);
+                                },
+                                className: "movie-card-button",
+                                children: "Remove from Favorite"
+                            }, void 0, false, {
+                                fileName: "src/components/movie-card/movie-card.jsx",
+                                lineNumber: 48,
+                                columnNumber: 25
+                            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 onClick: (e)=>{
                                     e.preventDefault();
                                     console.log(movie._id);
@@ -46484,8 +46495,8 @@ function MovieCard({ movie , user , updateUser  }) {
                                 children: "Add to Favorite"
                             }, void 0, false, {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 48,
-                                columnNumber: 11
+                                lineNumber: 56,
+                                columnNumber: 14
                             }, this)
                         ]
                     }, void 0, true, {
