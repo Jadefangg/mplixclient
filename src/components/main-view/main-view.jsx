@@ -42,7 +42,6 @@ function MainView() {
     })
       .then((response) => response.json())
       .then((movies) => {
-        console.log(movies);
         const moviesFromApi = movies.map((movie) => {
           // console.log(Object.keys(movies))
           return {
@@ -54,13 +53,28 @@ function MainView() {
             Genre: movie.Genre
           };
         });
-        console.log(moviesFromApi)
         setMovies(moviesFromApi);
 
 
       });
   }, [token]);
 
+  const updateUser = (user) => {
+    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if(data) {
+                console.log(data);
+                localStorage.setItem('user', JSON.stringify(data));
+                window.location.reload();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
   //add Fav-movie
   const addFavMovie = function (_id) {
     axios.put(
@@ -196,7 +210,7 @@ function MainView() {
                     <>
                       {movies.map((movie) => (
                         <Col className="mb-5" key={movie._id} md={4}>
-                          <MovieCard movie={movie} />
+                          <MovieCard movie={movie} user={user} updateUser={updateUser} />
                         </Col>
                       ))}
                     </>
@@ -210,7 +224,7 @@ function MainView() {
                 <>
                   {user ? (
                     <Col className="mb-5" >
-                      <TestProfile user={user} setUser={setUser} movies={movies} onLoggedOut={onLoggedOut} />
+                      <TestProfile user={user} setUser={setUser} movies={movies} updateUser={updateUser} />
                       {/* <ProfileView  token={token}  user={user}  setUser={setUser}  
                         movies={movies} removeFavMovie={removeFavMovie} onLoggedOut={onLoggedOut}/>*/}
                     </Col>

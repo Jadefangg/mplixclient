@@ -9,7 +9,7 @@ import { UpdateView } from "./update-user";
 import { DeleteUser } from "./delete-user";
 
 
-export const TestProfile = ({ user, setUser, movies, token, onLoggedOut }) => {
+export const TestProfile = ({ user, setUser, movies, token, updateUser }) => {
     const [myuser, setMyuser] = useState('');
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -58,7 +58,7 @@ export const TestProfile = ({ user, setUser, movies, token, onLoggedOut }) => {
             </Row>
             <Row className="d-flex justify-content-center p-4">
                 <Col >
-                <UpdateView user={user} />
+                    <UpdateView user={user} updateUser={updateUser} />
                 </Col>
             </Row>
             <Row>

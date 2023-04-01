@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Row, Col, CardGroup, Card, ListGroup } from 'react-bootstrap';
 
-export const UpdateView = ({ user }) => {
+export const UpdateView = ({ user, updateUser }) => {
     const token = localStorage.getItem("token");
 
     const [username, setUsername] = useState(user.Username);
@@ -9,22 +9,6 @@ export const UpdateView = ({ user }) => {
     const [email, setEmail] = useState(user.Email);
     const [birthday, setBirthday] = useState(user.Birthday);
 
-    const updateUser = (user) => {
-        fetch(`https://movies-couch-api.vercel.app/users/${user.Username}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if(data) {
-                    console.log(data);
-                    localStorage.setItem('user', JSON.stringify(data));
-                    window.location.reload();
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
