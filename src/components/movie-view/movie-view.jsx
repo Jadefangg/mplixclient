@@ -12,9 +12,7 @@ export const MovieView = ({ movies, favoriteMovies }) => {
         // if movie is not found return to homepage
         return <Redirect to="/" />;
     };
-    // function addMovie(){
-    //     favoriteMovies.add();
-    //   }
+
     return (
         <Card className="movie-view">
             <Card.Img className="w-80" src={movie.ImageURL} alt="movie-poster" />
@@ -33,8 +31,6 @@ export const MovieView = ({ movies, favoriteMovies }) => {
                 <br />
                 <Link to={"/"}>
                     <Button className="back-button" active>Back</Button>
-                    <br /> <br />
-                    <Button /*onClick={addMovie}*/>Add to Favorite List</Button>
                 </Link>
             </Card.Body>
         </Card>

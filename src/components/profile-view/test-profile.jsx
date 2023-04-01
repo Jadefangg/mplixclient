@@ -64,7 +64,6 @@ export const TestProfile = ({ user, setUser, movies, token, updateUser }) => {
             <Row>
                 <Col>
                     {/* <FavoriteMovies /> */}
-                    {/* <Button onClick={removeFavMovie} className="movie-card-button">Remove from Favorite List</Button> */}
                 </Col>
             </Row>
             <Row className="d-flex justify-content-center p-4">
