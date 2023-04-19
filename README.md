@@ -52,5 +52,22 @@ CSS
 Information regarding the <a href="https://github.com/HerRA17/movies-couch_api" target="_blank">API</a> used in the Project(endpoints, dependencies, error response...) can be found <a href="" target="_blank">here</a>
 
 ## Features
+Genre view
+● Returns data about a genre, with a name and description
+● Displays example movies
+Director view
+● Returns data about a director (name, bio, birth year, death year)
+● Displays example movies from the director
+Single Movie view (optional features)
+● Allow users to see which actors star in which movies
+● Allow users to view more information about different movies, such as the release date and
+the movie rating
+● Allow users to access different movie information, such as genre description and director bio,
+without leaving the view (e.g., tooltips)
+● Allow users to share a movie
+● Display a list of related or similar movies
+Main view (optional features)
+● Allow users to sort movies based on different criteria
+Profile, Single Movie, and Main views (optional features)
 
 ## Credits
