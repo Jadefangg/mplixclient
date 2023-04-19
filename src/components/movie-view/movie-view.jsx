@@ -1,10 +1,11 @@
 import { React, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link, Redirect } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, favoriteMovies }) => {
+export const MovieView = ({ movies, /*favoriteMovies, addFavMovie,*/ token }) => {
     const { movieId } = useParams();
     const movie = movies.find((m) => m._id === movieId);
 
@@ -36,3 +37,10 @@ export const MovieView = ({ movies, favoriteMovies }) => {
         </Card>
     );
 };
+
+MovieView.prototype = {
+    movies: PropTypes.array,
+    favoriteMovies: PropTypes.array,
+    addFavMovie: PropTypes.func,
+    token: PropTypes.string
+}

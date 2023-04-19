@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 function UserInfo({ user }) {
     return (
@@ -11,9 +11,6 @@ function UserInfo({ user }) {
                         <h3>Username:</h3>
                         <p >{user.Username}</p>
                         <br />
-                        {/* <h3>Password:</h3>
-                             <p >{setPassword}</p>
-                             <br/> */}
                         <h3>Email:</h3>
                         <p >{user.Email}</p>
                         <br />
