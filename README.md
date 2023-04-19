@@ -1,5 +1,5 @@
 ## Movies-couch_client
-##Table of Contents:
+## Table of Contents:
 * [Overview](#overview)
 * [How to Run](#how-to-run)
 * [Links](#links)
@@ -10,25 +10,24 @@
 * [Features](#features)
 * [Credits](#credentials)
 
-##Overview
+## Overview
 Movies-Couch is the client-side part of the app, based on the existing server side. This movie app allows users to access information about different movies.
 Users can register, update, their personal data, and manage as well their favorite movies.
 The client side user interface complements REST API and MongoDB database whcich have been set up previously, providing a smooth experience for users. Built with MERN-stack (MongoDB, Express, React, Node.js), Movies-Couch is a full-stack web application which offers a user-friendly, responsive and efficient solution for those seeking movie information and management.
 
-##How to Run
+## How to Run
 
-##Links
+## Links
 
-##Technologies Used
+## Technologies Used
 React
 Bootstrap
 Javascript
 HTML
 CSS
 
-##Dependencies
+## Dependencies
 "dependencies": {
-    "axios": "^1.3.4",
     "bootstrap": "^5.2.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -49,9 +48,9 @@ CSS
     "process": "^0.11.10"
   }
 
-##API Documentation
+## API Documentation
 Information regarding the <a href="https://github.com/HerRA17/movies-couch_api" target="_blank">API</a> used in the Project(endpoints, dependencies, error response...) can be found <a href="" target="_blank">here</a>
 
-##Features
+## Features
 
-##Credits
+## Credits
