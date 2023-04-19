@@ -1,57 +1,102 @@
-import React from "react"; 
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 // Movie card component
-export const MovieCard = ({ user, token, movie, favoriteMovies  }) => {
-  function addMovie(){
-    const user = localStorage.getItem("user");
-    console.log(user);
-    const token = localStorage.getItem("token");
-    console.log(token);
-    axios.post(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`,
-    {header: {Authorization: `Bearer ${token}`}}
-    ) 
-    .then((response) => {
-        console.log(response);
-        alert(`The Movie: ${movie._id} was added to Favorite List`)
+function MovieCard({ movie, user, updateUser }) {
+  const [inFavorite, setInFavorite] = useState(user.FavoriteMovies.includes(movie._id));
+  const token = window.localStorage.getItem("token");
+
+  const addFavorite = () => {
+    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` }
     })
-    .catch(function (error) {
-        console.log(error);
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("Failed");
+          return false;
+        }
+      })
+      .then(user => {
+        if (user) {
+          alert("Movie added to favorites");
+          setInFavorite(true);
+          updateUser(user);
+        }
+      })
+      .catch(e => {
+        alert(e);
+      });
+  }
+
+  const removeFavorite = () => {
+    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movie._id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
     })
-    favoriteMovies.add();
-  } //useEffect?
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("Failed");
+          return false;
+        }
+      })
+      .then(user => {
+        if (user) {
+          alert("Movie deleted from favorites");
+          setInFavorite(false);
+          updateUser(user);
+        }
+      })
+      .catch(e => {
+        alert(e);
+      });
+  }
 
   return (
-      <Card className="movie-card">
-        <Card.Img variant="top" src={movie.ImageURL} alt="movie-poster"/> 
-        <Card.Body className="movie-card">
-              <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text>
-                <br />
-                {movie.Description}
-                <br /><br />
-                {movie.Director.Name} 
-                <br /><br />
-                {movie.Genre.Name} 
-                </Card.Text>
-                <br />
-                  <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button className="movie-card-button" active>Open</Button>
-                  <br/> <br/>
-                  <Button onClick={addMovie} className="movie-card-button">Add to Favorite List</Button> 
-                  </Link>
-            </Card.Body>
-      </Card>
-    );
-    // Button-fav mov-> needs function
-    // query to add in the backend? 
-    // let similarMovies = movies.filter((movie) => movie.Genre.Name === Genre.Name && movie._id !== _id);
-    // console.log(similarMovies);
+    <Card className="movie-card" style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={movie.ImageURL} alt="movie-poster" />
+      <Card.Body className="movie-card-body">
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>
+          {movie.Genre.Name}
+        </Card.Text>
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button className="movie-card-button" active>Open</Button>
+          <br /> <br />
+          {inFavorite ? <Button
+            onClick={(e) => {
+              e.preventDefault();
+              removeFavorite(movie._id);
+            }}
+            className="movie-card-button"
+          >
+            Remove from Favorite</Button>
+            : <Button
+              onClick={(e) => {
+                e.preventDefault();
+                console.log(movie._id);
+                addFavorite(movie._id);
+              }}
+              className="movie-card-button"
+            >
+              Add to Favorite</Button>
+          }
+        </Link>
+      </Card.Body>
+    </Card>
+  );
+
 
 };
+
+export { MovieCard };
 
 // defined props constrains for Movie Card
 MovieCard.propTypes = {
@@ -61,5 +106,5 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     Director: PropTypes.object,
     Genre: PropTypes.object
-    }).isRequired
+  }).isRequired
 };

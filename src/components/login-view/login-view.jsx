@@ -9,75 +9,76 @@ import Button from "react-bootstrap/Button";
 
 
 export const LoginView = ({ onLoggedIn }) => {
- const [username, setUsername] = useState("");
- const [password, setPassword] = useState("");
-//  validation of user login
- const handleSubmit = (event) =>{ 
-    //prevents default behavior of the form which is to reload the entire page
-    event.preventDefault();
-    const data = {
-        Username: username,
-        Password: password
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    //  validation of user login
+    const handleSubmit = (event) => {
+        //prevents default behavior of the form which is to reload the entire page
+        event.preventDefault();
+        const data = {
+            Username: username,
+            Password: password
         };
-    fetch("https://movies-couch-api.vercel.app/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)        
+        fetch("https://movies-couch-api.vercel.app/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
         })
-     .then((response) => response.json())
-     .then((data)  => {
-        console.log("Login response: ", data);
-        if (data.user) {
-            localStorage.setItem("user", JSON.stringify(data.user));
-            localStorage.setItem("token", data.token);
-            onLoggedIn(data.user , data.token);
-        } else {
-            alert("No such user");
-        }
-    })
-    .catch((e) => {
-        alert("Something went wrong!");
-    });
- };
-//  login form with submit button
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Login response: ", data);
+                if (data.user) {
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    localStorage.setItem("token", data.token);
+                    onLoggedIn(data.user, data.token);
+                } else {
+                    alert("No such user");
+                }
+            })
+            .catch((e) => {
+                alert("Something went wrong!");
+            });
+    };
+    //  login form with submit button
     return (
         // handle submit is the callback of onSubmit, tells the login API to validate user & password
         <Container>
             <Row>
-                <p class="movies-couch">Logo</p>
+                <p className="movies-couch">Logo</p>
             </Row>
             <Row>
                 <Col>
                     <Card>
-                            <Card.Body className="movies-couch">
+                        <Card.Body className="movies-couch">
                             <Card.Title>Pleas Login</Card.Title>
                             <Form className="movies-couch" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
-                                <Form.Label>User:</Form.Label>
-                                <Form.Control 
-                                type="text"
-                                value={username}
-                                onChange= {(e) => setUsername(e.target.value)}
-                                minLength="3"
-                                required
-                                />
+                                    <Form.Label>User:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        minLength="3"
+                                        required
+                                    />
                                 </Form.Group>
                                 <Form.Group controlId="formPassword">
-                                <Form.Label>Password:</Form.Label>
-                                <Form.Control 
-                                type="password"
-                                value={password}
-                                onChange= {(e) => setPassword(e.target.value)}
-                                minLength="5" 
-                                required
-                                />
+                                    <Form.Label>Password:</Form.Label>
+                                    <Form.Control
+                                        type="password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        minLength="5"
+                                        required
+                                    />
                                 </Form.Group>
-                                <Button variant="primary" type="submit">Submit</Button>  
+                                <br></br>
+                                <Button variant="primary" type="submit">Submit</Button>
                             </Form>
-                            </Card.Body>
-                        </Card>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </Container>

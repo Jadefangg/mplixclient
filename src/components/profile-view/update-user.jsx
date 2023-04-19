@@ -1,50 +1,125 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import Form from "react-bootstrap/Form"
+import React, { useState } from 'react';
+import { Button, Form, Row, Col, CardGroup, Card, ListGroup } from 'react-bootstrap';
+
+export const UpdateView = ({ user, updateUser }) => {
+    const token = localStorage.getItem("token");
+
+    const [username, setUsername] = useState(user.Username);
+    const [password, setPassword] = useState(user.Password);
+    const [email, setEmail] = useState(user.Email);
+    const [birthday, setBirthday] = useState(user.Birthday);
 
 
-function UpdateUser({editUser, setUsername, setPassword, setEmail, setBirthday, onDeleteUser}) {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const data = {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday,
+        };
+
+        fetch(
+            `https://movies-couch-api.vercel.app/users/${user.Username}`,
+            {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    alert('Changes saved');
+                    updateUser(user);
+                } else {
+                    alert('Oops, somethings went wrong');
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     return (
-        <Form onSubmit={(e) => this.editUser((e), this.Username, this.Password, this.Email, this.Birthday)}> 
-                 <h4>Update User info:</h4>
-                 <Form.Group>
-                     <Form.Label>Name:</Form.Label>
-                     <Form.Control>
-                         type="text"
-                         name="Username"
-                         onChange= {(e) => this.Username(e.target.value)}
-                     </Form.Control>
-                 </Form.Group>
-                 <Form.Group>
-                     <Form.Label>Password:</Form.Label>
-                     <Form.Control>
-                         type="password"
-                         name="Password"
-                         onChange= {(e) => this.Password(e.target.value)}
-                     </Form.Control>
-                     </Form.Group>
-                 <Form.Group>
-                     <Form.Label>E-mail:</Form.Label>
-                     <Form.Control>
-                         type="email"
-                         name="Email"
-                         onChange= {(e) => this.Email(e.target.value)}
-                     </Form.Control>
-                 </Form.Group>
-                 <Form.Group>
-                     <Form.Label>Birthday:</Form.Label>
-                     <Form.Control>
-                         type="date"
-                         name="Birthday"
-                         onChange= {(e) => this.Birthday(e.target.value)}
-                    </Form.Control>
-                 </Form.Group>
-                     <Form.Group>
-                     <Button variant="button" className="edit-user" type="submit" onClick={() => this.editUser()}>Submit</Button>
-                     <Button variant="button" className="delete-user" type="submit" onClick={() => this.onDeleteUser()}>Delete</Button>
-                 </Form.Group>
-             </Form>
-    )
-}
-export default UpdateUser
+
+        <Row className="mt-2">
+            <Col >
+                <Card>
+                    <Card.Body className="form-profile">
+                        <Card.Title>Profile Update</Card.Title>
+                        <Card.Text></Card.Text>
+                        <ListGroup>
+                            <form onSubmit={handleSubmit}>
+                                <ListGroup.Item>
+                                    <label>
+                                        Username:
+                                        <input
+                                            type="text"
+                                            name="username"
+                                            className=""
+                                            value={username}
+                                            placeholder={user.Username}
+                                            onChange={e => setUsername(e.target.value)}
+                                        />
+                                    </label>
+                                </ListGroup.Item>
+                                <br />
+                                <ListGroup.Item>
+                                    <label>
+                                        Password:
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className=""
+                                            value={password}
+                                            placeholder="Enter Password"
+                                            onChange={e => setPassword(e.target.value)}
+                                        />
+                                    </label>
+                                </ListGroup.Item>
+                                <br />
+                                <ListGroup.Item>
+                                    <label>
+                                        Email:
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className=""
+                                            value={email}
+                                            placeholder={user.Username}
+                                            onChange={e => setEmail(e.target.value)}
+                                        />
+                                    </label>
+                                </ListGroup.Item>
+                                <br />
+                                <ListGroup.Item>
+                                    <label>
+                                        Birthday:
+                                        <input
+                                            type="date"
+                                            name="birthday"
+                                            className=""
+                                            value={birthday}
+                                            placeholder={user.Birthday}
+                                            onChange={e => setBirthday(e.target.value)}
+                                        />
+                                    </label>
+                                </ListGroup.Item>
+                                <br />
+                                <ListGroup.Item>
+                                    <Button variant='primary' type='submit' className='mt-3'>
+                                        Update User
+                                    </Button>
+                                </ListGroup.Item>
+                            </form>
+                        </ListGroup>
+                    </Card.Body>
+                </Card>
+            </Col>
+        </Row>
+    );
+};
