@@ -1,10 +1,10 @@
 import  {React, useEffect, useState} from "react"; 
 import PropTypes from "prop-types";
-import { Col, Row}  from "react-bootstrap";
+import { Col, Row }  from "react-bootstrap";
 import { Container } from "react-bootstrap";
 
 
-// import { FavoriteMovies } from "./favorite-movies";
+import { FavoriteMovies } from "./favorite-movies";
 import { UserInfo }  from "./user-info";
 import { UpdateView } from "./update-user";
 import { DeleteUser } from "./delete-user";
@@ -30,7 +30,7 @@ import { DeleteUser } from "./delete-user";
                 if (response.ok) {
                     console.log("User data retrieved")
                 } else {
-                    console.log("User data coudl not be retrieved.")
+                    console.log("User data could not be retrieved.")
                 }
                 setMyUser(response.data);
                 console.log(response);
@@ -40,29 +40,32 @@ import { DeleteUser } from "./delete-user";
             });
     }, []);
 
-    // let moviesId = movies_.id -> ?
-    // Fav-movies 
-    // const favoriteMovies = movies.filter((movie) => FavoriteMovies.includes(movie._id))     
-
-    // remove-fav_Movies
-    //  removeFavMovie = async (movies) => {
-    //    const user = localStorage.getItem("user");
-    //    console.log(user);
-    //    const token = localStorage.getItem("token");
-    //    console.log(token);
-    //    fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movies._id}`,
-    //    {
-    //      method: "DELETE",
-    //     header: {Authorization: `Bearer ${token}`}}
-    //    ) 
-    //    .then((response) => {
-    //        console.log(response);
-    //        toast.success(`The Movie: ${movies._id} was removed from Favorite List`)
-    //    })
-    //    .catch(function (error) {
-    //        console.error(" An error ocurred" +error);
-    //    })
-    // }
+    
+    // remove-fav_Movies 
+     const removeFavMovie = async (movies) => {
+       const user = localStorage.getItem("user");
+       console.log(user);
+       const token = localStorage.getItem("token");
+       console.log(token);
+       fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movies._id}`,
+       {
+         method: "DELETE",
+        header: {Authorization: `Bearer ${token}`}}
+       ) 
+       .then((response) => {
+        if (response.ok) {
+            alert(`The Movie: ${movies._id} was removed from Favorite List`)
+            return response.json();
+          } else {
+            alert("Failed removing movie from Favorite list");
+            return false;
+          }
+        })
+       .catch(function (error) {
+           console.error(" An error ocurred" + error);
+           alert("Movie could not be removed.")
+       })
+    }
 
 
     return (
@@ -79,7 +82,7 @@ import { DeleteUser } from "./delete-user";
                     </Row>
                     <Row>
                         <Col>
-                            {/* <FavoriteMovies /> */}
+                            <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user}/>
                         </Col>
                     </Row>
                     <Row className="d-flex justify-content-center p-4">
