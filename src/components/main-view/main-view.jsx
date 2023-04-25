@@ -65,7 +65,7 @@ function MainView()  {
             headers: {Authorization: `Bearer ${token}` },
         })
         .then((response) => response.json())
-        .them((data) => {
+        .then((data) => {
             if (data) {
                 console.log(data);
                 localStorage.setItem("user", JSON.stringify(data));
@@ -127,7 +127,7 @@ return (
                             <div>The list is empty!</div>
                             ): ( <Col md={8}>
                             <MovieView movies={movies} 
-                            /* FavoriteMovies={user.FavoriteMovies}*/ />
+                            FavoriteMovies={user.FavoriteMovies} />
                             </Col>
                         )}
                      </>
