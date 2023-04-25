@@ -1,11 +1,12 @@
 import React from "react";
-import Col from "react-bootstrap";
-import PropTypes from "prop-types";
+import { Col } from "react-bootstrap";
+import PropTypes  from "prop-types";
 import { MovieCard } from "../movie-card/movie-card";
 
 function FavoriteMovies({ movies, removeFavMovie, user }) {
+    console.log(user);
     let favoriteMovies = movies.filter(function (movie) {
-        return user.FavoriteMovies.include(movie._id);
+        return user.FavoriteMovies.includes(movie._id);
     }); 
     let printFavoriteMovies;
     
