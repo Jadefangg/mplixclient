@@ -11,8 +11,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 
-// import { ProfileView } from "../profile-view/profile-view";
-import { TestProfile }  from "../profile-view/test-profile";
+import { ProfileView } from "../profile-view/profile-view";
 
 
 // exporting Main view variabels
@@ -160,7 +159,7 @@ return (
                     <>
                     {user ? (
                         <Col className="mb-5" >
-                            <TestProfile   user={user} setUser={setUser} movies={movies} updateUser={updateUser}  />
+                            <ProfileView  user={user} setUser={setUser} movies={movies} updateUser={updateUser} key={user._id} />
                         </Col>
                     ) : (
                       <Navigate to="/login" />
