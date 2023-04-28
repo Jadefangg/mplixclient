@@ -37,7 +37,7 @@ import { Link } from "react-router-dom";
   // Remove-favMovies
   const removeFavoriteMovie = () => {
     fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/favMovies/${movie._id}`, {
-      method: "POST",
+      method: "DELETE",
       headers: {Authorization: `Bearer ${token}`} 
     })
     .then(response => {
