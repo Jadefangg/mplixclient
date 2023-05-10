@@ -28336,7 +28336,6 @@ var _loginView = require("../login-view/login-view");
 var _signupView = require("../signup-view/signup-view");
 var _profileView = require("../profile-view/profile-view");
 var _s = $RefreshSig$();
-// import { TestProfile } from "../profile-view/profile-view";
 // exporting Main view variabels
 function MainView() {
     _s();
@@ -28412,7 +28411,7 @@ function MainView() {
                     onLoggedOut: onLoggedOut
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 88,
+                    lineNumber: 87,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -28431,7 +28430,7 @@ function MainView() {
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 94,
+                                lineNumber: 93,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28451,7 +28450,7 @@ function MainView() {
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 107,
+                                lineNumber: 106,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28472,7 +28471,7 @@ function MainView() {
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 120,
+                                lineNumber: 119,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28496,7 +28495,7 @@ function MainView() {
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 136,
+                                lineNumber: 135,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28516,29 +28515,29 @@ function MainView() {
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 156,
+                                lineNumber: 155,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 93,
+                        lineNumber: 92,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 92,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 86,
+            lineNumber: 85,
             columnNumber: 5
         }, this)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 85,
+        lineNumber: 84,
         columnNumber: 1
     }, this);
 }
@@ -47179,13 +47178,13 @@ var _userInfo = require("./user-info");
 var _updateUser = require("./update-user");
 var _deleteUser = require("./delete-user");
 var _s = $RefreshSig$();
-const ProfileView = ({ user , /*setUser*/ movies , token , updateUser  })=>{
+const ProfileView = ({ user , setUser , movies , token , updateUser  })=>{
     _s();
-    // const [myUser, setMyUser] = useState("");
+    const [myUser, setMyUser] = (0, _react.useState)("");
     // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [birthday, setBirthday] = useState("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const [email, setEmail] = (0, _react.useState)("");
+    const [birthday, setBirthday] = (0, _react.useState)("");
     //get users 
     (0, _react.useEffect)(()=>{
         const token = window.localStorage.getItem("token");
@@ -47319,11 +47318,11 @@ const ProfileView = ({ user , /*setUser*/ movies , token , updateUser  })=>{
         columnNumber: 9
     }, undefined);
 };
-_s(ProfileView, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_s(ProfileView, "O0ayJbNQYxyZdCmQarDVcv2R9n0=");
 _c = ProfileView;
 ProfileView.propTypes = {
     user: (0, _propTypesDefault.default).object,
-    setUser: (0, _propTypesDefault.default).func,
+    setMyUser: (0, _propTypesDefault.default).string,
     movies: (0, _propTypesDefault.default).array,
     token: (0, _propTypesDefault.default).string,
     updateUser: (0, _propTypesDefault.default).func,
@@ -47355,7 +47354,6 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _movieCard = require("../movie-card/movie-card");
 function FavoriteMovies({ movies , removeFavMovie , user  }) {
-    console.log(user);
     let favoriteMovies = movies.filter(function(movie) {
         return user.FavoriteMovies.includes(movie._id);
     });
@@ -47365,7 +47363,7 @@ function FavoriteMovies({ movies , removeFavMovie , user  }) {
         children: "You have not added movies yet."
     }, void 0, false, {
         fileName: "src/components/profile-view/favorite-movies.jsx",
-        lineNumber: 15,
+        lineNumber: 14,
         columnNumber: 13
     }, this);
     else printFavoriteMovies = favoriteMovies.map(function(movie) {
@@ -47374,15 +47372,16 @@ function FavoriteMovies({ movies , removeFavMovie , user  }) {
             _id: movie._id,
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
+                user: user,
                 removeFavMovie: removeFavMovie
             }, void 0, false, {
                 fileName: "src/components/profile-view/favorite-movies.jsx",
-                lineNumber: 21,
+                lineNumber: 20,
                 columnNumber: 21
             }, this)
-        }, void 0, false, {
+        }, "_id", false, {
             fileName: "src/components/profile-view/favorite-movies.jsx",
-            lineNumber: 20,
+            lineNumber: 19,
             columnNumber: 17
         }, this);
     });
@@ -47401,7 +47400,8 @@ FavoriteMovies.propTypes = {
     movies: (0, _propTypesDefault.default).array,
     removeFavMovie: (0, _propTypesDefault.default).func,
     _id: (0, _propTypesDefault.default).string
-};
+} // have a look on Prop-> which causes the add fav button not 
+;
 var _c;
 $RefreshReg$(_c, "FavoriteMovies");
 
@@ -47540,14 +47540,14 @@ var _s = $RefreshSig$();
 const UpdateView = ({ user , updateUser  })=>{
     _s();
     const token = localStorage.getItem("token");
-    const [username, setUsername] = (0, _react.useState)(user.Username);
+    // const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = (0, _react.useState)(user.Password);
     const [email, setEmail] = (0, _react.useState)(user.Email);
-    const [birthday, setBirthday] = (0, _react.useState)(user.Birthday);
+    const [birthday, setBirthday] = (0, _react.useState)(user.Birthday); //toISOsString() not working
     const handleSubmit = function(event) {
         event.preventDefault();
         const data = {
-            Username: username,
+            // Username: username,
             Password: password,
             Email: email,
             Birthday: birthday
@@ -47593,14 +47593,12 @@ const UpdateView = ({ user , updateUser  })=>{
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                             children: [
-                                                "Username:",
+                                                "Password:",
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                    type: "text",
-                                                    name: "username",
+                                                    type: "password",
+                                                    name: "password",
                                                     className: "input-fields",
-                                                    value: username,
-                                                    placeholder: user.Username,
-                                                    onChange: (e)=>setUsername(e.target.value)
+                                                    onChange: (e)=>setPassword(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/update-user.jsx",
                                                     lineNumber: 60,
@@ -47619,39 +47617,7 @@ const UpdateView = ({ user , updateUser  })=>{
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 70,
-                                        columnNumber: 33
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                            children: [
-                                                "Password:",
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                    type: "password",
-                                                    name: "password",
-                                                    className: "input-fields",
-                                                    value: password,
-                                                    placeholder: user.Password,
-                                                    onChange: (e)=>setPassword(e.target.value)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/profile-view/update-user.jsx",
-                                                    lineNumber: 74,
-                                                    columnNumber: 41
-                                                }, undefined)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 72,
-                                            columnNumber: 37
-                                        }, undefined)
-                                    }, void 0, false, {
-                                        fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 71,
-                                        columnNumber: 33
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                                        fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 84,
+                                        lineNumber: 68,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -47662,33 +47628,27 @@ const UpdateView = ({ user , updateUser  })=>{
                                                     type: "email",
                                                     name: "email",
                                                     className: "input-fields",
-                                                    value: email,
                                                     placeholder: user.Email,
                                                     onChange: (e)=>setEmail(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/update-user.jsx",
-                                                    lineNumber: 88,
+                                                    lineNumber: 72,
                                                     columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 86,
+                                            lineNumber: 70,
                                             columnNumber: 37
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 85,
+                                        lineNumber: 69,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 98,
-                                        columnNumber: 33
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                                        fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 99,
+                                        lineNumber: 81,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ListGroup).Item, {
@@ -47699,28 +47659,27 @@ const UpdateView = ({ user , updateUser  })=>{
                                                     type: "date",
                                                     name: "birthday",
                                                     className: "input-fields",
-                                                    value: birthday,
                                                     placeholder: user.Birthday,
                                                     onChange: (e)=>setBirthday(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/update-user.jsx",
-                                                    lineNumber: 103,
+                                                    lineNumber: 85,
                                                     columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 101,
+                                            lineNumber: 83,
                                             columnNumber: 37
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 100,
+                                        lineNumber: 82,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 113,
+                                        lineNumber: 94,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -47730,7 +47689,7 @@ const UpdateView = ({ user , updateUser  })=>{
                                         children: "Update User"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 114,
+                                        lineNumber: 95,
                                         columnNumber: 33
                                     }, undefined)
                                 ]
@@ -47766,7 +47725,7 @@ const UpdateView = ({ user , updateUser  })=>{
         columnNumber: 9
     }, undefined);
 };
-_s(UpdateView, "liv2JdM8/aRUhXNglA6p+zD50Y4=");
+_s(UpdateView, "aWVSOq3M51et5JuFUKXx5/7esOA=");
 _c = UpdateView;
 UpdateView.propTypes = {
     user: (0, _propTypesDefault.default).object,
