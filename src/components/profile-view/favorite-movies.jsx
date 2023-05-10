@@ -4,7 +4,6 @@ import PropTypes  from "prop-types";
 import { MovieCard } from "../movie-card/movie-card";
 
 function FavoriteMovies({ movies, removeFavMovie, user }) {
-    console.log(user);
     let favoriteMovies = movies.filter(function (movie) {
         return user.FavoriteMovies.includes(movie._id);
     }); 
@@ -17,17 +16,18 @@ function FavoriteMovies({ movies, removeFavMovie, user }) {
     } else {
         printFavoriteMovies = favoriteMovies.map(function(movie) {
             return (
-                <Col className="mt-4" _id={movie._id}>
+                <Col className="mt-4" key="_id" _id={movie._id}>
                     <MovieCard 
                         movie={movie}
-                        removeFavMovie={removeFavMovie}/>
+                        user={user}
+                        removeFavMovie={removeFavMovie} />
                 </Col>
             )
         })
     }
     console.log(favoriteMovies);
     return (
-        <div>
+        <div >
         {printFavoriteMovies}
         </div>
     )
@@ -40,5 +40,6 @@ FavoriteMovies.propTypes = {
     user: PropTypes.object,
     movies: PropTypes.array,
     removeFavMovie: PropTypes.func,
-    _id: PropTypes.string
+    _id: PropTypes.string,
 }
+// have a look on Prop-> which causes the add fav button not 
