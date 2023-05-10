@@ -11,13 +11,13 @@ import { DeleteUser } from "./delete-user";
 
 
 
-    export const ProfileView = ({user, /*setUser*/ movies, token, updateUser}) => {
+    export const ProfileView = ({user, setUser, movies, token, updateUser}) => {
         
-        // const [myUser, setMyUser] = useState("");
+        const [myUser, setMyUser] = useState("");
         // const [username, setUsername] = useState("");
-        // const [password, setPassword] = useState("");
-        // const [email, setEmail] = useState("");
-        // const [birthday, setBirthday] = useState("");
+        const [password, setPassword] = useState("");
+        const [email, setEmail] = useState("");
+        const [birthday, setBirthday] = useState("");
 
         //get users 
     useEffect(() => {
@@ -98,7 +98,7 @@ import { DeleteUser } from "./delete-user";
 
 ProfileView.propTypes = {
     user: PropTypes.object,
-    setUser: PropTypes.func, 
+    setMyUser: PropTypes.string, 
     movies: PropTypes.array, 
     token: PropTypes.string,
     updateUser: PropTypes.func,
