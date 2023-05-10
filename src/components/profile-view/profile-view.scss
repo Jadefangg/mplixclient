@@ -6,12 +6,12 @@ $backgroundcolor: black;
  }
  .form-profile{
     color: $color;
-    background-color: $backgroundcolor;
+    background-color: #919191 !important; 
     justify-content: center;
     align-items: center;
  }
 .li-element {
-align-items: center;
-align-content: center;
-list-style: none;
+   align-items: center;
+   align-content: center;
+   list-style: none;
 }
