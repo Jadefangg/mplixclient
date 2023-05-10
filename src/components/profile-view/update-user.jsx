@@ -7,16 +7,16 @@ import { Button, Row, Col, Card, ListGroup } from "react-bootstrap";
 export const UpdateView = ({ user, updateUser}) => {
     const token = localStorage.getItem("token");
 
-    const [username, setUsername] = useState(user.Username);
+    // const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState(user.Password);
     const [email, setEmail] = useState(user.Email);
-    const [birthday, setBirthday] = useState(user.Birthday);
+    const [birthday, setBirthday] = useState(user.Birthday); //toISOsString() not working
 
     const handleSubmit = function (event){
     event.preventDefault();
     
         const data = {
-            Username: username,
+            // Username: username,
             Password: password,
             Email: email,
             Birthday: birthday,
@@ -56,27 +56,11 @@ export const UpdateView = ({ user, updateUser}) => {
                             <form onSubmit={handleSubmit}>
                                 <ListGroup.Item>
                                     <label>
-                                        Username:
-                                        <input 
-                                        type="text"
-                                        name="username"
-                                        className="input-fields"
-                                        value={username}
-                                        placeholder={user.Username}
-                                        onChange={e => setUsername(e.target.value) }
-                                        />
-                                    </label>
-                                </ListGroup.Item>
-                                <br/>
-                                <ListGroup.Item>
-                                    <label>
                                         Password:
                                         <input 
                                         type="password"
                                         name="password"
                                         className="input-fields"
-                                        value={password}
-                                        placeholder={user.Password}
                                         onChange={e => setPassword(e.target.value) }
                                         />
                                     </label>
@@ -89,13 +73,11 @@ export const UpdateView = ({ user, updateUser}) => {
                                         type="email"
                                         name="email"
                                         className="input-fields"
-                                        value={email}
                                         placeholder={user.Email}
                                         onChange={e => setEmail(e.target.value) }
                                         />
                                     </label>
                                 </ListGroup.Item>
-                                <br/>
                                 <br/>
                                 <ListGroup.Item>
                                     <label>
@@ -104,7 +86,6 @@ export const UpdateView = ({ user, updateUser}) => {
                                         type="date"
                                         name="birthday"
                                         className="input-fields"
-                                        value={birthday}
                                         placeholder={user.Birthday}
                                         onChange={e => setBirthday(e.target.value) }
                                         />
