@@ -12040,7 +12040,7 @@ textarea.form-control-lg {
   font-weight: bold;
 }
 
-.login-view, .signup-view {
+.login-view, .Navigation-bar, .signup-view {
   color: orange;
   background-color: #000;
 }
