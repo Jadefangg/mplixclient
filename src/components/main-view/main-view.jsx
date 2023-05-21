@@ -49,7 +49,8 @@ function MainView()  {
                 ImageURL: movie.ImageURL, 
                 Description: movie.Description, 
                 Director: movie.Director,
-                Genre: movie.Genre
+                Genre: movie.Genre,
+                Actors: movie.Actors
             };    
         });
         // console.log(moviesFromApi)
@@ -84,7 +85,7 @@ return (
 <BrowserRouter>
     <ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
         minBreakpoint="xs">
-        <NavigationBar
+        <NavigationBar className="Navigation-bar"
             user={user} 
             onLoggedOut={onLoggedOut}
          />
