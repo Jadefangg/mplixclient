@@ -14,7 +14,6 @@ import { DeleteUser } from "./delete-user";
     export const ProfileView = ({user, setUser, movies, token, updateUser}) => {
         
         const [myUser, setMyUser] = useState("");
-        // const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
         const [email, setEmail] = useState("");
         const [birthday, setBirthday] = useState("");
@@ -44,9 +43,9 @@ import { DeleteUser } from "./delete-user";
     // remove-fav_Movies 
      const removeFavMovie = async (movies) => {
        const user = localStorage.getItem("user");
-       console.log(user);
+    //    console.log(user);
        const token = localStorage.getItem("token");
-       console.log(token);
+    //    console.log(token);
        fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movies._id}`,
        {
          method: "DELETE",
@@ -80,7 +79,7 @@ import { DeleteUser } from "./delete-user";
                             <UpdateView user={user} updateUser={updateUser}/>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className="fav-mov_list">
                         <Col>
                             <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user}/>
                         </Col>
