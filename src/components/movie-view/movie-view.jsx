@@ -1,18 +1,18 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link, Redirect } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, /*favoriteMovies, addFavMovie,*/ token }) => {
+export const MovieView = ({ movies, token }) => {
     const { movieId } = useParams();
     const movie = movies.find((m) => m._id === movieId);
 
     if (!movie) {
         // if movie is not found return to homepage
         return <Redirect to="/" />;
-    };
+    }
 
     return (
         <Card className="movie-view">
@@ -28,6 +28,8 @@ export const MovieView = ({ movies, /*favoriteMovies, addFavMovie,*/ token }) =>
                     {` ${movie.Director.Birthdate}`}
                     <br /> <br />Genre:
                     {` ${movie.Genre.Name}`}
+                    <br /> <br />
+                    {` ${movie.Actors}`}
                 </Card.Text>
                 <br />
                 <Link to={"/"}>
