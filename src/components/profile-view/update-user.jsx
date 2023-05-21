@@ -48,14 +48,14 @@ export const UpdateView = ({ user, updateUser}) => {
 
         <Row className="mt-2">
             <Col>
-                <Card> 
+                <Card bg={'dark'} text={'warning'}> 
                     <Card.Body className="form-profile">
                         <Card.Title>Profile Update:</Card.Title>
                         <Card.Text></Card.Text>
                         <ListGroup>
                             <form onSubmit={handleSubmit}>
-                                <ListGroup.Item>
-                                    <label>
+                                <ListGroup.Item variant="dark">
+                                    <label className="label-fields">
                                         Password:
                                         <input 
                                         type="password"
@@ -66,8 +66,8 @@ export const UpdateView = ({ user, updateUser}) => {
                                     </label>
                                 </ListGroup.Item>
                                 <br/>
-                                <ListGroup.Item>
-                                    <label>
+                                <ListGroup.Item variant="dark">
+                                    <label className="label-fields">
                                         Email:
                                         <input 
                                         type="email"
@@ -79,8 +79,8 @@ export const UpdateView = ({ user, updateUser}) => {
                                     </label>
                                 </ListGroup.Item>
                                 <br/>
-                                <ListGroup.Item>
-                                    <label>
+                                <ListGroup.Item variant="dark" >
+                                    <label className="label-fields">
                                         Birthday:
                                         <input 
                                         type="date"
