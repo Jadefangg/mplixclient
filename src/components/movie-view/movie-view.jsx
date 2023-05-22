@@ -37,9 +37,12 @@ export const MovieView = ({ movies, token }) => {
                     {` ${movie.Actors}`}
                     <br /> <br />
                     <div className="showDescription">
-                  <Button onClick={handleClickShowDescription} variant="outline-warning">{showDescription ? "Hide Description" : "Show Description"}</Button>
-                  {showDescription && <p>{movie.Description}</p>}
-                </div>
+                        <Button onClick={handleClickShowDescription} variant="outline-warning">
+                            {showDescription ? "Hide Description" : "Show Description"}
+                        </Button>
+                        <br/><br/>
+                        {showDescription && <p>{movie.Description}</p>}
+                    </div>
                 </Card.Text>
                 <br />
                 <Link to={"/"}>
