@@ -12032,14 +12032,6 @@ textarea.form-control-lg {
   background-color: #000;
 }
 
-.movie-card-button {
-  color: #000;
-  background-color: none;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-}
-
 .login-view, .Navigation-bar, .signup-view {
   color: orange;
   background-color: #000;
