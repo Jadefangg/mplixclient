@@ -59,7 +59,8 @@ import { Link } from "react-router-dom";
       console.log(e);
       alert(e);
     });
-  }    
+  }
+  
   
   return (
       <Card className="movie-card" style={{ width:"18rem"}}>
@@ -67,8 +68,6 @@ import { Link } from "react-router-dom";
         <Card.Body className="movie-card-body">
               <Card.Title>{movie.Title}</Card.Title>
               <Card.Text>
-                <br />
-                {/* {movie.Description} */}
                 <br /><br />
                 {movie.Director.Name} 
                 <br /><br />
@@ -76,20 +75,20 @@ import { Link } from "react-router-dom";
               </Card.Text>
                 <br />
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button className="movie-card-button" active>Open</Button>
+                  <Button className="movie-card-button" variant="outline-warning">Open</Button>
                   <br/> <br/>
                   {inFavoriteMovies ? <Button onClick={(e) => {
                     e.preventDefault();
                     removeFavoriteMovie(movie._id);
                   }} 
-                  className="movie-card-button"
+                  className="movie-card-button" variant="outline-warning"
                   >Remove from Favorite Movies</Button> :
                   <Button onClick={(e) => {
                     e.preventDefault();
                     console.log(movie._id); 
                     addFavoriteMovie(movie._id);
                   }}  
-                  className="movie-card-button"
+                  className="movie-card-button" variant="outline-warning"
                   >Add to Favorite Movies</Button>
                   }
                   </Link>
