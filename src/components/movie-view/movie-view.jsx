@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
@@ -8,11 +8,16 @@ import "./movie-view.scss";
 export const MovieView = ({ movies, token }) => {
     const { movieId } = useParams();
     const movie = movies.find((m) => m._id === movieId);
+    const [ showDescription, setShowDescription] = useState(false);
 
     if (!movie) {
         // if movie is not found return to homepage
         return <Redirect to="/" />;
     }
+    // functionality to description-button 
+  const handleClickShowDescription = () => {
+    setShowDescription(!showDescription);
+  };
 
     return (
         <Card className="movie-view">
@@ -30,10 +35,15 @@ export const MovieView = ({ movies, token }) => {
                     {` ${movie.Genre.Name}`}
                     <br /> <br />
                     {` ${movie.Actors}`}
+                    <br /> <br />
+                    <div className="showDescription">
+                  <Button onClick={handleClickShowDescription} variant="outline-warning">{showDescription ? "Hide Description" : "Show Description"}</Button>
+                  {showDescription && <p>{movie.Description}</p>}
+                </div>
                 </Card.Text>
                 <br />
                 <Link to={"/"}>
-                    <Button className="back-button" active>Back</Button>
+                    <Button className="back-button" variant="outline-warning">Back</Button>
                 </Link>
             </Card.Body>
         </Card>
