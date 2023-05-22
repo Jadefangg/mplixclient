@@ -33,17 +33,16 @@ $backgroundcolor: black;
     width: 100%;
     height: auto;
 }
-.movie-card-button{
-color:$backgroundcolor;
-background-color:none ;
-font-weight: bold;
-justify-content: center;
-align-items: center;
-}
+
 .login-view{
     color: $color;
     background-color: $backgroundcolor;
 }
+.Navigation-bar{
+    color: $color;
+    background-color: $backgroundcolor;
+}
+
 .signup-view{
     color: $color;
     background-color: $backgroundcolor;
