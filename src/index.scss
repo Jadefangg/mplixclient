@@ -1,7 +1,7 @@
 $color: orange;
 $backgroundcolor: black;
  
-@import "node_nodules/bootstrap/scss/bootstrap.scss";
+
 .movies-couch{
     color: $color;
     background-color: $backgroundcolor;
@@ -47,3 +47,6 @@ $backgroundcolor: black;
     color: $color;
     background-color: $backgroundcolor;
 }
+
+// Importing React Bootstrap utility classes
+@import "~bootstrap/scss/bootstrap.scss";
