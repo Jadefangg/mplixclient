@@ -1,7 +1,7 @@
 $color: orange;
 $backgroundcolor: black;
  
-@import "~bootstrap/scss/bootstrap.scss";
+@import "node_nodules/bootstrap/scss/bootstrap.scss";
 .movies-couch{
     color: $color;
     background-color: $backgroundcolor;
