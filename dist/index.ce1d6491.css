@@ -1,3 +1,34 @@
+.movies-couch {
+  color: orange;
+  background-color: #000;
+}
+
+.main-view {
+  color: orange;
+  background-color: #000;
+  justify-content: center;
+}
+
+.movie-view, .movie-card {
+  color: orange;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+  margin-top: 20px;
+}
+
+.movie-card-body {
+  color: orange;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+}
+
+.login-view, .Navigation-bar, .signup-view {
+  color: orange;
+  background-color: #000;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12004,37 +12035,6 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-}
-
-.movies-couch {
-  color: orange;
-  background-color: #000;
-}
-
-.main-view {
-  color: orange;
-  background-color: #000;
-  justify-content: center;
-}
-
-.movie-view, .movie-card {
-  color: orange;
-  width: 100%;
-  height: auto;
-  background-color: #000;
-  margin-top: 20px;
-}
-
-.movie-card-body {
-  color: orange;
-  width: 100%;
-  height: auto;
-  background-color: #000;
-}
-
-.login-view, .Navigation-bar, .signup-view {
-  color: orange;
-  background-color: #000;
 }
 
 :root {
