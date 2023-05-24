@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 
 export const LoginView = ({ onLoggedIn }) => {
@@ -75,8 +76,11 @@ export const LoginView = ({ onLoggedIn }) => {
                                 required
                                 />
                                 </Form.Group>
+                                <br/>
                                 <Button variant="primary" type="submit">Submit</Button>  
                             </Form>
+                            <br/>
+                            <Link to="/signup" className="link_to">Have you already sign up? If not click here!</Link>
                             </Card.Body>
                         </Card>
                 </Col>
