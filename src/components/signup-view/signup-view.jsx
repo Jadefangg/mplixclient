@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -81,8 +82,11 @@ export const SignupView = () => {
                                         required
                                     />
                                 </Form.Group>
+                                <br/>
                                 <Button variant="primary" type="submit">Submit</Button>
                             </Form>
+                            <br/>
+                            <Link to="/login" className="link_to">Already registered? You will be redirected to the login</Link>
                         </Card.Body>
                     </Card>
                 </Col>
