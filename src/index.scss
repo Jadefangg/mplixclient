@@ -37,6 +37,7 @@ $backgroundcolor: black;
 .login-view{
     color: $color;
     background-color: $backgroundcolor;
+
 }
 .Navigation-bar{
     color: $color;
@@ -47,6 +48,9 @@ $backgroundcolor: black;
     color: $color;
     background-color: $backgroundcolor;
 }
+.link_to{
+    color: $color;
+}
 
 // Importing React Bootstrap utility classes
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
