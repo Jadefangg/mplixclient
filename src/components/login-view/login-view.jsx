@@ -77,7 +77,7 @@ export const LoginView = ({ onLoggedIn }) => {
                                 />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="primary" type="submit">Submit</Button>  
+                                <Button variant="warning" type="submit">Submit</Button>  
                             </Form>
                             <br/>
                             <Link to="/signup" className="link_to">Have you already sign up? If not click here!</Link>
