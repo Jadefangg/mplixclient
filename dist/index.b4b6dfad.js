@@ -46935,7 +46935,7 @@ const LoginView = ({ onLoggedIn  })=>{
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                                            variant: "primary",
+                                            variant: "warning",
                                             type: "submit",
                                             children: "Submit"
                                         }, void 0, false, {
@@ -47196,7 +47196,7 @@ const SignupView = ()=>{
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                                            variant: "primary",
+                                            variant: "warning",
                                             type: "submit",
                                             children: "Submit"
                                         }, void 0, false, {
@@ -47800,7 +47800,7 @@ const UpdateView = ({ user , updateUser  })=>{
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                        variant: "primary",
+                                        variant: "warning",
                                         type: "submit",
                                         className: "mt-3",
                                         children: "Update User"
@@ -47892,7 +47892,7 @@ function DeleteUser({ user  }) {
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-            className: "",
+            variant: "danger",
             onClick: deregisterUser,
             type: "button",
             children: "Delete Account"
