@@ -48,9 +48,10 @@ $backgroundcolor: black;
     color: $color;
     background-color: $backgroundcolor;
 }
+
 .link_to{
     color: $color;
 }
 
 // Importing React Bootstrap utility classes
-@import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
