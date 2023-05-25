@@ -83,7 +83,7 @@ export const SignupView = () => {
                                     />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="primary" type="submit">Submit</Button>
+                                <Button variant="warning" type="submit">Submit</Button>
                             </Form>
                             <br/>
                             <Link to="/login" className="link_to">Already registered? You will be redirected to the login</Link>
