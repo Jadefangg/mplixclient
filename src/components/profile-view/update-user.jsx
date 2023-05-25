@@ -92,7 +92,7 @@ export const UpdateView = ({ user, updateUser}) => {
                                     </label>
                                 </ListGroup.Item>
                                 <br />
-                                <Button variant="primary" type="submit" className="mt-3">
+                                <Button variant="warning" type="submit" className="mt-3">
                                     Update User
                                 </Button>
                             </form>
