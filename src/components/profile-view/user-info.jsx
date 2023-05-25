@@ -5,7 +5,7 @@ function UserInfo({ user }) {
     return (
         <>
         <h2>Your Profile:</h2>
-            <Card>
+            <Card bg={'dark'} text={'warning'}>
                 <Card.Body className="profile-view">
                     <>
                         <h3>Username:</h3>
@@ -15,7 +15,7 @@ function UserInfo({ user }) {
                         <p >{user.Email}</p>
                         <br />
                         <h3 >Birthday:</h3>
-                        <p >{user.Birthday}</p>
+                        <p>{new Date(user.Birthday).toLocaleString()}</p>
                         <br />
                     </>
                 </Card.Body>
