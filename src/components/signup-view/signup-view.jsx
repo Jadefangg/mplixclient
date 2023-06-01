@@ -41,15 +41,16 @@ export const SignupView = () => {
     // signup form with submit button
     return (
         // handleSubmit is the callback of onSubmit, tells the login API to validate user & password
-        <Container>
+        <Container fluid className="p-0 min-vh-100 d-flex flex-column">
             <Row>
                 <p className="movies-couch">Logo</p>
             </Row>
-            <Row>
-                <Col>
-                    <Card>
-                        <Card.Body className="movies-couch">
-                            <Form className="movies-couch" onSubmit={handleSubmit}>
+            <Row className="flex-grow-2 justify-content-center align-items-center">
+                <Col >
+                    <Card className="card mb-4 w-80 h-100">
+                        <Card.Body className="movies-couch" >
+                        <Card.Title className="mb-4">Pleas Login</Card.Title>
+                            <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>
                                     <Form.Control type="text"
@@ -59,6 +60,7 @@ export const SignupView = () => {
                                         minLength="3"
                                     />
                                 </Form.Group>
+                                <br/>
                                 <Form.Group controlId="formPassword">
                                     <Form.Label>Password:</Form.Label>
                                     <Form.Control type="password"
@@ -67,6 +69,7 @@ export const SignupView = () => {
                                         required
                                         minLength="5" />
                                 </Form.Group>
+                                <br/>
                                 <Form.Group controlId="formEmail">
                                     <Form.Label>Email:</Form.Label>
                                     <Form.Control type="text"
@@ -74,6 +77,7 @@ export const SignupView = () => {
                                         onChange={(e) => setEmail(e.target.value)}
                                         required />
                                 </Form.Group>
+                                <br/>
                                 <Form.Group controlId="Birthday">
                                     <Form.Label>Birthday:</Form.Label>
                                     <Form.Control type="date"
