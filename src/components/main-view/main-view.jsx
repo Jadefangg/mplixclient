@@ -77,9 +77,6 @@ function MainView()  {
         })
     };
 
-// console.log(storedUser);
-// console.log(user);
-
 
 return ( 
 <BrowserRouter>
