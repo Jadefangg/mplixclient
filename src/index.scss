@@ -1,15 +1,25 @@
 $color: orange;
 $backgroundcolor: black;
- 
+$theme-colors: (
+    "outline-warning":orange,
+    );
 
 .movies-couch{
     color: $color;
     background-color: $backgroundcolor;
+    width: 100%;
+    height: auto;
 }
+
 .main-view{
     color: $color;
     background-color: $backgroundcolor;
     justify-content: center;
+}
+
+.navbar{
+    justify-self: center !important;
+    
 }
 
 .movie-view{
@@ -44,6 +54,11 @@ $backgroundcolor: black;
     background-color: $backgroundcolor;
 }
 
+.fav-list {
+    display: flexbox;
+    flex-direction: row;
+}
+
 .signup-view{
     color: $color;
     background-color: $backgroundcolor;
@@ -52,6 +67,7 @@ $backgroundcolor: black;
 .link_to{
     color: $color;
 }
+
 
 // Importing React Bootstrap utility classes
 @import "node_modules/bootstrap/scss/bootstrap.scss";
