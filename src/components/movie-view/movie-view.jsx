@@ -14,7 +14,7 @@ export const MovieView = ({ movies, token }) => {
         // if movie is not found return to homepage
         return <Redirect to="/" />;
     }
-    // functionality to description-button 
+    // functionality to description-button  
   const handleClickShowDescription = () => {
     setShowDescription(!showDescription);
   };
