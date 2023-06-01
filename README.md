@@ -20,32 +20,32 @@ The client side user interface complements REST API and MongoDB database whcich 
 ## Links
 
 ## Technologies Used
-React
-Bootstrap
-Javascript
-HTML
-CSS
++ React
++ Bootstrap
++ Javascript
++ HTML
++ CSS
 
 ## Dependencies
-"dependencies": {
-    "bootstrap": "^5.2.3",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.7.2",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.5",
-    "react-router": "^6.8.2",
-    "react-router-dom": "^6.8.2"
+* "dependencies": {
+  *  "bootstrap": "^5.2.3",
+  *  "prop-types": "^15.8.1",
+  *  "react": "^18.2.0",
+  *  "react-bootstrap": "^2.7.2",
+  *  "react-dom": "^18.2.0",
+  *  "react-hook-form": "^7.43.5",
+  *  "react-router": "^6.8.2",
+  *  "react-router-dom": "^6.8.2"
   },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.3",
-    "@testing-library/react": "^14.0.0",
-    "buffer": "^5.7.1",
-    "eslint": "^8.36.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "process": "^0.11.10"
+  * "devDependencies": {
+   * "@parcel/transformer-sass": "^2.8.3",
+   * "@testing-library/react": "^14.0.0",
+   * "buffer": "^5.7.1",
+   * "eslint": "^8.36.0",
+   * "eslint-plugin-jsx-a11y": "^6.7.1",
+   * "eslint-plugin-react": "^7.32.2",
+   * "eslint-plugin-react-hooks": "^4.6.0",
+   * "process": "^0.11.10"
   }
 
 ## API Documentation
