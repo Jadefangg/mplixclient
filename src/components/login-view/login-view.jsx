@@ -46,16 +46,16 @@ export const LoginView = ({ onLoggedIn }) => {
 //  login form with submit button
     return (
         // handle submit is the callback of onSubmit, tells the login API to validate user & password
-        <Container>
+        <Container fluid className="p-0 min-vh-100 d-flex flex-column">
             <Row>
                 <p className="logo">Logo</p>
             </Row>
-            <Row>
-                <Col>
-                    <Card>
+            <Row className="flex-grow-2 justify-content-center align-items-center">
+                <Col >
+                    <Card className="card mb-4 h-100">
                             <Card.Body className="movies-couch">
-                            <Card.Title>Pleas Login</Card.Title>
-                            <Form className="movies-couch" onSubmit={handleSubmit}>
+                            <Card.Title className="mb-4">Pleas Login</Card.Title>
+                            <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                 <Form.Label>User:</Form.Label>
                                 <Form.Control 
@@ -66,6 +66,7 @@ export const LoginView = ({ onLoggedIn }) => {
                                 required
                                 />
                                 </Form.Group>
+                                <br/>
                                 <Form.Group controlId="formPassword">
                                 <Form.Label>Password:</Form.Label>
                                 <Form.Control 
