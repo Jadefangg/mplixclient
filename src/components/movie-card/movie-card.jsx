@@ -44,7 +44,7 @@ import { Link } from "react-router-dom";
       if (response.ok) {
         return response.json();
       } else {
-        alert("Failed");
+        alert("Failed removing movie from Favorite list");
         return false;
       }
     })
