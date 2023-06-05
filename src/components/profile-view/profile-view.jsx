@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Col, Row }  from "react-bootstrap";
 import { Container } from "react-bootstrap";
 
-
 import { FavoriteMovies } from "./favorite-movies";
 import { UserInfo }  from "./user-info";
 import { UpdateView } from "./update-user";
@@ -43,9 +42,7 @@ import { DeleteUser } from "./delete-user";
     // remove-fav_Movies 
      const removeFavMovie = async (movies) => {
        const user = localStorage.getItem("user");
-    //    console.log(user);
        const token = localStorage.getItem("token");
-    //    console.log(token);
        fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movies._id}`,
        {
          method: "DELETE",
@@ -60,7 +57,7 @@ import { DeleteUser } from "./delete-user";
             return false;
           }
         })
-       .catch(function (error) {
+        .catch(function (error) {
            console.error(" An error ocurred" + error);
            alert("Movie could not be removed.")
        })
@@ -74,19 +71,17 @@ import { DeleteUser } from "./delete-user";
                         <UserInfo user={user}/>
                     </Col>
                     </Row> 
+                    <Row className=" d-flex justify-content-center">
+                        <DeleteUser user={user} />
+                    </Row>
                    <Row className="d-flex justify-content-center p-4">
                         <Col >
                             <UpdateView user={user} updateUser={updateUser}/>
                         </Col>
                     </Row>
-                    <Row className="fav-mov_list">
+                    <Row className="fav-list">
                         <Col>
                             <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user}/>
-                        </Col>
-                    </Row>
-                    <Row className="d-flex justify-content-center p-4">
-                        <Col>
-                            <DeleteUser user={user}/>
                         </Col>
                     </Row>
             </Container>
