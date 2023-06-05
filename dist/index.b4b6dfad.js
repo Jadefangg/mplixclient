@@ -47515,7 +47515,7 @@ function FavoriteMovies({ movies , removeFavMovie , user  }) {
                 lineNumber: 20,
                 columnNumber: 25
             }, this)
-        }, movie._id, false, {
+        }, "_id", false, {
             fileName: "src/components/profile-view/favorite-movies.jsx",
             lineNumber: 19,
             columnNumber: 17
