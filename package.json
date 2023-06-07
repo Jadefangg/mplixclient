@@ -1,13 +1,11 @@
 {
-  "name": "y",
+  "name": "movies-couch",
   "version": "1.0.0",
   "description": "client side of app",
-  
-  "scripts": {
+    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./",
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
+    "lint": "eslint ./"
+    
   },
   "repository": {
     "type": "git",
