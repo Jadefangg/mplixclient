@@ -4,8 +4,9 @@
   "description": "client side of app",
     "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./"
-    
+    "lint": "eslint ./",
+    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html"
   },
   "repository": {
     "type": "git",
