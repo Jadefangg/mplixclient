@@ -2,12 +2,12 @@
   "name": "movies-couch",
   "version": "1.0.0",
   "description": "client side of app",
-  "main": "index.html",
+  "default": "src/index.html",
     "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
+    "build": "parcel build ",
+    "start": "npx parcel src/index.html"
   },
   "repository": {
     "type": "git",
