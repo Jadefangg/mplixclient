@@ -2,11 +2,14 @@
   "name": "movies-couch",
   "version": "1.0.0",
   "description": "client side of app",
+  "main":"index.js", 
   
     "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./"
-    },
+    "lint": "eslint ./",
+    "build": "parcel build ",
+    "start": "npx parcel src/index.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HerRA17/movies-couch_client.git"
