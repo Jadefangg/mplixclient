@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom"; //Redirect
 import "./movie-view.scss";
 
 export const MovieView = ({ movies, token }) => {
