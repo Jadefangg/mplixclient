@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom"; //Redirect
+import { Link, Navigate } from "react-router-dom"; //Redirect
 import "./movie-view.scss";
 
 export const MovieView = ({ movies, token }) => {
@@ -12,7 +12,7 @@ export const MovieView = ({ movies, token }) => {
 
     if (!movie) {
         // if movie is not found return to homepage
-        return <Redirect to="/" />;
+        return <Navigate replace to="/" />;
     }
     // functionality to description-button  
   const handleClickShowDescription = () => {
