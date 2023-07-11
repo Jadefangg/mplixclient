@@ -1,4 +1,4 @@
-import  {React, useEffect, useState} from "react"; 
+import  { React, useEffect, useState } from "react"; 
 import PropTypes from "prop-types";
 import { Col, Row }  from "react-bootstrap";
 import { Container } from "react-bootstrap";
@@ -43,7 +43,7 @@ import { DeleteUser } from "./delete-user";
      const removeFavMovie = async (movies) => {
        const user = localStorage.getItem("user");
        const token = localStorage.getItem("token");
-       fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/movies/${movies._id}`,
+       fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/favMovies/${movies._id}`,
        {
          method: "DELETE",
         header: {Authorization: `Bearer ${token}`}}

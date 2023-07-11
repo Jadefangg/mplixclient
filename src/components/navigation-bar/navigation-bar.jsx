@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
@@ -14,24 +15,31 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                     <Nav className="me-auto">
                         {!user && (
                             <>
-                                <Nav.Link as={Link} href="/login">
-                                    Login{" "}
-                                </Nav.Link>
-                                <Nav.Link as={Link} href="/signup">
-                                    Signup{" "}
-                                </Nav.Link>
+                                <LinkContainer to="/login">
+                                    <Nav.Link as={Link} href="/login">
+                                        Login{" "}
+                                    </Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/signup">
+                                    <Nav.Link as={Link} href="/signup">
+                                        Signup{" "}
+                                    </Nav.Link>
+                                </LinkContainer>
                             </>
                         )}
                         {user && (
                             <>
-                                <Nav.Link as={Link} href="/">
-                                    Home
-                                </Nav.Link>
-                                <Nav.Link as={Link} href="/profile">
-                                    ProfileViewTest{" "}
-                                </Nav.Link>
+                                <LinkContainer to="/">
+                                    <Nav.Link as={Link} href="/">
+                                        Home
+                                    </Nav.Link>
+                                </LinkContainer>
+                                    <LinkContainer to="/profile">
+                                    <Nav.Link as={Link} href="/profile">
+                                        Profile
+                                    </Nav.Link>
+                                </LinkContainer>
                                 <Nav.Link onClick={onLoggedOut} >Logout</Nav.Link>
-
                             </>
                         )}
                     </Nav>
