@@ -40,9 +40,8 @@ function MainView()  {
       })
         .then((response) => response.json())
         .then((movies) => {
-        // console.log(movies); 
+         
         const moviesFromApi = movies.map((movie) => {
-            // console.log(Object.keys(movies))
             return {
                 _id: movie._id,
                 Title: movie.Title,
@@ -53,9 +52,8 @@ function MainView()  {
                 Actors: movie.Actors
             };    
         });
-        // console.log(moviesFromApi)
-        setMovies(moviesFromApi); 
         
+        setMovies(moviesFromApi); 
     
     });
 }, [token]);
