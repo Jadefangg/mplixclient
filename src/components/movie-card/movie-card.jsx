@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 // Movie card component
- function MovieCard ({ movie, user, updateUser  }) {
+ function MovieCard ({ movies, movie, user, updateUser  }) {
   const [inFavoriteMovies, setInFavoriteMovies] = useState(user && user.FavoriteMovies.includes(movie._id));
   const token = window.localStorage.getItem("token");
   // add Fav Movie function
@@ -53,6 +53,7 @@ import { Link } from "react-router-dom";
         alert("Movie deleted from Favorite Movies");
         setInFavoriteMovies(false);
         updateUser(user);
+        console.log(updateUser);
       }
     })
     .catch(e => {
@@ -114,5 +115,6 @@ MovieCard.propTypes = {
   user: PropTypes.object,
   addFavoriteMovie: PropTypes.func,
   removeFavoriteMovie: PropTypes.func,
-  updateUser: PropTypes.func
+  updateUser: PropTypes.func,
+  movies: PropTypes.array
 };
