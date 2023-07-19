@@ -57,6 +57,7 @@ function MainView()  {
     
     });
 }, [token]);
+
 // update User function
     const updateUser = (user) => {
         fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/`, {
