@@ -81,7 +81,7 @@ import { DeleteUser } from "./delete-user";
                     </Row>
                     <Row className="fav-list">
                         <Col>
-                            <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user}/>
+                            <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user} updateUser={updateUser}/>
                         </Col>
                     </Row>
             </Container>
