@@ -17,6 +17,7 @@ The client side user interface complements REST API and MongoDB database whcich 
 
 ## How to Run
 
+
 ## Links
 Check the site here: <a href="https://movies-couch.netlify.app/"> movies-couch </a>
 ## Technologies Used
@@ -71,3 +72,5 @@ Main view (optional features)
 Profile, Single Movie, and Main views (optional features)
 
 ## Credits
+Tutor: Adewunmi bamishigbin
+Mentor: Joel Cross
