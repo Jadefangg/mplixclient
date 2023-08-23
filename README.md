@@ -1,4 +1,4 @@
-## Movies-couch_client
+# Movies-couch_client
 ## Table of Contents:
 * [Overview](#overview)
 * [How to Run](#how-to-run)
@@ -10,16 +10,26 @@
 * [Features](#features)
 * [Credits](#credentials)
 
+<a id="overview"></a>
 ## Overview
 Movies-Couch is the client-side part of the app, based on the existing server side. This movie app allows users to access information about different movies.
 Users can register, update, their personal data, and manage as well their favorite movies.
 The client side user interface complements REST API and MongoDB database whcich have been set up previously, providing a smooth experience for users. Built with MERN-stack (MongoDB, Express, React, Node.js), Movies-Couch is a full-stack web application which offers a user-friendly, responsive and efficient solution for those seeking movie information and management.
 
+<a id="hot-to-tun"></a>
 ## How to Run
+1. Clone repository using command git clone https://github.com/HerRA17/movies-couch_client
+2. Install dependencies using npm install prop-types@15.8.1 react@18.2.0 react-bootstrap@ and npm install --save-dev @parcel/transformer-sass@2.8.3 parcel@2.8.3 process@0.11.10
+3. Run the app using parcel src/index.html
+4. After this, the app should be available in the browser at http://localhost:1234 
+5. To access movies, register or use following test credentials: Username: Example(Test); Password: Example(Test)
 
-
+<a id="links"></a>
 ## Links
 Check the site here: <a href="https://movies-couch.netlify.app/"> movies-couch </a>
+Chech the API site: <a href="https://github.com/HerRA17/movies-couch_api" > movies-couch API</a>
+
+<a id="technologies-used"></a>
 ## Technologies Used
 + React
 + Bootstrap
@@ -27,6 +37,7 @@ Check the site here: <a href="https://movies-couch.netlify.app/"> movies-couch <
 + HTML
 + CSS
 
+<a id="dependencies"></a>
 ## Dependencies
 * "dependencies": {
   *  "bootstrap": "^5.2.3",
@@ -49,28 +60,34 @@ Check the site here: <a href="https://movies-couch.netlify.app/"> movies-couch <
    * "process": "^0.11.10"
   }
 
+<a id="api"></a>
 ## API Documentation
 Information regarding the <a href="https://github.com/HerRA17/movies-couch_api" target="_blank">API</a> used in the Project(endpoints, dependencies, error response...) can be found <a href="" target="_blank">here</a>
 
+<a id="features"></a>
 ## Features
-Genre view
-● Returns data about a genre, with a name and description
-● Displays example movies
-Director view
-● Returns data about a director (name, bio, birth year, death year)
-● Displays example movies from the director
-Single Movie view (optional features)
+Main view
+● Returns ALL movies to the user (each movie item with an image, title, and description)
+● Filtering the list of movies with a “search” feature
+● Ability to select a movie for more details
+● Ability to log out
+● Ability to navigate to Profile view
+Single Movie view
+● Returns data (description, genre, director, image) about a single movie to the user
+● Allows users to add a movie to their list of favorites
 ● Allow users to see which actors star in which movies
-● Allow users to view more information about different movies, such as the release date and
-the movie rating
-● Allow users to access different movie information, such as genre description and director bio,
-without leaving the view (e.g., tooltips)
-● Allow users to share a movie
-● Display a list of related or similar movies
-Main view (optional features)
-● Allow users to sort movies based on different criteria
-Profile, Single Movie, and Main views (optional features)
+Login view
+● Allows users to log in with a username and password
+Signup view
+● Allows new users to register (username, password, email, date of birth)
+Profile view
+● Displays user registration details
+● Allows users to update their info (username, password, email, date of birth)
+● Displays favorite movies
+● Allows users to remove a movie from their list of favorites
+● Allows existing users to deregister
 
+<a id="credits"></a>
 ## Credits
 Tutor: Adewunmi bamishigbin
 Mentor: Joel Cross
