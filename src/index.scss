@@ -54,9 +54,19 @@ $theme-colors: (
     background-color: $backgroundcolor;
 }
 
-.fav-list {
-    display: flexbox;
-    flex-direction: row;
+.favorite-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 425px) {
+        grid-template-columns: 1fr;
+    }
+    @media (min-width: 1440px) {
+        gap: 75px;
+    }
 }
 
 .signup-view{
