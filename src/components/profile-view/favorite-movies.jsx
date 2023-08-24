@@ -16,7 +16,7 @@ function FavoriteMovies({ movies, removeFavMovie, user, updateUser }) {
     } else {
         printFavoriteMovies = favoriteMovies.map(function(movie) {
             return (
-                <Col className="mt-4" key={movie._id} _id={movie._id} xs={6} md={4} lg={3} xl={2}>
+                <Col key={movie._id} _id={movie._id}>
                         <MovieCard 
                         movie={movie}
                         user={user}
@@ -28,7 +28,7 @@ function FavoriteMovies({ movies, removeFavMovie, user, updateUser }) {
     }
     
     return (
-        <div >
+        <div className="favorite-list">
             {printFavoriteMovies}
         </div>
     )
