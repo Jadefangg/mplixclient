@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Row   from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 
 import { MovieCard } from "../movie-card/movie-card";
@@ -22,6 +22,7 @@ function MainView()  {
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
+    const [loading, setLoading] = useState(false);
     
 
     // run whenever a user logs out
@@ -34,7 +35,8 @@ function MainView()  {
         //verifying token-authentication to access request
         if(!token) {
             return;
-        }                
+        }
+        setLoading(true);
     fetch("https://movies-couch-api.vercel.app/movies", {
       headers: {Authorization: `Bearer ${token}` },
       })
@@ -75,13 +77,20 @@ function MainView()  {
             console.log(error);
         })
     };
-
+// show spinner
+const showSpinner = function () {
+    return (
+        <Col className="spinner-wrapper">
+            <Spinner animation="border" roles="status" variant="warning">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </Col>
+    );
+};
 
 return ( 
 <BrowserRouter>
-    <ThemeProvider  breakpoints={["xxl","xl","lg","md","sm","xs"]}
-        minBreakpoint="xs">
-        <NavigationBar className="Navigation-bar"
+    <NavigationBar className="Navigation-bar"
             user={user} 
             onLoggedOut={onLoggedOut}
          />
@@ -120,7 +129,7 @@ return (
                         {!user ? (
                         <Navigate to="/login" replace/>
                         ) : movies.length === 0 ? (
-                            <div>The list is empty!</div>
+                            <>{showSpinner()}</>
                             ): ( <Col md={8}>
                             <MovieView movies={movies} 
                             FavoriteMovies={user.FavoriteMovies} />
@@ -136,7 +145,7 @@ return (
                         {!user ? (
                             <Navigate to="/login" replace/>
                         ) : movies.length === 0 ? (
-                            <div>The list is empty!</div>
+                            <>{showSpinner()}</>
                         ) : (
                          <>
                             {movies.map((movie) => (
@@ -167,7 +176,6 @@ return (
             />
             </Routes>
         </Row>
-    </ThemeProvider>
 </BrowserRouter>
     );
 }
