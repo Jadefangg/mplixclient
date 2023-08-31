@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { error } from "console";
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
@@ -33,9 +34,15 @@ export const SignupView = () => {
             if (response.ok) {
                 alert("Signup successful");
                 window.location.reload();
+            } else if (response.status(400)) {
+                alert("Signup failed, Username already exists")
+            } else if (response.status(401)) {
+                alert("Signup failed, you are not authorized to access")
             } else {
-                alert("Signup failed")
+                alert("Error: " , response.status)
             }
+        }).catch((error) => {
+            console.error("An error ocurred: " , error)
         });
     };
     // signup form with submit button
@@ -46,7 +53,7 @@ export const SignupView = () => {
                 <Col >
                     <Card className="card mb-4 w-80 h-100">
                         <Card.Body className="movies-couch" >
-                        <Card.Title className="mb-4">Pleas Signin</Card.Title>
+                        <Card.Title className="mb-4">Please Sign in</Card.Title>
                             <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>
@@ -84,7 +91,7 @@ export const SignupView = () => {
                                     />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="warning" type="submit">Submit</Button>
+                                <Button variant="warning" type="submit">Sign in</Button>
                             </Form>
                             <br/>
                             <Link to="/login" className="link_to">Already registered? You will be redirected to the login</Link>
