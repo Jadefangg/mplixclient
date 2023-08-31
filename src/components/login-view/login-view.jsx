@@ -51,7 +51,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 <Col >
                     <Card className="card mb-4 h-100">
                             <Card.Body className="movies-couch">
-                            <Card.Title className="mb-4">Pleas Login</Card.Title>
+                            <Card.Title className="mb-4">Please Login</Card.Title>
                             <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                 <Form.Label>User:</Form.Label>
@@ -75,10 +75,10 @@ export const LoginView = ({ onLoggedIn }) => {
                                 />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="warning" type="submit">Submit</Button>  
+                                <Button variant="warning" type="submit">Login</Button>  
                             </Form>
                             <br/>
-                            <Link to="/signup" className="link_to">Have you already sign up? If not click here!</Link>
+                            <Link to="/signup" className="link_to">Have you already signed up? If not click here!</Link>
                             </Card.Body>
                         </Card>
                 </Col>
