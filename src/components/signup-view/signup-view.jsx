@@ -38,8 +38,6 @@ export const SignupView = () => {
                 alert("Signup failed, Username already exists")
             } else if (response.status(401)) {
                 alert("Signup failed, you are not authorized to access")
-            } else {
-                alert("Error: " , response.status)
             }
         }).catch((error) => {
             console.error("An error ocurred: " , error)
