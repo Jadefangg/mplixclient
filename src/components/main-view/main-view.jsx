@@ -10,7 +10,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-
+import { SearchBar } from "./search-bar";
 import { ProfileView } from "../profile-view/profile-view";
 
 
@@ -23,6 +23,8 @@ function MainView()  {
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [loading, setLoading] = useState(false);
+    const [filteredMovies, setFilteredMovies] = useState([]);
+    const [userSearch, setUserSearch] = useState("");
     
 
     // run whenever a user logs out
@@ -40,7 +42,13 @@ function MainView()  {
     fetch("https://movies-couch-api.vercel.app/movies", {
       headers: {Authorization: `Bearer ${token}` },
       })
-        .then((response) => response.json())
+        .then((response) => {
+        setLoading(false);
+        if (response.status === 401) {
+            throw new Error("Sorry you do not have authorize access to this resource.")
+        } else if (response.ok) {
+        return response.json();}
+        })
         .then((movies) => {
          
         const moviesFromApi = movies.map((movie) => {
@@ -59,6 +67,31 @@ function MainView()  {
     
     });
 }, [token]);
+// logic to render searched movies
+    const onSearch = function (searchInput) {
+        setUserSearch(searchInput);
+    }
+    useEffect(
+        function () {
+            if (!userSearch) {
+                setFilteredMovies([]);
+            } else {
+                let searchResult = movies.filter(function (movie) {
+                    const movieSearched = movie.Title || "";
+                    const directorSearched = (movie.Director && movie.Director.Name)|| "";
+                    const genreSearched = (movie.Genre && movie.Genre.Name)|| "";
+                    const userSearchLowerCase = userSearch.toLowerCase();
+
+                return (
+                    movieSearched.includes(userSearchLowerCase) ||
+                    directorSearched.includes(userSearchLowerCase) ||
+                    genreSearched.includes(userSearchLowerCase) 
+                );
+                });
+                setFilteredMovies(searchResult);
+            }
+        },
+    [movies, userSearch]);
 
 // update User function
     const updateUser = (user) => {
@@ -130,9 +163,10 @@ return (
                         <Navigate to="/login" replace/>
                         ) : movies.length === 0 ? (
                             <>{showSpinner()}</>
-                            ): ( <Col md={8}>
-                            <MovieView movies={movies} 
-                            FavoriteMovies={user.FavoriteMovies} />
+                        ) : ( 
+                            <Col md={6}>
+                                <MovieView movies={movies} 
+                                FavoriteMovies={user.FavoriteMovies} />
                             </Col>
                         )}
                      </>
@@ -142,16 +176,29 @@ return (
                     path="/"
                     element={
                      <>
+                        <SearchBar onSearch={onSearch}/>
                         {!user ? (
                             <Navigate to="/login" replace/>
-                        ) : movies.length === 0 ? (
+                        ) : loading ?(
                             <>{showSpinner()}</>
-                        ) : (
-                         <>
-                            {movies.map((movie) => (
+                        ) : userSearch && filteredMovies.length === 0 ? (
+                            <Col className="mt-5">
+                                Sorry, we could not find any match to your request
+                            </Col>
+                        ) : userSearch ? (
+                         <>                            
+                            {filteredMovies.map((movie) => (
                             <Col className="mb-5" key={movie._id} >
                                 <MovieCard  movie={movie} user={user} updateUser={updateUser} />
                             </Col>
+                            ))}
+                        </>
+                        ) : ( 
+                        <>
+                            {movies.map((movie) => (
+                                <Col className="mb-5" key={movie._id}>
+                                    <MovieCard movie={movie} user={user} updateUser={updateUser}/>
+                                </Col>
                             ))}
                         </>
                         )}
