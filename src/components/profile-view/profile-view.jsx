@@ -16,8 +16,7 @@ import { DeleteUser } from "./delete-user";
         const [password, setPassword] = useState("");
         const [email, setEmail] = useState("");
         const [birthday, setBirthday] = useState("");
-        // const [inFavoriteMovies, setInFavoriteMovies] = useState(() => user && user.FavoriteMovies.includes(movie._id));
-        
+                
     //get users 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
