@@ -179,9 +179,9 @@ return (
                         <SearchBar onSearch={onSearch}/>
                         {!user ? (
                             <Navigate to="/login" replace/>
-                        ) : loading ?(
+                        ) : loading ? (
                             <>{showSpinner()}</>
-                        ) : userSearch && filteredMovies.length === 0 ? (
+                        ) : (!userSearch || (userSearch && filteredMovies.length === 0)) ? (
                             <Col className="mt-5">
                                 Sorry, we could not find any match to your request
                             </Col>
