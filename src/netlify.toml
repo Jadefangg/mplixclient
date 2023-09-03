@@ -10,6 +10,14 @@
   from = "/*"
   to = "/MovieView"
   status = 200
+  [[redirects]]
+  from = "/login"
+  to = "/MovieView"
+  status = 200
+  [[redirects]]
+  from = "/signup"
+  to = "/MovieView"
+  status = 200
 
   [build]
   command = “CI= npm run build”
