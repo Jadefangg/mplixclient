@@ -53,7 +53,6 @@ import { Link } from "react-router-dom";
         alert("Movie deleted from Favorite Movies");
         setInFavoriteMovies(false);
         updateUser(user);
-        console.log(updateUser);
       }
     })
     .catch(e => {
@@ -61,7 +60,6 @@ import { Link } from "react-router-dom";
       alert(e);
     });
   }
-  
   
   return (
       <Card className="movie-card" style={{ width:"18rem"}}>
