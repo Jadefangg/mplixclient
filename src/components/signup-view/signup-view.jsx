@@ -33,12 +33,16 @@ export const SignupView = () => {
             if (response.ok) {
                 alert("Signup successful");
                 window.location.reload();
+                return response.json();
             } else if (response.status(400)) {
-                alert("Signup failed, Username already exists")
+                alert(`Signup failed: Username already exists`)
             } else if (response.status(401)) {
-                alert("Signup failed, you are not authorized to access")
+                alert("Signup failed: You are not authorized to access")
+            } else {
+                throw new Error("An unknown error occurred");
             }
         }).catch((error) => {
+            alert(`An error ocurred: ${error.message} || "Unknown user`);
             console.error("An error ocurred: " , error)
         });
     };
