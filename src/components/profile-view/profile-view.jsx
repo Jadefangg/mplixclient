@@ -61,8 +61,6 @@ import { DeleteUser } from "./delete-user";
         });  
     }
 
-    console.log(updateUser);
-    console.log(user);
     return (
         <Container className="profile-view">
                 <Row className="d-flex justify-content-center p-4">
