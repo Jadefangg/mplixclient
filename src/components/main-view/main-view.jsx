@@ -77,21 +77,24 @@ function MainView()  {
                 setFilteredMovies([]);
             } else {
                 let searchResult = movies.filter(function (movie) {
-                    const movieSearched = movie.Title || "";
-                    const directorSearched = (movie.Director && movie.Director.Name)|| "";
-                    const genreSearched = (movie.Genre && movie.Genre.Name)|| "";
+                    const titleSearched = movie.Title?.toLowerCase() || "";
+                    // const directorSearched = movie.Director.toLowerCase() || movie.Director?.Name.toLowerCase();
+                    const genreSearched = movie.Genre?.Name.toLowerCase() || "";
                     const userSearchLowerCase = userSearch.toLowerCase();
-
+                
                 return (
-                    movieSearched.includes(userSearchLowerCase) ||
-                    directorSearched.includes(userSearchLowerCase) ||
+                    titleSearched.includes(userSearchLowerCase) ||
+                    // directorSearched.includes(userSearchLowerCase) ||
                     genreSearched.includes(userSearchLowerCase) 
                 );
                 });
                 setFilteredMovies(searchResult);
+                console.log(searchResult);
             }
         },
     [movies, userSearch]);
+    console.log(userSearch)
+    console.log(filteredMovies)
 
 // update User function
     const updateUser = (user) => {
@@ -103,7 +106,7 @@ function MainView()  {
             if (data) {
                 console.log(data);
                 localStorage.setItem("user", JSON.stringify(data));
-                window.location.reload();
+                // window.location.reload();
             }
         })
         .catch((error) => {
@@ -164,7 +167,7 @@ return (
                         ) : movies.length === 0 ? (
                             <>{showSpinner()}</>
                         ) : ( 
-                            <Col md={6}>
+                            <Col md={9}>
                                 <MovieView movies={movies} 
                                 FavoriteMovies={user.FavoriteMovies} />
                             </Col>
@@ -181,7 +184,8 @@ return (
                             <Navigate to="/login" replace/>
                         ) : loading ? (
                             <>{showSpinner()}</>
-                        ) : (!userSearch || (userSearch && filteredMovies.length === 0)) ? (
+                            )
+                         : userSearch && filteredMovies.length === 0 ? (
                             <Col className="mt-5">
                                 Sorry, we could not find any match to your request
                             </Col>
@@ -193,7 +197,8 @@ return (
                             </Col>
                             ))}
                         </>
-                        ) : ( 
+                        ) 
+                        : ( 
                         <>
                             {movies.map((movie) => (
                                 <Col className="mb-5" key={movie._id}>
