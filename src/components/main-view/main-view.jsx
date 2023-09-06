@@ -5,7 +5,6 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 
-
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
@@ -67,6 +66,7 @@ function MainView()  {
     
     });
 }, [token]);
+
 // logic to render searched movies
     const onSearch = function (searchInput) {
         setUserSearch(searchInput);
@@ -232,4 +232,4 @@ return (
     );
 }
 
-export  { MainView };
+export { MainView };
