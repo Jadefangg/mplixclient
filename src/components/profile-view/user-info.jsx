@@ -2,6 +2,13 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 function UserInfo({ user }) {
+    const userBirthday = new Date(user.Birthday);
+    const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric" 
+    };
+    const formattedBirthday = userBirthday.toLocaleDateString("de-DE", options);
     return (
         <>
         <h2>Your Profile:</h2>
@@ -15,7 +22,7 @@ function UserInfo({ user }) {
                         <p >{user.Email}</p>
                         <br />
                         <h3 >Birthday:</h3>
-                        <p>{new Date(user.Birthday).toLocaleString()}</p>
+                        <p>{formattedBirthday}</p>
                         <br />
                     </>
                 </Card.Body>
