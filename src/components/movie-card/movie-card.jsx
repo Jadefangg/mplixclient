@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
         if (response.ok) {
           return response.json();
         } else {
-          alert("Failed");
+          alert("Failed adding the Movie to Favorite Movies");
           return false;
         }
       })
