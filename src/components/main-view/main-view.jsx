@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Row   from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 
 import { MovieCard } from "../movie-card/movie-card";
@@ -24,7 +24,7 @@ function MainView()  {
     const [loading, setLoading] = useState(false);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [userSearch, setUserSearch] = useState("");
-    
+        
 
     // run whenever a user logs out
     const onLoggedOut= function () {
@@ -93,8 +93,6 @@ function MainView()  {
             }
         },
     [movies, userSearch]);
-    console.log(userSearch)
-    console.log(filteredMovies)
 
 // update User function
     const updateUser = (user) => {
@@ -202,7 +200,7 @@ return (
                         <>
                             {movies.map((movie) => (
                                 <Col className="mb-5" key={movie._id}>
-                                    <MovieCard movie={movie} user={user} updateUser={updateUser}/>
+                                    <MovieCard movie={movie} user={user} updateUser={updateUser} />
                                 </Col>
                             ))}
                         </>
