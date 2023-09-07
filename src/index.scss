@@ -52,7 +52,6 @@ $theme-colors: (
 .login-view{
     color: $color;
     background-color: $backgroundcolor;
-
 }
 .Navigation-bar{
     color: $color;
@@ -63,14 +62,13 @@ $theme-colors: (
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 50px;
-    flex-wrap: wrap;
     justify-content: space-between;
 
-    @media (max-width: 425px) {
+    @media (max-width: 766px) {
         grid-template-columns: 1fr;
     }
     @media (min-width: 1440px) {
-        gap: 75px;
+        gap: 69px;
     }
 }
 
