@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 // Movie card component
- function MovieCard ({ movies, movie, user, updateUser  }) {
+ function MovieCard ({ movies, movie, user, updateUser }) {
   const [inFavoriteMovies, setInFavoriteMovies] = useState(user && user.FavoriteMovies.includes(movie._id));
   const token = window.localStorage.getItem("token");
   // add Fav Movie function
@@ -34,6 +34,8 @@ import { Link } from "react-router-dom";
         console.log(e);
       });
   }    
+  console.log(user)
+  console.log(user.FavoriteMovies)
   // Remove-favMovies
   const removeFavoriteMovie = () => {
     fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/favMovies/${movie._id}`, {
@@ -53,6 +55,7 @@ import { Link } from "react-router-dom";
         alert("Movie deleted from Favorite Movies");
         setInFavoriteMovies(false);
         updateUser(user);
+      
       }
     })
     .catch(e => {
@@ -63,7 +66,7 @@ import { Link } from "react-router-dom";
   
   return (
       <Card className="movie-card" style={{ width:"18rem"}}>
-        <Card.Img variant="top" src={movie.ImageURL} alt="movie-poster"/> 
+        <Card.Img variant="top" className="w-80" src={movie.ImageURL} alt="movie-poster"/> 
         <Card.Body className="movie-card-body">
               <Card.Title>{movie.Title}</Card.Title>
               <Card.Text>
