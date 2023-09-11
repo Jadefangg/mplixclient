@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link, Navigate, useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,6 +12,7 @@ export const SignupView = () => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
+    const history = useHistrory();
 
     // validation of signup view
     const handleSubmit = (event) => {
@@ -32,8 +33,8 @@ export const SignupView = () => {
         }).then((response) => {
             if (response.ok) {
                 alert("Signup successful");
-                // window.location.reload();
-                return response.json() && redirect("/login");
+                history.push("/login");
+                return response.json();
             } else if (response.status(400)) {
                 alert(`Signup failed: Username already exists`)
             } else if (response.status(401)) {
@@ -42,14 +43,12 @@ export const SignupView = () => {
                 throw new Error("An unknown error occurred");
             }
         })
-        // .then((data) => {
-        //     if (data) {
-        //         return <Navigate to="/login" />; 
-        //     } else {
-        //         alert("Sign up could not be completed, please try again.");
-        //         return <Navigate to="/" />;
-        //     }
-        // })
+        .then((data) => {
+            if (!data) {
+                alert("Sign up could not be completed, please try again.");
+                history.push("/signup");
+            }
+        })
         .catch(e => {
             console.log(e);
             alert("Signup failed: Username already exists");
