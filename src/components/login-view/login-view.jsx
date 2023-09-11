@@ -46,7 +46,7 @@ export const LoginView = ({ onLoggedIn }) => {
 //  login form with submit button
     return (
         // handle submit is the callback of onSubmit, tells the login API to validate user & password
-        <Container fluid className="p-0 min-vh-100 d-flex flex-column">
+        <Container fluid className="p-0 min-vh-100 d-flex flex-column mt-5">
             <Row className="flex-grow-2 justify-content-center align-items-center">
                 <Col >
                     <Card className="card mb-4 h-100">
