@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -33,7 +33,7 @@ export const SignupView = () => {
             if (response.ok) {
                 alert("Signup successful");
                 // window.location.reload();
-                return response.json() && <Navigate to="/login" />;
+                return response.json() && redirect("/login");
             } else if (response.status(400)) {
                 alert(`Signup failed: Username already exists`)
             } else if (response.status(401)) {
