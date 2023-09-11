@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate, useHistory } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,7 +12,7 @@ export const SignupView = () => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
-    const history = useHistrory();
+    const navigate = useNavigate();
 
     // validation of signup view
     const handleSubmit = (event) => {
@@ -33,7 +33,7 @@ export const SignupView = () => {
         }).then((response) => {
             if (response.ok) {
                 alert("Signup successful");
-                history.push("/login");
+                navigate("/login");
                 return response.json();
             } else if (response.status(400)) {
                 alert(`Signup failed: Username already exists`)
@@ -46,7 +46,7 @@ export const SignupView = () => {
         .then((data) => {
             if (!data) {
                 alert("Sign up could not be completed, please try again.");
-                history.push("/signup");
+                navigate("/signup");
             }
         })
         .catch(e => {
