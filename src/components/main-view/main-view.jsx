@@ -104,6 +104,7 @@ function MainView()  {
             if (data) {
                 console.log(data);
                 localStorage.setItem("user", JSON.stringify(data));
+                setUser(data);
                 // window.location.reload();
             }
         })

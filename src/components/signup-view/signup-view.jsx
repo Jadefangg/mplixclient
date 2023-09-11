@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -41,10 +41,19 @@ export const SignupView = () => {
             } else {
                 throw new Error("An unknown error occurred");
             }
-        }).catch((error) => {
-            alert(`An error ocurred: ${error.message} || "Unknown user`);
-            console.error("An error ocurred: " , error)
-        });
+        })
+        .then((data) => {
+            if (data) {
+                return <Navigate to="/login" />; 
+            } else {
+                alert("Sign up could not be completed, please try again.");
+                return <Navigate to="/" />;
+            }
+        })
+        .catch(e => {
+            console.log(e);
+            alert("Signup failed: Username already exists");
+          });
     };
     // signup form with submit button
     return (
@@ -54,7 +63,7 @@ export const SignupView = () => {
                 <Col >
                     <Card className="card mb-4 w-80 h-100">
                         <Card.Body className="movies-couch" >
-                        <Card.Title className="mb-4">Please Sign in</Card.Title>
+                        <Card.Title className="mb-4">Please Sign up</Card.Title>
                             <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>
@@ -92,7 +101,7 @@ export const SignupView = () => {
                                     />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="warning" type="submit">Sign in</Button>
+                                <Button variant="warning" type="submit">Sign up</Button>
                             </Form>
                             <br/>
                             <Link to="/login" className="link_to">Already registered? You will be redirected to the login</Link>
