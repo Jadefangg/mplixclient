@@ -4,6 +4,10 @@ $theme-colors: (
     "outline-warning":#ffc107,
     );
 
+#root {
+    background-color: $backgroundcolor;
+}
+
 .movies-couch{
     color: $color;
     background-color: $backgroundcolor;
