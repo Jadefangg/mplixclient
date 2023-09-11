@@ -32,8 +32,8 @@ export const SignupView = () => {
         }).then((response) => {
             if (response.ok) {
                 alert("Signup successful");
-                window.location.reload();
-                return response.json();
+                // window.location.reload();
+                return response.json() && <Navigate to="/login" />;
             } else if (response.status(400)) {
                 alert(`Signup failed: Username already exists`)
             } else if (response.status(401)) {
@@ -42,14 +42,14 @@ export const SignupView = () => {
                 throw new Error("An unknown error occurred");
             }
         })
-        .then((data) => {
-            if (data) {
-                return <Navigate to="/login" />; 
-            } else {
-                alert("Sign up could not be completed, please try again.");
-                return <Navigate to="/" />;
-            }
-        })
+        // .then((data) => {
+        //     if (data) {
+        //         return <Navigate to="/login" />; 
+        //     } else {
+        //         alert("Sign up could not be completed, please try again.");
+        //         return <Navigate to="/" />;
+        //     }
+        // })
         .catch(e => {
             console.log(e);
             alert("Signup failed: Username already exists");
