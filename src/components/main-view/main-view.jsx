@@ -66,7 +66,8 @@ function MainView()  {
     
     });
 }, [token]);
-
+console.dir(movies)
+// console.dir(movie._id , movie.Director)
 // logic to render searched movies
     const onSearch = function (searchInput) {
         setUserSearch(searchInput);
@@ -105,7 +106,6 @@ function MainView()  {
                 console.log(data);
                 localStorage.setItem("user", JSON.stringify(data));
                 setUser(data);
-                // window.location.reload();
             }
         })
         .catch((error) => {
