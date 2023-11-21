@@ -34,8 +34,6 @@ import { Link } from "react-router-dom";
         console.log(e);
       });
   }    
-  console.log(user)
-  console.log(user.FavoriteMovies)
   // Remove-favMovies
   const removeFavoriteMovie = () => {
     fetch(`https://movies-couch-api.vercel.app/users/${user.Username}/favMovies/${movie._id}`, {
