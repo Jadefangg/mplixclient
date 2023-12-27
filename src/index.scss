@@ -8,6 +8,10 @@ $theme-colors: (
     background-color: $backgroundcolor;
 }
 
+html, head, body{ 
+    width: 100%;
+}
+
 .movies-couch{
     color: $color;
     background-color: $backgroundcolor;
@@ -53,13 +57,29 @@ $theme-colors: (
     height: auto;
 }
 
-.login-view{
-    color: $color;
-    background-color: $backgroundcolor;
+.login-view, .signup-view{
+    color: $backgroundcolor;
+    background-color: $color;
+    label {
+        color:$backgroundcolor;
+    }
 }
+
 .Navigation-bar{
     color: $color;
     background-color: $backgroundcolor;
+    @media (min-width: 375px) {
+        margin: 0px -12px;
+    }
+    @media (min-width:768px) {
+        margin: 0px -36px;
+    }
+    @media (min-width:1024px) {
+        margin: 0px -45px;
+    }
+    @media (min-width:1440px) {
+        margin: 0px -73px;
+    }
 }
 
 .favorite-list {
@@ -76,13 +96,9 @@ $theme-colors: (
     }
 }
 
-.signup-view{
-    color: $color;
-    background-color: $backgroundcolor;
-}
 
 .link_to{
-    color: $color;
+    color: $backgroundcolor;
 }
 
 

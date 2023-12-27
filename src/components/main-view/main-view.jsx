@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Row   from "react-bootstrap/Row";
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
@@ -125,9 +125,7 @@ const showSpinner = function () {
 
 return ( 
 <BrowserRouter>
-    <NavigationBar className="Navigation-bar"
-            user={user} 
-            onLoggedOut={onLoggedOut}
+    <NavigationBar user={user} onLoggedOut={onLoggedOut}
          />
         <Row  className="main-view" >
             <Routes>

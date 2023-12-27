@@ -33,7 +33,7 @@ export const MovieView = ({ movies, token }) => {
                     {` ${movie.Director.Birthdate}`}
                     <br /> <br />Genre:
                     {` ${movie.Genre.Name}`}
-                    <br /> <br />
+                    <br /> <br />Actors:
                     {` ${movie.Actors}`}
                     <br /> <br />
                     <div className="showDescription">

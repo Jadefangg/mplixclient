@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -61,7 +61,7 @@ export const SignupView = () => {
             <Row className="flex-grow-2 justify-content-center align-items-center">
                 <Col >
                     <Card className="card mb-4 w-80 h-100">
-                        <Card.Body className="movies-couch" >
+                        <Card.Body className="signup-view" >
                         <Card.Title className="mb-4">Please Sign up</Card.Title>
                             <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
@@ -100,7 +100,7 @@ export const SignupView = () => {
                                     />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="warning" type="submit">Sign up</Button>
+                                <Button variant="dark" type="submit">Sign up</Button>
                             </Form>
                             <br/>
                             <Link to="/login" className="link_to">Already registered? You will be redirected to the login</Link>

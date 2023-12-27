@@ -50,7 +50,7 @@ export const LoginView = ({ onLoggedIn }) => {
             <Row className="flex-grow-2 justify-content-center align-items-center">
                 <Col >
                     <Card className="card mb-4 h-100">
-                            <Card.Body className="movies-couch">
+                            <Card.Body className="login-view">
                             <Card.Title className="mb-4">Please Login</Card.Title>
                             <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
@@ -75,7 +75,7 @@ export const LoginView = ({ onLoggedIn }) => {
                                 />
                                 </Form.Group>
                                 <br/>
-                                <Button variant="warning" type="submit">Login</Button>  
+                                <Button variant="dark" type="submit">Login</Button>  
                             </Form>
                             <br/>
                             <Link to="/signup" className="link_to">Have you already signed up? If not click here!</Link>

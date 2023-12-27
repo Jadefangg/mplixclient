@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
-        <Navbar bg="warning" expand="lg" >
+        <Navbar bg="warning" expand="lg" className="Navigation-bar">
             <Container mb={5}>
                 <Navbar.Brand as={Link} href="/">
                     Movies-Couch
