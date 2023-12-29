@@ -164,8 +164,8 @@ return (
                         ) : movies.length === 0 ? (
                             <>{showSpinner()}</>
                         ) : ( 
-                            <Col md={9}>
-                                <MovieView movies={movies} 
+                            <Col md={12}>
+                                <MovieView movies={movies}
                                 FavoriteMovies={user.FavoriteMovies} />
                             </Col>
                         )}

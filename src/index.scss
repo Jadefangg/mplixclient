@@ -8,7 +8,8 @@ $theme-colors: (
     background-color: $backgroundcolor;
 }
 
-html, head, body{ 
+html, head, body{
+    background-color: $backgroundcolor;
     width: 100%;
 }
 
@@ -32,7 +33,7 @@ html, head, body{
 
 .navbar{
     justify-self: center !important;
-    
+    margin-top: 30px !important;
 }
 
 .movie-view{
@@ -67,19 +68,8 @@ html, head, body{
 
 .Navigation-bar{
     color: $color;
+    border-radius: 10px;
     background-color: $backgroundcolor;
-    @media (min-width: 375px) {
-        margin: 0px -12px;
-    }
-    @media (min-width:768px) {
-        margin: 0px -36px;
-    }
-    @media (min-width:1024px) {
-        margin: 0px -45px;
-    }
-    @media (min-width:1440px) {
-        margin: 0px -73px;
-    }
 }
 
 .favorite-list {

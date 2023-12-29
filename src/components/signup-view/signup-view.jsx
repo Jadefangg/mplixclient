@@ -62,7 +62,7 @@ export const SignupView = () => {
                 <Col >
                     <Card className="card mb-4 w-80 h-100">
                         <Card.Body className="signup-view" >
-                        <Card.Title className="mb-4">Please Sign up</Card.Title>
+                        <Card.Title className="mb-4" style={{color: "black"}}>Sign up</Card.Title>
                             <Form className="mb-4" onSubmit={handleSubmit}>
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>
@@ -85,7 +85,7 @@ export const SignupView = () => {
                                 <br/>
                                 <Form.Group controlId="formEmail">
                                     <Form.Label>Email:</Form.Label>
-                                    <Form.Control type="text"
+                                    <Form.Control type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required />
