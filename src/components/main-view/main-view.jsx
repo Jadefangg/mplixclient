@@ -190,7 +190,7 @@ return (
                          <>                            
                             {filteredMovies.map((movie) => (
                             <Col className="mb-5" key={movie._id} >
-                                <MovieCard  movie={movie} user={user} updateUser={updateUser} />
+                                <MovieCard  movie={movie} user={user} updateUser={updateUser} style="border:transparent;" />
                             </Col>
                             ))}
                         </>
@@ -199,7 +199,7 @@ return (
                         <>
                             {movies.map((movie) => (
                                 <Col className="mb-5" key={movie._id}>
-                                    <MovieCard movie={movie} user={user} updateUser={updateUser} />
+                                    <MovieCard movie={movie} user={user} updateUser={updateUser} style="border:transparent;"/>
                                 </Col>
                             ))}
                         </>

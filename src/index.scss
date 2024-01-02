@@ -50,6 +50,11 @@ html, head, body{
     width: 100%;
     height: auto;
     margin-top: 20px;
+    border: 1px solid #ffc107 !important;
+    transition: all 0.3s ease-out;
+}
+.movie-card:hover {
+    transform: scale(1.1)
 }
 .movie-card-body {
     color: $color;
