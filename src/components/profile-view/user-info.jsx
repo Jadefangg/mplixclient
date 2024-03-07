@@ -12,7 +12,7 @@ function UserInfo({ user }) {
     return (
         <>
         <h2>Your Profile:</h2>
-            <Card bg={'dark'} text={'warning'}>
+            <Card bg={'dark'} text={"#ffc107"}>
                 <Card.Body className="profile-view">
                     <>
                         <h3>Username:</h3>

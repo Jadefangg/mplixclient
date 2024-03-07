@@ -80,8 +80,8 @@ import { DeleteUser } from "./delete-user";
                         <Col>
                             <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user} updateUser={updateUser}/>
                         </Col>
-                    </Row>
-            </Container>
+                </Row>
+        </Container>
         ); 
 };
 

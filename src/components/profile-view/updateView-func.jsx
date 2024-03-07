@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Button, Row, Col, Card, ListGroup } from "react-bootstrap";
+import { Button, Form, Row, Col, Card, ListGroup } from "react-bootstrap";
 
 
 export const UpdateView = ({ user, updateUser}) => {
@@ -46,54 +46,54 @@ export const UpdateView = ({ user, updateUser}) => {
 
         <Row className="mt-2">
             <Col>
-                <Card bg={'dark'} text={'warning'}> 
+                <Card bg={"dark"} text={"#ffc107"}> 
                     <Card.Body className="form-profile">
                         <Card.Title>Profile Update:</Card.Title>
                         <Card.Text></Card.Text>
                         <ListGroup>
-                            <form onSubmit={handleSubmit}>
-                                <ListGroup.Item variant="dark">
-                                    <label className="label-fields">
+                            <Form onSubmit={handleSubmit}>
+                                <ListGroup.Item style={{background: "#212529"}}>
+                                    <Form.Label style={{color: "#ffc107",}}>
                                         Password:
-                                        <input 
+                                        </Form.Label>
+                                        <Form.Control 
                                         type="password"
                                         name="password"
-                                        className="input-fields"
+                                        style={{backgroundColor: "#ffc107", color: "black", }}
                                         onChange={e => setPassword(e.target.value) }
                                         />
-                                    </label>
                                 </ListGroup.Item>
                                 <br/>
-                                <ListGroup.Item variant="dark">
-                                    <label className="label-fields">
+                                <ListGroup.Item style={{background: "#212529"}}>
+                                    <Form.Label style={{color: "#ffc107",}}>
                                         Email:
-                                        <input 
+                                        </Form.Label>
+                                        <Form.Control 
                                         type="email"
                                         name="email"
-                                        className="input-fields"
+                                        style={{backgroundColor: "#ffc107", color: "black", }}
                                         placeholder={user.Email}
                                         onChange={e => setEmail(e.target.value) }
                                         />
-                                    </label>
                                 </ListGroup.Item>
                                 <br/>
-                                <ListGroup.Item variant="dark" >
-                                    <label className="label-fields">
+                                <ListGroup.Item style={{background: "#212529"}} >
+                                    <Form.Label style={{color: "#ffc107",}}>
                                         Birthday:
-                                        <input 
+                                        </Form.Label>
+                                        <Form.Control 
                                         type="date"
                                         name="birthday"
-                                        className="input-fields"
+                                        style={{backgroundColor: "#ffc107", color: "black", }}
                                         placeholder={user.Birthday}
                                         onChange={e => setBirthday(e.target.value) }
                                         />
-                                    </label>
                                 </ListGroup.Item>
                                 <br />
                                 <Button variant="warning" type="submit" className="mt-3">
                                     Update User
                                 </Button>
-                            </form>
+                            </Form>
                         </ListGroup>
                     </Card.Body>
                 </Card>

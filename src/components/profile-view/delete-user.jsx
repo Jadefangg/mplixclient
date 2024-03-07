@@ -37,7 +37,7 @@ function DeleteUser ({ user }) {
     
     return (
         <>
-            <Button variant="danger" onClick={deregisterUser} type="button">Delete Account</Button>
+            <Button variant="danger" onClick={deregisterUser} type="button" style={{maxWidth: "40%"}}>Delete Account</Button>
         </>
     )
 }
