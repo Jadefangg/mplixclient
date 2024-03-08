@@ -1,6 +1,5 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
-import { Button } from "react-bootstrap";
+import { Button} from "react-bootstrap";
 
 function DeleteUser ({ user }) {
     const token = window.localStorage.getItem("token");
@@ -37,7 +36,7 @@ function DeleteUser ({ user }) {
     
     return (
         <>
-            <Button variant="danger" onClick={deregisterUser} type="button" style={{maxWidth: "40%"}}>Delete Account</Button>
+            <Button variant="danger" onClick={deregisterUser} type="button" className="btn-responsive mt-2" >Delete Account</Button>
         </>
     )
 }

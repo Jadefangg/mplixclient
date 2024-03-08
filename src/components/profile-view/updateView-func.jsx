@@ -52,14 +52,14 @@ export const UpdateView = ({ user, updateUser}) => {
                         <Card.Text></Card.Text>
                         <ListGroup>
                             <Form onSubmit={handleSubmit}>
-                                <ListGroup.Item style={{background: "#212529"}}>
+                                <ListGroup.Item style={{background: "#212529",}}>
                                     <Form.Label style={{color: "#ffc107",}}>
                                         Password:
                                         </Form.Label>
                                         <Form.Control 
                                         type="password"
                                         name="password"
-                                        style={{backgroundColor: "#ffc107", color: "black", }}
+                                        style={{backgroundColor: "#ffc107", borderBlockColor: "#ffc107", color: "black", }}
                                         onChange={e => setPassword(e.target.value) }
                                         />
                                 </ListGroup.Item>
@@ -71,7 +71,7 @@ export const UpdateView = ({ user, updateUser}) => {
                                         <Form.Control 
                                         type="email"
                                         name="email"
-                                        style={{backgroundColor: "#ffc107", color: "black", }}
+                                        style={{backgroundColor: "#ffc107", borderBlockColor: "#ffc107", color: "black", }}
                                         placeholder={user.Email}
                                         onChange={e => setEmail(e.target.value) }
                                         />
@@ -84,7 +84,7 @@ export const UpdateView = ({ user, updateUser}) => {
                                         <Form.Control 
                                         type="date"
                                         name="birthday"
-                                        style={{backgroundColor: "#ffc107", color: "black", }}
+                                        style={{backgroundColor: "#ffc107", borderBlockColor: "#ffc107", color: "black", }}
                                         placeholder={user.Birthday}
                                         onChange={e => setBirthday(e.target.value) }
                                         />

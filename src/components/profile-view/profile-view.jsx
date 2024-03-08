@@ -62,21 +62,17 @@ import { DeleteUser } from "./delete-user";
     }
 
     return (
-        <Container className="profile-view">
+        <Container className="profile-view container-fluid">
                 <Row className="d-flex justify-content-center p-4">
                     <Col >
                         <UserInfo user={user}/>
-                    </Col>
-                    </Row> 
-                    <Row className=" d-flex justify-content-center">
                         <DeleteUser user={user} />
-                    </Row>
-                   <Row className="d-flex justify-content-center p-4">
-                        <Col >
-                            <UpdateView user={user} updateUser={updateUser}/>
-                        </Col>
-                    </Row>
-                    <Row className="fav-list">
+                    </Col>
+                    <Col md={6}>
+                        <UpdateView user={user} updateUser={updateUser}/>
+                    </Col>
+                </Row>
+                <Row className="fav-list">
                         <Col>
                             <FavoriteMovies movies={movies} removeFavMovie={removeFavMovie} user={user} updateUser={updateUser}/>
                         </Col>
