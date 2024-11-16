@@ -1,80 +1,69 @@
-$color: #ffc107;
-$backgroundcolor: black;
-$theme-colors: (
-    "outline-warning":#ffc107,
-    );
 
-#root {
-    background-color: $backgroundcolor;
-}
-
-html, head, body{
-    background-color: $backgroundcolor;
-    width: 100%;
-}
-
-.movies-couch{
-    color: $color;
-    background-color: $backgroundcolor;
+.mplixcontainer{
+    background-color: green;
     width: 100%;
     height: auto;
 }
-
-.main-view{
-    color: $color;
-    background-color: $backgroundcolor;
-    justify-content: center;
+.mainview{ 
+    background-color: green;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
 }
+
 .search-bar{
+    font-size: x-large;
+    margin: auto;
+    padding: 10px;
+    background-color: aliceblue;
     width:80%;
     font-size: 16px;
-    border: 1px solid white;
 }
 
 .navbar{
-    justify-self: center !important;
-    margin-top: 30px !important;
+    background-color: rgb(28, 147, 147);
+    justify-self: center ;
+    margin-top: 30px ;
+    font-size: x-large;
 }
-
-.movie-view{
-    color: $color;
-    background-color: $backgroundcolor;
+.btn-secondary{
+    font-size: larger;
+    background-color: #f50820;
+    align-items: center ;
+    margin: 10px;
+}
+.movie-view1{
+    background-color: green;
     width: 100%;
     height: auto;
     margin-top: 20px;
 }
 
 .movie-card{
-    color: $color;
-    background-color: $backgroundcolor;
+    background-color: green;
     width: 100%;
     height: auto;
     margin-top: 20px;
-    border: 1px solid #ffc107 !important;
-    transition: all 0.3s ease-out;
+    padding: 10px;
+    border: 1px solid #f50820;
+    transition: all 0.2s ease-in;
 }
 .movie-card:hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
 }
 .movie-card-body {
-    color: $color;
-    background-color: $backgroundcolor;
     width: 100%;
     height: auto;
 }
 
 .login-view, .signup-view{
-    color: $backgroundcolor;
-    background-color: $color;
     label {
-        color:$backgroundcolor;
+    background-color: olive;
     }
 }
 
 .Navigation-bar{
-    color: $color;
-    border-radius: 10px;
-    background-color: $backgroundcolor;
+    border-radius: 50px;
 }
 
 .favorite-list {
@@ -92,9 +81,6 @@ html, head, body{
 }
 
 
-.link_to{
-    color: $backgroundcolor;
-}
 
 
 // Importing React Bootstrap utility classes

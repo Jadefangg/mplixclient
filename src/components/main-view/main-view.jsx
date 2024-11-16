@@ -13,6 +13,7 @@ import { SearchBar } from "./search-bar";
 import { ProfileView } from "../profile-view/profile-view";
 
 
+
 // exporting Main view variabels
 function MainView()  {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -38,7 +39,7 @@ function MainView()  {
             return;
         }
         setLoading(true);
-    fetch("https://movies-couch-api.vercel.app/movies", {
+    fetch("https://movies-couch-api.vercel.app/movies", { //vercel app link fetches movies from the API
       headers: {Authorization: `Bearer ${token}` },
       })
         .then((response) => {
@@ -66,8 +67,8 @@ function MainView()  {
     
     });
 }, [token]);
+
 console.dir(movies)
-// console.dir(movie._id , movie.Director)
 // logic to render searched movies
     const onSearch = function (searchInput) {
         setUserSearch(searchInput);

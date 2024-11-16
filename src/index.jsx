@@ -7,7 +7,7 @@ import "./index.scss";
 const MoviesCouchApplication = () => {
     return (
     <Container >
-        <MainView className="movies-couch"/>
+        <MainView className="mplixcontainer"/>
     </Container>
     );
 };

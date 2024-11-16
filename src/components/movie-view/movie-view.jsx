@@ -20,8 +20,8 @@ export const MovieView = ({ movies, token }) => {
   };
 
     return (
-        <Card className="movie-view" style={{background:"transparent", display:"flex", flexDirection:"row"}}>
-            <Card.Img className="w-80" style={{width:"350px", borderRadius:"10px", alignSelf: "start"}} src={movie.ImageURL} alt="movie-poster" />
+        <Card className="movie-view" style={{ display:"flex", flexDirection:"row"}}>
+            <Card.Img  src={movie.ImageURL} alt="movie-poster" />
             <Card.Body className="movie-view">
                 <Card.Title>{movie.Title}</Card.Title>
                 <br />

@@ -63,7 +63,7 @@ import { Link } from "react-router-dom";
   }
   
   return (
-      <Card className="movie-card" style={{ width:"18rem"}}>
+      <Card className="movie-card">
         <Card.Img variant="top" className="w-80" src={movie.ImageURL} alt="movie-poster"/> 
         <Card.Body className="movie-card-body">
               <Card.Title>{movie.Title}</Card.Title>
@@ -75,21 +75,21 @@ import { Link } from "react-router-dom";
               </Card.Text>
                 <br />
                   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button className="movie-card-button" variant="outline-warning">Open</Button>
+                  <Button className="movie-card-button" >Open</Button>
                   <br/> <br/>
                   {inFavoriteMovies ? <Button onClick={(e) => {
                     e.preventDefault();
-                    removeFavoriteMovie(movie._id);
+                    removeFavoriteMovie(movie._id);S
                   }} 
                   className="movie-card-button" variant="outline-warning"
-                  >Remove from Favorite Movies</Button> :
+                  >Remove from Favorites</Button> :
                   <Button onClick={(e) => {
                     e.preventDefault();
                     console.log(movie._id); 
                     addFavoriteMovie(movie._id);
                   }}  
                   className="movie-card-button" variant="outline-warning"
-                  >Add to Favorite Movies</Button>
+                  >Add to Favorites</Button>
                   }
                   </Link>
             </Card.Body>
