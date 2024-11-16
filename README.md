@@ -1,14 +1,4 @@
-# Movies-couch_client
-## Table of Contents:
-* [Overview](#overview)
-* [How to Run](#how-to-run)
-* [Links](#links)
-* [Process](#process)
-* [Technologies Used](#technologies-used)
-* [Dependencies](#dependencies)
-* [API](#api)
-* [Features](#features)
-* [Credits](#credentials)
+
 
 <a id="overview"></a>
 ## Overview
