@@ -2,23 +2,19 @@
 
 <a id="overview"></a>
 ## Overview
-Movies-Couch is the client-side part of the app, based on the existing server side. This movie app allows users to access information about different movies.
-Users can register, update, their personal data, and manage as well their favorite movies.
-The client side user interface complements REST API and MongoDB database whcich have been set up previously, providing a smooth experience for users. Built with MERN-stack (MongoDB, Express, React, Node.js), Movies-Couch is a full-stack web application which offers a user-friendly, responsive and efficient solution for those seeking movie information and management.
+mplix as the name suggests is a working version of an IMDB esque application. It incorporates features such as registering a new user, allowing exisiting users to login, searching through movies which are stored in a database which is fetched from the backend. The user can then add movies to their favourites or remove them from their favourites. This project also allows users to update their profiles or delete their accounts. 
 
-<a id="hot-to-tun"></a>
-## How to Run
-1. Clone repository using command git clone https://github.com/HerRA17/movies-couch_client
-2. Install dependencies using npm install prop-types@15.8.1 react@18.2.0 react-bootstrap@ and npm install --save-dev @parcel/transformer-sass@2.8.3 parcel@2.8.3 process@0.11.10
-3. Run the app using parcel src/index.html
-4. After this, the app should be available in the browser at http://localhost:1234 
-5. To access movies, register or use following test credentials: Username: Example(Test); Password: Example(Test)
+##  Logic
+The simple logic to such a project is as follows:
 
-<a id="links"></a>
-## Links
-Check the site here: <a href="https://movies-couch.netlify.app/"> movies-couch </a>
-Chech the API site: <a href="https://github.com/HerRA17/movies-couch_api" > movies-couch API</a>
-
+1. Make a backend code which is pushed to an online server host like heroku or vercel.
+2. Create a mongoDB database on which you push your sample data (JSON etc.)
+3. Connect the backend - mongoDB <-----> Heroku/Vercel etc via a connection URI and configuration variables. [Ideally protect the URIs with environment variables]
+4. Create the frontend code.
+5. Deploy the front end side via netlify or others.
+6. Connect/fetch data to the front UI via the live server link to your backend.
+7. Front-end<<----->>Back-end.
+   
 <a id="technologies-used"></a>
 ## Technologies Used
 + React
@@ -50,9 +46,6 @@ Chech the API site: <a href="https://github.com/HerRA17/movies-couch_api" > movi
    * "process": "^0.11.10"
   }
 
-<a id="api"></a>
-## API Documentation
-Information regarding the <a href="https://github.com/HerRA17/movies-couch_api" target="_blank">API</a> used in the Project(endpoints, dependencies, error response...) can be found <a href="" target="_blank">here</a>
 
 <a id="features"></a>
 ## Features
@@ -85,5 +78,4 @@ Information regarding the <a href="https://github.com/HerRA17/movies-couch_api" 
 
 <a id="credits"></a>
 ## Credits
-Tutor: Adewunmi bamishigbin
-Mentor: Joel Cross
+CareerFoundry.
